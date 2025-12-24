@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maadi STEM School for Girls | Classroom Facilities</title>
+    <title>Classrooms | Maadi STEM School for Girls</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
             --navy: #0a192f;
             --navy-light: #1a2947;
-            --navy-deep: #0e1525;
             --pink: #FF6B9D;
             --pink-light: #ff9ec0;
             --pink-dark: #e05583;
@@ -19,10 +19,10 @@
             --cream-dark: #f5eef2;
             --white: #ffffff;
             --gray: #7a7f8f;
-            --gray-light: #f5f5f7;
             --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --shadow: 0 20px 40px rgba(255, 107, 157, 0.1);
             --shadow-dark: 0 20px 40px rgba(10, 25, 47, 0.15);
+            --card-radius: 25px;
         }
 
         * {
@@ -38,7 +38,6 @@
             line-height: 1.7;
             overflow-x: hidden;
             font-weight: 300;
-            padding-top: 100px;
         }
 
         h1, h2, h3, h4, h5, .logo-text, .section-title, .hero-title {
@@ -48,7 +47,7 @@
             letter-spacing: -0.5px;
         }
 
-        /* Elegant Header */
+        /* Header - Same as History page */
         header {
             background-color: transparent;
             padding: 2rem 0;
@@ -92,6 +91,7 @@
             padding: 5px;
             background-color: var(--cream);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
         }
 
         .logo-text h1 {
@@ -113,10 +113,10 @@
             text-transform: uppercase;
             margin-top: 0.3rem;
             font-weight: 300;
+            padding-bottom: 10px;
             text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
         }
 
-        /* Navigation */
         nav ul {
             display: flex;
             list-style: none;
@@ -174,15 +174,102 @@
             width: 100%;
         }
 
-        /* Dropdown Menu */
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .btn-pink {
+            padding: 0.8rem 2.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+
+        header.scrolled .btn-pink {
+            background-color: transparent;
+            border: 1px solid var(--pink);
+            color: var(--pink);
+        }
+
+        .btn-pink::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn-pink:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+            border-color: var(--pink);
+        }
+
+        .btn-pink:hover::before {
+            left: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+        }
+
+        header.scrolled .mobile-menu-btn {
+            color: var(--pink);
+            text-shadow: none;
+        }
+
         .dropdown {
             position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0.5rem 0;
+            gap: 0.5rem;
+        }
+
+        .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover > a i {
+            transform: rotate(180deg);
         }
 
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
+            margin-top: 0.5rem;
             background-color: rgba(10, 25, 47, 0.95);
             backdrop-filter: blur(10px);
             min-width: 220px;
@@ -222,7 +309,6 @@
             padding-left: 2.3rem;
         }
 
-        /* Campus Dropdown Specific */
         .campus-dropdown .dropdown-menu {
             min-width: 210px;
             padding: 0.8rem 0;
@@ -248,7 +334,11 @@
             padding-left: 2.3rem;
         }
 
-        /* Nested Dropdown */
+        .campus-main-item i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
         .nested-dropdown {
             position: relative;
         }
@@ -278,41 +368,21 @@
             transform: translateX(0);
         }
 
-        .dropdown > a {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .nested-dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
         }
 
-        .dropdown > a i {
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
-        .dropdown:hover > a i {
-            transform: rotate(180deg);
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--white);
-            cursor: pointer;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        header.scrolled .mobile-menu-btn {
+        .nested-dropdown-menu a:hover {
             color: var(--pink);
-            text-shadow: none;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
         }
 
         /* Mobile Menu */
@@ -326,11 +396,10 @@
             z-index: 2000;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 2rem;
             transform: translateX(-100%);
             transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-            padding: 2rem;
+            overflow-y: auto;
         }
 
         .mobile-menu.active {
@@ -339,179 +408,213 @@
 
         .mobile-menu-close {
             position: absolute;
-            top: 2rem;
-            right: 2rem;
+            top: 1.5rem;
+            right: 1.5rem;
             background: none;
             border: none;
             font-size: 1.8rem;
             color: var(--pink);
             cursor: pointer;
+            z-index: 2001;
         }
 
-        .mobile-menu ul {
+        .mobile-nav {
+            margin-top: 4rem;
+            width: 100%;
+        }
+
+        .mobile-nav ul {
             list-style: none;
-            text-align: center;
+            width: 100%;
         }
 
-        .mobile-menu ul li {
-            margin: 2rem 0;
+        .mobile-nav ul li {
+            margin-bottom: 1.5rem;
+            width: 100%;
         }
 
-        .mobile-menu ul li a {
+        .mobile-nav ul li a {
             color: var(--white);
             text-decoration: none;
-            font-size: 2rem;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
             transition: var(--transition);
             opacity: 0.8;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .mobile-menu ul li a:hover {
+        .mobile-nav ul li a.active {
             color: var(--pink);
             opacity: 1;
         }
 
-        .mobile-menu-btn-pink {
-            margin-top: 3rem;
-            padding: 1rem 2.5rem;
-            background-color: transparent;
+        .mobile-nav ul li a:hover {
             color: var(--pink);
-            border: 1px solid var(--pink);
-            border-radius: 30px;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: var(--transition);
+            opacity: 1;
         }
 
-        /* HERO SECTION - Classrooms Theme */
-        .hero-classrooms {
-            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.95)),
-                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+        .mobile-dropdown {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-dropdown > a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-content {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .mobile-dropdown-content.active {
+            display: block;
+        }
+
+        .mobile-dropdown-content a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.4rem 0;
+            margin-bottom: 0.3rem;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+        }
+
+        .mobile-dropdown-content a:hover {
+            color: var(--pink);
+            border-left-color: var(--pink);
+        }
+
+        .mobile-campus-submenu {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .mobile-campus-submenu h4 {
+            color: var(--pink-light);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-campus-submenu ul {
+            list-style: none;
+        }
+
+        .mobile-campus-submenu ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-campus-submenu ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 1rem;
+            padding-left: 1.5rem;
+            display: block;
+        }
+
+        .mobile-campus-submenu ul li a:hover {
+            color: var(--pink);
+        }
+
+        /* Hero Section - Custom for Classrooms */
+        .hero {
+            height: 70vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(255, 107, 157, 0.3));
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url('images/classrooms/classes1.jpg');
             background-size: cover;
             background-position: center;
-            padding: 180px 0 100px;
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-            margin-top: -100px;
+            filter: brightness(0.7) sepia(0.3) hue-rotate(-10deg) saturate(1.2);
         }
 
-        .hero-classrooms::before {
-            content: '';
+        .hero-overlay {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 107, 157, 0.15) 0%, transparent 70%);
-            top: 50px;
-            right: 100px;
-        }
-
-        .hero-classrooms::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(245, 180, 179, 0.1) 0%, transparent 70%);
-            bottom: 50px;
-            left: 100px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 25, 47, 0.8), rgba(255, 107, 157, 0.2));
+            z-index: -1;
         }
 
         .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 1200px;
             padding: 0 3rem;
             text-align: center;
             position: relative;
             z-index: 1;
+            margin-top: 80px;
         }
 
         .hero-title {
-            font-size: 4rem;
+            font-size: 4.5rem;
             color: var(--white);
             margin-bottom: 1.5rem;
-            font-weight: 700;
+            font-weight: 600;
+            letter-spacing: -1px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .hero-title span {
             color: var(--pink);
             position: relative;
-        }
-
-        .hero-title span::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            background-color: var(--pink);
-            bottom: 5px;
-            left: 0;
-            opacity: 0.5;
+            display: inline-block;
         }
 
         .hero-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: rgba(255, 255, 255, 0.9);
             max-width: 800px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2.5rem;
             font-weight: 300;
             line-height: 1.6;
         }
-
-        .btn-hero {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
-            color: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
-        }
-
-        .btn-hero:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
-        }
-
-        /* Breadcrumb */
-        .breadcrumb {
-            background: var(--gray-light);
-            padding: 1rem 0;
-            margin-bottom: 2rem;
-        }
-
-        .breadcrumb-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 3rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .breadcrumb-content a {
-            color: var(--navy);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .breadcrumb-content a:hover {
-            color: var(--pink);
-        }
-
-        .breadcrumb-content span {
-            color: var(--gray);
-            margin: 0 0.5rem;
-        }
-
+.hero {
+    background: 
+        linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(255, 107, 157, 0.4)),
+        url('../images/classes/classes4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* لإنشاء تأثير parallax */
+}
         /* Main Content */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         section {
@@ -550,7 +653,288 @@
             font-weight: 300;
         }
 
-        /* Classroom Features */
+        /* Learning Methods Section */
+        .methods-section {
+            background: var(--cream);
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .method-card {
+            background: var(--white);
+            border-radius: var(--card-radius);
+            padding: 3rem 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .method-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(255, 107, 157, 0.15);
+        }
+
+        .method-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+        }
+
+        .method-card h3 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .method-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Presentation Section */
+        .presentation-section {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .presentation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .presentation-text h3 {
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .presentation-text p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            color: var(--gray);
+        }
+
+        .features-list li i {
+            color: var(--pink);
+            margin-top: 0.3rem;
+        }
+
+        .presentation-image {
+            position: relative;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+
+        .presentation-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Activities Section */
+        .activities-section {
+            background: var(--cream);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .activity-card {
+            background: var(--white);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(255, 107, 157, 0.15);
+        }
+
+        .activity-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .activity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .activity-card:hover .activity-image img {
+            transform: scale(1.05);
+        }
+
+        .activity-content {
+            padding: 2rem;
+        }
+
+        .activity-content h3 {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .activity-content p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Art & Creativity Section */
+        .art-section {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .art-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .art-text h3 {
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .art-text p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .art-image {
+            position: relative;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+
+        .art-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Laptop-Based Learning Section */
+        .laptop-section {
+            background: var(--cream);
+        }
+
+        .laptop-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .laptop-text h3 {
+            font-size: 2.2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .laptop-text p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .laptop-image {
+            position: relative;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+        }
+
+        .laptop-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 107, 157, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+/* Classroom Features */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -599,337 +983,109 @@
             font-size: 1rem;
             line-height: 1.6;
         }
-
-        /* Photo Gallery Section */
-        .photo-gallery {
-            background: linear-gradient(135deg, var(--cream), var(--cream-dark));
-            border-radius: 20px;
-            padding: 4rem;
-            margin: 4rem 0;
-        }
-
-        .gallery-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .gallery-header h3 {
-            font-size: 2.5rem;
-            color: var(--navy);
-            margin-bottom: 1rem;
-        }
-
-        .gallery-header p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Photo Grid */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .photo-card {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            height: 300px;
-        }
-
-        .photo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-dark);
-        }
-
-        .photo-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .photo-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .photo-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(10, 25, 47, 0.9), transparent);
-            padding: 2rem;
-            color: var(--white);
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-
-        .photo-card:hover .photo-overlay {
-            transform: translateY(0);
-        }
-
-        .photo-overlay h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .photo-overlay p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Study Sessions Section */
-        .study-sessions {
-            margin-top: 6rem;
-        }
-
-        .session-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            margin-bottom: 4rem;
-            transition: var(--transition);
-        }
-
-        .session-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-dark);
-        }
-
-        .session-header {
-            background: linear-gradient(135deg, var(--navy-light), var(--navy));
-            color: var(--white);
-            padding: 2.5rem;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .session-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(255, 107, 157, 0.2) 0%, transparent 70%);
-        }
-
-        .session-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            flex-shrink: 0;
-            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
-        }
-
-        .session-title h3 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--white);
-        }
-
-        .session-title p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.1rem;
-            font-weight: 300;
-        }
-
-        /* Session Content */
-        .session-content {
-            padding: 3rem;
-        }
-
-        .session-description {
-            color: var(--navy);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-        }
-
-        .session-description p {
-            margin-bottom: 1.5rem;
-        }
-
-        /* Session Gallery */
-        .session-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .session-photo {
-            height: 200px;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .session-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .session-photo:hover img {
-            transform: scale(1.1);
-        }
-
-        .session-photo-label {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(10, 25, 47, 0.8);
-            color: var(--white);
-            padding: 0.8rem;
-            text-align: center;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .session-photo:hover .session-photo-label {
-            opacity: 1;
-        }
-
-        /* Presentation Sessions */
-        .presentation-sessions {
-            margin-top: 6rem;
-        }
-
-        /* Classroom Specifications */
-        .classroom-specs {
-            background: linear-gradient(135deg, var(--cream), var(--cream-dark));
-            border-radius: 15px;
-            padding: 2.5rem;
-            margin: 2.5rem 0;
-            border-left: 5px solid var(--pink);
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .spec-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .spec-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .spec-label {
-            font-weight: 600;
-            color: var(--navy);
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .spec-value {
-            color: var(--gray);
-            font-size: 1rem;
-            font-weight: 300;
-        }
-
-        /* Classroom Dimentions Visualization - UPDATED */
+        /* NEW: Dimentions Section Layout - Fixed */
         .dimentions-section {
             background: var(--navy);
-            border-radius: 20px;
-            padding: 4rem;
-            margin: 4rem 0;
+            border-radius: 30px;
+            padding: 5rem;
+            margin: 6rem 0;
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-dark);
+        }
+
+        .dimentions-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+            opacity: 0.5;
         }
 
         .dimentions-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
         }
 
         .dimentions-title h3 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--white);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .dimentions-title p {
             color: var(--pink-light);
-            font-size: 1.1rem;
-            max-width: 600px;
+            font-size: 1.2rem;
+            max-width: 700px;
             margin: 0 auto;
+            line-height: 1.6;
         }
 
-        .dimentions-grid {
+        /* الجديد: تخطيط جنباً إلى جنب */
+        .dimentions-content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 1fr 1.2fr;
             gap: 4rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .dimentions-info {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .dimention-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2rem;
+            border-radius: 15px;
             border-left: 4px solid var(--pink);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .dimention-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .dimention-item h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
             color: var(--pink-light);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dimention-item h4 i {
+            font-size: 1.2rem;
         }
 
         .dimention-item p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
         .dimentions-visualization {
             background: var(--navy-light);
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 2rem;
             position: relative;
             height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 107, 157, 0.2);
+            overflow: hidden;
         }
 
         .classroom-diagram {
@@ -942,10 +1098,11 @@
             width: 90%;
             height: 80%;
             border: 3px solid var(--pink);
-            border-radius: 10px;
+            border-radius: 15px;
             position: relative;
             margin: 0 auto;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
         .dimension-line {
@@ -955,7 +1112,7 @@
         }
 
         .dimension-line.horizontal {
-            width: 100px;
+            width: 120px;
         }
 
         .dimension-line.vertical {
@@ -967,48 +1124,58 @@
             position: absolute;
             color: var(--pink-light);
             font-size: 0.9rem;
-            background: var(--navy);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
+            background: rgba(10, 25, 47, 0.8);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
             z-index: 2;
+            font-weight: 500;
+            border: 1px solid rgba(255, 107, 157, 0.3);
         }
 
-        /* NEW: Group Tables */
+        /* Group Tables */
         .group-table {
             position: absolute;
             border: 2px solid var(--pink-light);
-            border-radius: 8px;
-            background: rgba(255, 107, 157, 0.1);
+            border-radius: 10px;
+            background: rgba(255, 107, 157, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            font-size: 0.8rem;
+            color: var(--pink-light);
+            font-weight: 500;
+            overflow: hidden;
         }
 
         .group-table:hover {
-            background: rgba(255, 107, 157, 0.2);
+            background: rgba(255, 107, 157, 0.25);
             transform: scale(1.05);
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
         }
 
         .chair {
             position: absolute;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             background: var(--pink);
             border-radius: 50%;
             border: 2px solid var(--pink-light);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         .chair-label {
             position: absolute;
             color: var(--pink-light);
             font-size: 0.7rem;
-            background: rgba(10, 25, 47, 0.8);
+            background: rgba(10, 25, 47, 0.9);
             padding: 0.1rem 0.3rem;
             border-radius: 3px;
             z-index: 2;
             display: none;
+            font-weight: 500;
+            border: 1px solid rgba(255, 107, 157, 0.2);
         }
 
         .group-table:hover .chair-label {
@@ -1020,13 +1187,16 @@
             position: absolute;
             border: 3px solid var(--pink);
             background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border-radius: 5px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             overflow: hidden;
+            text-align: center;
+            padding: 0.5rem;
         }
 
         .whiteboard::before {
@@ -1043,40 +1213,210 @@
         .teacher-desk {
             position: absolute;
             border: 2px solid var(--peach);
-            background: rgba(245, 180, 179, 0.1);
-            border-radius: 5px;
+            background: rgba(245, 180, 179, 0.15);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         /* Room Elements */
         .window {
             position: absolute;
             border: 2px solid var(--pink-light);
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 5px;
         }
 
         .door {
             position: absolute;
             border: 2px solid var(--peach);
-            background: rgba(245, 180, 179, 0.1);
-            border-radius: 3px;
+            background: rgba(245, 180, 179, 0.15);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--white);
         }
 
         .storage {
             position: absolute;
-            border: 2px solid var(--gray);
+            border: 2px solid rgba(122, 127, 143, 0.5);
             background: rgba(122, 127, 143, 0.1);
-            border-radius: 5px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Footer */
+        /* Classroom Specifications Section */
+        .classroom-specs-section {
+            padding: 5rem 0;
+            background: var(--cream);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .spec-item {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .spec-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(255, 107, 157, 0.15);
+            border-color: var(--pink-light);
+        }
+
+        .spec-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--white);
+            flex-shrink: 0;
+            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .spec-item div {
+            flex: 1;
+        }
+
+        .spec-label {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .spec-value {
+            font-size: 1.5rem;
+            color: var(--navy);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* Responsive adjustments for dimentions section */
+        @media (max-width: 1200px) {
+            .dimentions-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            
+            .dimentions-visualization {
+                height: 450px;
+                order: -1;
+            }
+            
+            .dimentions-info {
+                order: 1;
+            }
+            
+            .dimentions-title h3 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dimentions-section {
+                padding: 3rem 2rem;
+                margin: 4rem 0;
+                border-radius: 20px;
+            }
+            
+            .dimentions-title h3 {
+                font-size: 2rem;
+            }
+            
+            .dimentions-title p {
+                font-size: 1.1rem;
+            }
+            
+            .dimentions-visualization {
+                height: 350px;
+                padding: 1.5rem;
+            }
+            
+            .dimention-item {
+                padding: 1.5rem;
+            }
+            
+            .dimention-item h4 {
+                font-size: 1.2rem;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .spec-item {
+                padding: 2rem;
+            }
+            
+            .spec-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .spec-value {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dimentions-section {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .dimentions-title h3 {
+                font-size: 1.8rem;
+            }
+            
+            .dimentions-visualization {
+                height: 300px;
+            }
+            
+            .spec-item {
+                padding: 1.5rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
+            .spec-icon {
+                margin: 0 auto;
+            }
+        }
+
+        /* Footer - Same as History page */
         footer {
-            background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+            background: linear-gradient(135deg, var(--navy), #0e1525);
             color: var(--white);
             padding: 6rem 0 3rem;
             position: relative;
@@ -1091,7 +1431,7 @@
             border-radius: 50%;
             background: radial-gradient(circle, rgba(255, 107, 157, 0.08) 0%, transparent 70%);
             top: -150px;
-            left: -150px;
+            right: -150px;
             opacity: 0.5;
         }
 
@@ -1168,12 +1508,12 @@
             width: 45px;
             height: 45px;
             background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
+            border-radius: 12px;
             color: var(--white);
             text-decoration: none;
             transition: var(--transition);
             font-size: 1.1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .social-icons a:hover {
@@ -1196,10 +1536,7 @@
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            .header-container,
-            .container,
-            .hero-content,
-            .breadcrumb-content {
+            .header-container, .container {
                 padding: 0 2rem;
             }
             
@@ -1207,25 +1544,20 @@
                 font-size: 3.5rem;
             }
             
-            .dimentions-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+            .methods-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .dimentions-visualization {
-                height: 450px;
+            .activities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media (max-width: 992px) {
-            .photo-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .dimentions-visualization {
-                height: 400px;
-            }
-            
             nav {
                 display: none;
             }
@@ -1233,15 +1565,46 @@
             .mobile-menu-btn {
                 display: block;
             }
+            
+            .header-actions .btn-pink {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .presentation-content,
+            .art-content,
+            .laptop-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .presentation-image,
+            .art-image,
+            .laptop-image {
+                order: -1;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .header-container,
-            .container,
-            .hero-content,
-            .footer-container,
-            .breadcrumb-content {
+            .header-container, .container {
                 padding: 0 1.5rem;
+            }
+            
+            .footer-container {
+                padding: 0 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
             
             section {
@@ -1249,90 +1612,70 @@
             }
             
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.2rem;
             }
             
             .hero-subtitle {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
             .section-title h2 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
-            .photo-grid {
+            .methods-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            .session-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
+            .activities-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            .dimentions-section {
+            .method-card,
+            .activity-content {
                 padding: 2rem;
             }
             
-            .dimentions-visualization {
-                height: 350px;
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
             
-            .logo-img {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .logo-text h1 {
-                font-size: 1.7rem;
-            }
-            
-            body {
-                padding-top: 80px;
+            .gallery-item {
+                height: 220px;
             }
         }
 
         @media (max-width: 576px) {
+            .hero {
+                height: 60vh;
+                min-height: 500px;
+            }
+            
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
-            .logo-text h1 {
-                font-size: 1.5rem;
+            .hero-content {
+                padding: 0 1rem;
             }
             
-            .logo-text p {
-                font-size: 0.7rem;
+            .method-card,
+            .activity-content {
+                padding: 1.5rem;
             }
             
-            .photo-gallery {
-                padding: 2rem;
-            }
-            
-            .session-content {
-                padding: 2rem;
-            }
-            
-            .dimentions-title h3 {
-                font-size: 2rem;
-            }
-            
-            .dimentions-visualization {
+            .presentation-image,
+            .art-image,
+            .laptop-image {
                 height: 300px;
-            }
-            
-            .dimension-label {
-                font-size: 0.7rem;
-            }
-            
-            body {
-                padding-top: 70px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ===== HEADER & NAVIGATION BAR ===== -->
     <header id="header">
         <div class="header-container">
             <div class="logo-container">
@@ -1367,7 +1710,7 @@
                                 </a>
                                 <div class="nested-dropdown-menu">
                                     <a href="School_laboratory.html">Laboratory</a>
-                                    <a href="classes.html">Classes</a>
+                                    <a href="classes.html" class="active">Classes</a>
                                     <a href="fablab.html">Fab Lab</a>
                                     <a href="library.html">Library</a>
                                     <a href="assembly.html">Assembly</a>
@@ -1444,7 +1787,7 @@
                         <h4 class="mobile-campus-title"><i class="fas fa-school"></i> School</h4>
                         <div class="mobile-campus-links">
                             <a href="School_laboratory.html">Laboratory</a>
-                            <a href="classes.html">Classes</a>
+                            <a href="classes.html" class="active">Classes</a>
                             <a href="fablab.html">Fab Lab</a>
                             <a href="library.html">Library</a>
                             <a href="assembly.html">Assembly</a>
@@ -1490,55 +1833,112 @@
             
             <li><a href="alumni.html">Alumni</a></li>
             <li><a href="contact.html">Contact</a></li>
-            
-            <!-- Apply Now button for mobile -->
-            <li><a href="#" class="mobile-menu-btn-pink">Apply Now</a></li>
         </ul>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero-classrooms">
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title"> <span>Classrooms</span></h1>
-            <p class="hero-subtitle">Innovative learning spaces designed to foster collaboration, creativity, and academic excellence through interactive teaching methods.</p>
-            
-            <div class="breadcrumb-content" style="margin-top: 3rem; justify-content: center;">
-                <a href="../index.html">Home</a>
-                <span>›</span>
-                <a href="#">Campus</a>
-                <span>›</span>
-                <a href="#" style="color: var(--pink); font-weight: 500;">Classrooms</a>
+            <h1 class="hero-title">Interactive <span>Learning</span></h1>
+            <p class="hero-subtitle">Modern classrooms designed for presentations, discussions, and creative activities</p>
+        </div>
+    </section>
+
+    <!-- Learning Methods Section -->
+    <section class="methods-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our <span>Approach</span></h2>
+                <p>Three pillars of modern classroom learning at Maadi STEM</p>
+            </div>
+
+            <div class="methods-grid">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Presentation Skills</h3>
+                    <p>Students regularly present projects using smart boards and digital tools, building confidence and communication skills.</p>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Discussion-Based</h3>
+                    <p>Circular seating arrangements encourage active participation, critical thinking, and collaboration.</p>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Creative Activities</h3>
+                    <p>Art projects, creative writing, and design thinking integrated into all subjects for holistic learning.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="container" id="classrooms">
+    <!-- Presentation Section -->
+    <section class="presentation-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Presentation <span>Skills</span></h2>
+                <p>Developing confident communicators through technology</p>
+            </div>
 
-        <!-- Classroom Dimentions Visualization - UPDATED -->
-        <section class="dimentions-section">
+            <div class="presentation-content">
+                <div class="presentation-text">
+                    <h3>Student Presentations & Smart Technology</h3>
+                    <p>Our classrooms feature interactive smart boards where students present their research, projects, and innovative ideas. This regular practice builds essential skills for future leaders.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> <strong>Weekly Presentations</strong> - Every student presents regularly</li>
+                        <li><i class="fas fa-check"></i> <strong>Digital Tools</strong> - Using PowerPoint, Prezi, and other software</li>
+                        <li><i class="fas fa-check"></i> <strong>Peer Feedback</strong> - Constructive criticism from classmates</li>
+                        <li><i class="fas fa-check"></i> <strong>Public Speaking</strong> - Building confidence in front of audiences</li>
+                    </ul>
+                    
+                    <p>From science projects to art critiques, presentations are integral to our learning culture.</p>
+                </div>
+                
+                <div class="presentation-image">
+                    <img src="../images/classes/classes10.jpg" alt="Student Presentation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dimentions & Layout Section - NEW FIXED DESIGN -->
+    <section class="dimentions-section">
+        <div class="container">
             <div class="dimentions-title">
                 <h3>Classroom Layout & Dimensions</h3>
-                <p>15m × 8m collaborative learning space designed for 25 students with 4 group tables</p>
+                <p>Our classrooms are designed for optimal interaction and collaboration, with flexible seating arrangements for various learning activities.</p>
             </div>
             
-            <div class="dimentions-grid">
+            <div class="dimentions-content">
                 <div class="dimentions-info">
                     <div class="dimention-item">
-                        <h4>Updated Dimensions</h4>
-                        <p>Each classroom measures 15m (length) × 8m (width) with a ceiling height of 3.2m, providing 120m² of spacious learning environment.</p>
+                        <h4><i class="fas fa-expand-arrows-alt"></i> Room Dimensions</h4>
+                        <p>Each classroom measures 15m × 8m (120m² total area), providing ample space for 25 students with comfortable movement and activity areas.</p>
                     </div>
+                    
                     <div class="dimention-item">
-                        <h4>Student Capacity & Layout</h4>
-                        <p>Maximum capacity of 25 students arranged in 4 collaborative group tables with 6-7 students per group, promoting teamwork and discussion.</p>
+                        <h4><i class="fas fa-users"></i> Seating Arrangement</h4>
+                        <p>Four group tables accommodate 6-7 students each, arranged in a U-shape to facilitate discussions and maintain eye contact with the teacher.</p>
                     </div>
+                    
                     <div class="dimention-item">
-                        <h4>Interactive Whiteboard</h4>
-                        <p>Front-mounted 4K interactive whiteboard with touch capability, positioned for optimal visibility from all student seating areas.</p>
+                        <h4><i class="fas fa-chalkboard-teacher"></i> Teaching Space</h4>
+                        <p>Front area includes an interactive whiteboard and teacher's desk positioned for optimal visibility and engagement with all students.</p>
                     </div>
+                    
                     <div class="dimention-item">
-                        <h4>Collaborative Design</h4>
-                        <p>Group table arrangement encourages peer learning, with ample space for movement and teacher circulation throughout the classroom.</p>
+                        <h4><i class="fas fa-door-open"></i> Accessibility</h4>
+                        <p>Wide aisles between groups and multiple exit points ensure easy movement and comply with all safety regulations for educational spaces.</p>
                     </div>
                 </div>
                 
@@ -1554,17 +1954,17 @@
                             
                             <!-- Whiteboard at front -->
                             <div class="whiteboard" style="top: 10%; left: 30%; width: 40%; height: 15%;">
-                                <span style="z-index: 1;">Interactive Whiteboard</span>
+                                Interactive Whiteboard
                             </div>
                             
                             <!-- Teacher's Desk -->
                             <div class="teacher-desk" style="bottom: 15%; left: 45%; width: 10%; height: 8%;">
-                                <span>Teacher</span>
+                                Teacher
                             </div>
                             
                             <!-- Group Table 1 (Front Left) -->
                             <div class="group-table" style="top: 30%; left: 15%; width: 20%; height: 15%;">
-                                <span style="z-index: 1;">Group 1</span>
+                                Group 1
                                 <!-- Chairs around table -->
                                 <div class="chair" style="top: -10px; left: 50%; transform: translateX(-50%);">
                                     <div class="chair-label">S1</div>
@@ -1588,7 +1988,7 @@
                             
                             <!-- Group Table 2 (Front Right) -->
                             <div class="group-table" style="top: 30%; right: 15%; width: 20%; height: 15%;">
-                                <span style="z-index: 1;">Group 2</span>
+                                Group 2
                                 <!-- Chairs around table -->
                                 <div class="chair" style="top: -10px; left: 50%; transform: translateX(-50%);">
                                     <div class="chair-label">S7</div>
@@ -1612,7 +2012,7 @@
                             
                             <!-- Group Table 3 (Back Left) -->
                             <div class="group-table" style="top: 55%; left: 15%; width: 20%; height: 15%;">
-                                <span style="z-index: 1;">Group 3</span>
+                                Group 3
                                 <!-- Chairs around table -->
                                 <div class="chair" style="top: -10px; left: 50%; transform: translateX(-50%);">
                                     <div class="chair-label">S13</div>
@@ -1636,7 +2036,7 @@
                             
                             <!-- Group Table 4 (Back Right) -->
                             <div class="group-table" style="top: 55%; right: 15%; width: 20%; height: 15%;">
-                                <span style="z-index: 1;">Group 4</span>
+                                Group 4
                                 <!-- Chairs around table -->
                                 <div class="chair" style="top: -10px; left: 50%; transform: translateX(-50%);">
                                     <div class="chair-label">S19</div>
@@ -1668,519 +2068,233 @@
                             
                             <!-- Door -->
                             <div class="door" style="bottom: 10%; left: 5%; width: 8%; height: 15%;">
-                                <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.6rem;">Door</span>
+                                Door
                             </div>
                             
                             <!-- Storage Area -->
                             <div class="storage" style="bottom: 10%; right: 5%; width: 15%; height: 15%;">
-                                <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 0.6rem;">Storage</span>
+                                Storage
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Classroom Specifications - UPDATED -->
-        <section>
+    
+
+    <!-- Activities Section -->
+    <section class="activities-section">
+        <div class="container">
             <div class="section-title">
-                <h2>Classroom Specifications</h2>
-                <p>Technical details and capacity information for our learning spaces</p>
+                <h2>Classroom <span></span></h2>
+                <p>Engaging activities that make learning interactive and fun</p>
             </div>
 
-            <div class="classroom-specs">
-                <div class="specs-grid">
-                    <div class="spec-item">
-                        <div class="spec-icon">
-                            <i class="fas fa-expand-arrows-alt"></i>
-                        </div>
-                        <div>
-                            <div class="spec-label">Room Dimensions</div>
-                            <div class="spec-value">15m × 8m (120m² Area)</div>
-                        </div>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="../images/classes/classes3.jpg" alt="Group Discussion">
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-icon">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <div>
-                            <div class="spec-label">Student Capacity</div>
-                            <div class="spec-value">25 Students Maximum</div>
-                        </div>
+                    <div class="activity-content">
+                        <h3>Classroom</h3>
+                        <p>A bright and neatly arranged classroom designed to provide a comfortable and focused learning environment. The organized desks, chairs, and soft natural light create a calm atmosphere ideal for effective teaching and productive study sessions.</p>
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div>
-                            <div class="spec-label">Seating Arrangement</div>
-                            <div class="spec-value">4 Group Tables (6-7 Students Each)</div>
-                        </div>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="../images/classes/classes4.jpg" alt="Project Work">
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-icon">
-                            <i class="fas fa-tv"></i>
-                        </div>
-                        <div>
-                            <div class="spec-label">Display Systems</div>
-                            <div class="spec-value">86" 4K Interactive Whiteboard</div>
-                        </div>
+                    <div class="activity-content">
+                        <h3>Interactive Learning in Action</h3>
+                        <p>Students actively participating in a modern classroom setting, using laptops and study materials to enhance their learning experience. The image reflects collaboration, engagement, and the integration of technology into everyday education.</p>
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-icon">
-                            <i class="fas fa-volume-up"></i>
-                        </div>
-                        <div>
-                            <div class="spec-label">Audio Systems</div>
-                            <div class="spec-value">Ceiling-mounted Speakers + Teacher Mic</div>
-                        </div>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <img src="../images/classes/classes7.jpg" alt="Interactive Learning">
                     </div>
-                    <div class="spec-item">
-                        <div class="spec-icon">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <div>
-                            <div class="spec-label">Network & Power</div>
-                            <div class="spec-value">WiFi 6 + Power/USB at Each Table</div>
-                        </div>
+                    <div class="activity-content">
+                        <h3>Classes Corridor</h3>
+                        <p>The hallway reflects a safe, orderly, and welcoming academic environment, designed to ensure smooth movement and comfort for students and staff throughout the school day.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Photo Gallery: Study Sessions -->
-        <section class="study-sessions">
+    <!-- Art & Creativity Section -->
+    <section class="art-section">
+        <div class="container">
             <div class="section-title">
-                <h2>Learning in Action</h2>
-                <p>Students engaged in focused study sessions and collaborative learning</p>
+                <h2>Art & <span>Creativity</span></h2>
+                <p>Integrating artistic expression with STEM education</p>
             </div>
 
-            <div class="photo-gallery">
-                <div class="gallery-header">
-                    <h3>Study Sessions Gallery</h3>
-                    <p>Capturing moments of focused learning, group discussions, and academic collaboration in our modern classrooms.</p>
-                </div>
-
-                <div class="photo-grid">
-                    <!-- Study Session Photos -->
-                    <div class="photo-card">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Students studying together">
-                        <div class="photo-overlay">
-                            <h4>Group Study Session</h4>
-                            <p>Mathematics class collaborative learning</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card">
-                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Student writing on board">
-                        <div class="photo-overlay">
-                            <h4>Interactive Learning</h4>
-                            <p>Student-led problem solving on smart board</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Teacher explaining concept">
-                        <div class="photo-overlay">
-                            <h4>Teacher Guidance</h4>
-                            <p>One-on-one academic support session</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card">
-                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Science experiment in class">
-                        <div class="photo-overlay">
-                            <h4>Science Demonstration</h4>
-                            <p>Hands-on chemistry experiment</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card">
-                        <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Students working on laptops">
-                        <div class="photo-overlay">
-                            <h4>Digital Research</h4>
-                            <p>Technology integration in history class</p>
-                        </div>
-                    </div>
-
-                    <div class="photo-card">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Library study session">
-                        <div class="photo-overlay">
-                            <h4>Quiet Study Time</h4>
-                            <p>Individual research and study period</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Presentation Sessions -->
-        <section class="presentation-sessions">
-            <div class="section-title">
-                <h2>Student Presentations</h2>
-                <p>Showcasing student-led presentations, project demonstrations, and public speaking skills</p>
-            </div>
-
-            <div class="session-card">
-                <div class="session-header">
-                    <div class="session-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="session-title">
-                        <h3>Science Project Presentations</h3>
-                        <p>Student-led research presentations and scientific demonstrations</p>
-                    </div>
+            <div class="art-content">
+                <div class="art-image">
+                    <img src="../images/classes/classes8.jpg" alt="Art Class">
                 </div>
                 
-                <div class="session-content">
-                    <div class="session-description">
-                        <p>Our students regularly present their scientific research projects to classmates and faculty. These sessions develop critical communication skills while showcasing innovative thinking and scientific methodology.</p>
-                        <p>Students utilize our advanced presentation technology including laser pointers, interactive displays, and digital annotation tools to effectively communicate complex concepts.</p>
-                    </div>
+                <div class="art-text">
+                    <h3>Creative Expression in STEM</h3>
+                    <p>We believe creativity is essential for innovation. Our classrooms include art activities that complement STEM learning:</p>
                     
-                    <div class="session-gallery">
-                        <div class="session-photo">
-                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Student presenting science project">
-                            <div class="session-photo-label">Science Fair Presentation</div>
-                        </div>
-                        <div class="session-photo">
-                            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Student using presentation pointer">
-                            <div class="session-photo-label">Interactive Presentation</div>
-                        </div>
-                        <div class="session-photo">
-                            <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Group presentation session">
-                            <div class="session-photo-label">Team Project Presentation</div>
-                        </div>
-                        <div class="session-photo">
-                            <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Student explaining data">
-                            <div class="session-photo-label">Data Analysis Presentation</div>
-                        </div>
-                    </div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> <strong>Science Art</strong> - Drawing biological diagrams and chemical structures</li>
+                        <li><i class="fas fa-check"></i> <strong>Math Designs</strong> - Creating geometric patterns and mathematical art</li>
+                        <li><i class="fas fa-check"></i> <strong>Engineering Models</strong> - Building creative prototypes and designs</li>
+                        <li><i class="fas fa-check"></i> <strong>Tech Design</strong> - Digital art and graphic design projects</li>
+                    </ul>
+                    
+                    <p>Art helps students visualize abstract concepts and develop innovative thinking skills.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="session-card" style="margin-top: 4rem;">
-                <div class="session-header">
-                    <div class="session-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="session-title">
-                        <h3>Technology & Coding Presentations</h3>
-                        <p>Digital project demonstrations and programming showcases</p>
-                    </div>
+    <!-- Laptop-Based Learning Section -->
+    <section class="laptop-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technology <span>Integration</span></h2>
+                <p>Preparing students for a digital future</p>
+            </div>
+
+            <div class="laptop-content">
+                <div class="laptop-text">
+                    <h3>Digital Learning Environment</h3>
+                    <p>Every student uses a personal laptop as a primary learning tool, developing essential digital skills for the 21st century.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> <strong>Online Research</strong> - Access to global information resources</li>
+                        <li><i class="fas fa-check"></i> <strong>Coding Practice</strong> - Hands-on computer programming</li>
+                        <li><i class="fas fa-check"></i> <strong>Digital Notes</strong> - Organized electronic note-taking</li>
+                        <li><i class="fas fa-check"></i> <strong>Virtual Labs</strong> - Simulations and virtual experiments</li>
+                    </ul>
+                    
+                    <p>Technology enhances learning without replacing traditional methods, creating a balanced educational experience.</p>
                 </div>
                 
-                <div class="session-content">
-                    <div class="session-description">
-                        <p>Computer science students present their software projects, apps, and programming solutions in specially equipped technology classrooms. These sessions foster innovation and technical communication skills.</p>
-                        <p>Our presentation setups include dual-screen displays, live coding demonstrations, and interactive Q&A sessions where students can showcase their technical expertise.</p>
-                    </div>
-                    
-                    <div class="session-gallery">
-                        <div class="session-photo">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Student coding presentation">
-                            <div class="session-photo-label">Live Coding Demonstration</div>
-                        </div>
-                        <div class="session-photo">
-                            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="App development presentation">
-                            <div class="session-photo-label">App Development Showcase</div>
-                        </div>
-                        <div class="session-photo">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Robotics demonstration">
-                            <div class="session-photo-label">Robotics Project Demo</div>
-                        </div>
-                        <div class="session-photo">
-                            <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Web design presentation">
-                            <div class="session-photo-label">Web Design Presentation</div>
-                        </div>
-                    </div>
+                <div class="laptop-image">
+                    <img src="../images/classes/classes4.jpg" alt="Laptop Learning">
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-column">
-                <h3>Classroom Facilities</h3>
-                <p>Modern, technology-enhanced learning spaces designed to support innovative teaching methods and collaborative learning experiences at Maadi STEM School for Girls.</p>
-                <div style="margin-top: 2rem;">
-                    <p><i class="fas fa-clock"></i> Class Hours: Mon-Fri 7:30-15:30</p>
-                    <p><i class="fas fa-phone"></i> Academic Office: +20 (2) 1234-5679</p>
-                    <p><i class="fas fa-envelope"></i> classrooms@maadistem.edu.eg</p>
-                </div>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Quick Classroom Links</h3>
-                <ul>
-                    <li><a href="#"><i class="fas fa-calendar-check"></i> Classroom Booking System</a></li>
-                    <li><a href="#"><i class="fas fa-download"></i> Technology Resources</a></li>
-                    <li><a href="#"><i class="fas fa-cogs"></i> Equipment Support</a></li>
-                    <li><a href="#"><i class="fas fa-book"></i> Teaching Resources</a></li>
-                    <li><a href="#"><i class="fas fa-chart-bar"></i> Classroom Analytics</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Classroom Contacts</h3>
-                <ul>
-                    <li><a href="#"><i class="fas fa-user-tie"></i> Academic Dean</a></li>
-                    <li><a href="#"><i class="fas fa-user-graduate"></i> Head of Technology</a></li>
-                    <li><a href="#"><i class="fas fa-user-md"></i> Educational Technologist</a></li>
-                    <li><a href="#"><i class="fas fa-user-cog"></i> Facilities Manager</a></li>
-                </ul>
-                
+                <h3>Maadi STEM School for Girls</h3>
+                <p>Where traditional learning meets modern technology. Our classrooms are designed to foster innovation, critical thinking, and creativity.</p>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Classroom Activities</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Presentation Skills</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Group Discussions</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Art Integration</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Project-Based Learning</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Technology Use</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Zahraa Al Maadi, Cairo, Egypt</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> classrooms@stemmaadi.edu.eg</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +20 2 1234 5678</a></li>
+                    <li><a href="#"><i class="fas fa-user-tie"></i> Dr. Sarah Mohamed - Academic Director</a></li>
+                </ul>
             </div>
         </div>
         
         <div class="copyright">
-            <p>&copy; 2024 Maadi STEM School for Girls. All rights reserved. | Classroom Facilities Management System</p>
+            <p>&copy; 2025 Maadi STEM School for Girls. All Rights Reserved. | Empowering Future Innovators</p>
         </div>
     </footer>
 
     <script>
-        // ===== HEADER FUNCTIONALITY =====
-        // Mobile Menu Toggle
+        // Mobile Menu Functionality
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenuClose = document.getElementById('mobileMenuClose');
         const mobileMenu = document.getElementById('mobileMenu');
-        
-        if (mobileMenuBtn && mobileMenuClose && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.add('active');
-                document.body.style.overflow = 'hidden';
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Mobile dropdown functionality
+        mobileDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('active');
+                
+                if (content.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
             });
-            
-            mobileMenuClose.addEventListener('click', () => {
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = document.querySelectorAll('.mobile-nav a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
-            
-            // Close mobile menu when clicking on a link
-            const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
-            });
-        }
-        
+        });
+
         // Header Scroll Effect
         const header = document.getElementById('header');
         
-        if (header) {
-            window.addEventListener('scroll', () => {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (scrollTop > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Initialize header state
-            if (window.pageYOffset > 50) {
+            if (scrollTop > 50) {
                 header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
+        });
+        
+        if (window.pageYOffset > 50) {
+            header.classList.add('scrolled');
         }
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 150,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Card animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('.feature-card, .session-card, .photo-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-        
-        // Image hover effects
-        document.querySelectorAll('.session-photo, .photo-card').forEach(image => {
-            image.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            image.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Touch support for mobile navigation
-        document.querySelectorAll('.campus-dropdown, .dropdown').forEach(item => {
-            item.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                const dropdown = this.querySelector('.campus-dropdown-menu, .dropdown-menu');
-                if (dropdown) {
-                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                }
-            });
-        });
-
-        // Fade-in animation for hero elements
-        const fadeElements = document.querySelectorAll('.hero-title, .hero-subtitle, .btn-hero');
-        fadeElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        });
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                fadeElements.forEach((el, index) => {
-                    setTimeout(() => {
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                    }, index * 200);
-                });
-            }, 300);
-        });
-
-        // Photo gallery lightbox effect
-        document.querySelectorAll('.session-photo img, .photo-card img').forEach(img => {
-            img.addEventListener('click', function() {
-                const src = this.src;
-                const alt = this.alt;
-                
-                // Create lightbox overlay
-                const lightbox = document.createElement('div');
-                lightbox.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: rgba(10, 25, 47, 0.95);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    z-index: 3000;
-                    cursor: pointer;
-                `;
-                
-                lightbox.innerHTML = `
-                    <div style="max-width: 90%; max-height: 90%;">
-                        <img src="${src}" alt="${alt}" style="width: 100%; height: auto; border-radius: 10px;">
-                        <p style="color: white; text-align: center; margin-top: 1rem; font-size: 1.2rem;">${alt}</p>
-                    </div>
-                `;
-                
-                lightbox.addEventListener('click', () => {
-                    document.body.removeChild(lightbox);
-                });
-                
-                document.body.appendChild(lightbox);
-            });
-        });
-
-        // Animate classroom diagram elements
-        const dimensionSection = document.querySelector('.dimentions-section');
-        const dimensionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Animate group tables
-                    const tables = document.querySelectorAll('.group-table');
-                    tables.forEach((table, index) => {
-                        setTimeout(() => {
-                            table.style.transform = 'scale(1.1)';
-                            setTimeout(() => {
-                                table.style.transform = 'scale(1)';
-                            }, 300);
-                        }, index * 200);
-                    });
-                    
-                    // Animate chairs
-                    setTimeout(() => {
-                        const chairs = document.querySelectorAll('.chair');
-                        chairs.forEach((chair, index) => {
-                            setTimeout(() => {
-                                chair.style.transform = 'scale(1.5)';
-                                setTimeout(() => {
-                                    chair.style.transform = 'scale(1)';
-                                }, 200);
-                            }, index * 30);
-                        });
-                    }, 800);
-                    
-                    // Animate whiteboard
-                    setTimeout(() => {
-                        const whiteboard = document.querySelector('.whiteboard');
-                        whiteboard.style.transform = 'scale(1.1)';
-                        setTimeout(() => {
-                            whiteboard.style.transform = 'scale(1)';
-                        }, 300);
-                    }, 1200);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        dimensionObserver.observe(dimensionSection);
-        
-        // Highlight active campus life link
-        document.addEventListener('DOMContentLoaded', () => {
-            const currentPage = window.location.pathname.split('/').pop() || 'classrooms.html';
-            const campusLinks = document.querySelectorAll('.campus-category a');
-            
-            campusLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === currentPage || (currentPage === '' && href === 'classrooms.html')) {
-                    link.classList.add('active');
-                }
-            });
-            
-            // Add hover effects to classroom diagram
-            const groupTables = document.querySelectorAll('.group-table');
-            groupTables.forEach(table => {
-                table.addEventListener('mouseenter', function() {
-                    const chairs = this.querySelectorAll('.chair-label');
-                    chairs.forEach(label => {
-                        label.style.display = 'block';
-                    });
-                });
-                
-                table.addEventListener('mouseleave', function() {
-                    const chairs = this.querySelectorAll('.chair-label');
-                    chairs.forEach(label => {
-                        label.style.display = 'none';
-                    });
-                });
-            });
+        // Simple image loading fallback
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                const imgNum = this.src.match(/classes(\d+)\.jpg/);
+                const num = imgNum ? imgNum[1] : '1';
+                this.src = `https://via.placeholder.com/800x600/0a192f/FF6B9D?text=Classroom+${num}`;
+            }
         });
     </script>
 </body>
