@@ -1,0 +1,2285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Competitions | Maadi STEM School for Girls</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a192f;
+            --navy-light: #1a2947;
+            --pink: #FF6B9D;
+            --pink-light: #ff9ec0;
+            --pink-dark: #e05583;
+            --peach: #f5b4b3;
+            --cream: #fef7fa;
+            --cream-dark: #f5eef2;
+            --white: #ffffff;
+            --gray: #7a7f8f;
+            --gold: #FFD700;
+            --silver: #C0C0C0;
+            --bronze: #CD7F32;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 20px 40px rgba(255, 107, 157, 0.1);
+            --shadow-dark: 0 20px 40px rgba(10, 25, 47, 0.15);
+            --card-radius: 25px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        h1, h2, h3, h4, h5, .logo-text, .section-title, .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        /* FIXED HEADER */
+        header {
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--pink);
+            padding: 5px;
+            background-color: var(--cream);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
+
+        .logo-text p {
+            font-size: 0.70rem;
+            color: var(--pink-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+            font-weight: 300;
+            padding-bottom: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            height: 100%;
+        }
+
+        nav ul li:first-child {
+            margin-left: 3rem;
+        }
+
+        nav ul li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-right: 2.8rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.05rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .btn-pink {
+            padding: 0.8rem 2.2rem;
+            background-color: transparent;
+            color: var(--pink);
+            border: 1px solid var(--pink);
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-pink:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+            border-color: var(--pink);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0.5rem 0;
+            gap: 0.5rem;
+        }
+
+        .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover > a i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 10px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            text-shadow: none;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-dropdown .dropdown-menu {
+            min-width: 210px;
+            padding: 0.8rem 0;
+        }
+
+        .campus-main-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .campus-main-item:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-main-item i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nested-dropdown {
+            position: relative;
+        }
+
+        .nested-dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: var(--transition);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            border-left: none;
+            margin-left: 5px;
+        }
+
+        .nested-dropdown:hover .nested-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .nested-dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .nested-dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        /* Enhanced Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--pink);
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .mobile-nav {
+            margin-top: 4rem;
+            width: 100%;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            width: 100%;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .mobile-nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            transition: var(--transition);
+            opacity: 0.8;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav ul li a.active {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        .mobile-nav ul li a:hover {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        .mobile-dropdown {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-dropdown > a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-content {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .mobile-dropdown-content.active {
+            display: block;
+        }
+
+        .mobile-dropdown-content a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.4rem 0;
+            margin-bottom: 0.3rem;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+        }
+
+        .mobile-dropdown-content a:hover {
+            color: var(--pink);
+            border-left-color: var(--pink);
+        }
+
+        .mobile-campus-submenu {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .mobile-campus-submenu h4 {
+            color: var(--pink-light);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-campus-submenu ul {
+            list-style: none;
+        }
+
+        .mobile-campus-submenu ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-campus-submenu ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 1rem;
+            padding-left: 1.5rem;
+            display: block;
+        }
+
+        .mobile-campus-submenu ul li a:hover {
+            color: var(--pink);
+        }
+
+        /* Page-Specific Styles */
+        .hero {
+            height: 50vh;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(255, 107, 157, 0.3));
+            margin-top: 80px; /* Compensate for fixed header */
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url('images/bgcompitition.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7) sepia(0.3) hue-rotate(-10deg) saturate(1.2);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 25, 47, 0.8), rgba(255, 107, 157, 0.2));
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 0 3rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -1px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title span {
+            color: var(--pink);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: var(--pink);
+            bottom: 5px;
+            left: 0;
+            opacity: 0.5;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 7rem 0;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .main-content::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 180, 179, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            padding: 7rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2 {
+            font-size: 3.2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 2rem auto 0;
+            font-weight: 300;
+        }
+
+        /* Center Image Section */
+        .center-image-section {
+            text-align: center;
+            padding: 3rem 0;
+            margin: 4rem 0;
+        }
+
+        .center-image {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            border: 3px solid var(--pink);
+        }
+
+        .center-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .center-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-caption {
+            margin-top: 1.5rem;
+            color: var(--gray);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* Competitions Grid */
+        .competitions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .competition-card {
+            background: var(--white);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--cream-dark);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .competition-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(255, 107, 157, 0.15);
+            border-color: var(--pink-light);
+        }
+
+        .competition-header {
+            padding: 2rem 2rem 1rem;
+            position: relative;
+            border-bottom: 2px solid var(--cream-dark);
+            background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+        }
+
+        .competition-logo {
+            height: 60px;
+            width: auto;
+            margin-bottom: 1rem;
+            object-fit: contain;
+            max-width: 200px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .competition-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--pink);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 2px solid var(--white);
+        }
+
+        .competition-body {
+            padding: 0 2rem 1.5rem;
+            flex-grow: 1;
+        }
+
+        .competition-card h3 {
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .competition-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .competition-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding: 1rem 0;
+            border-top: 2px solid var(--cream-dark);
+            border-bottom: 2px solid var(--cream-dark);
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-value {
+            display: block;
+            color: var(--pink);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            display: block;
+            color: var(--gray);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .competition-students {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .student-avatars {
+            display: flex;
+        }
+
+        .student-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid var(--white);
+            margin-left: -10px;
+            background: linear-gradient(135deg, var(--pink-light), var(--peach));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .student-avatar:first-child {
+            margin-left: 0;
+        }
+
+        .competition-footer {
+            padding: 1.5rem 2rem;
+            background: rgba(255, 107, 157, 0.03);
+            border-top: 2px solid var(--cream-dark);
+            border-bottom-left-radius: var(--card-radius);
+            border-bottom-right-radius: var(--card-radius);
+        }
+
+        .competition-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--pink);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 107, 157, 0.1);
+            border-radius: 12px;
+            border: 2px solid transparent;
+            font-size: 0.95rem;
+        }
+
+        .competition-link:hover {
+            gap: 1.2rem;
+            color: var(--white);
+            background: var(--pink);
+            border-color: var(--pink);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.2);
+        }
+
+        /* Enhanced Students Modal */
+        .students-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .students-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 3rem;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--pink-light);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--navy);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .modal-close:hover {
+            color: var(--pink);
+            background: rgba(255, 107, 157, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            color: var(--navy);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .modal-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .students-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .student-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid var(--cream-dark);
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--pink), var(--pink-dark));
+        }
+
+        .student-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.1);
+            border-color: var(--pink-light);
+        }
+
+        .student-name {
+            color: var(--navy);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            padding-left: 0.5rem;
+        }
+
+        .student-info {
+            color: var(--gray);
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            padding-left: 0.5rem;
+        }
+
+        .student-info-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .student-info i {
+            color: var(--pink);
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Achievements Timeline */
+        .achievements-section {
+            background: linear-gradient(135deg, var(--navy-light), var(--navy));
+            padding: 7rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievements-section::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+        }
+
+        .achievements-section::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245, 180, 179, 0.08) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 5rem auto 0;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--pink), var(--peach));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 107, 157, 0.1);
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            transform: rotate(45deg);
+            border-right: 2px solid rgba(255, 107, 157, 0.1);
+            border-bottom: 2px solid rgba(255, 107, 157, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+            border-left: 2px solid rgba(255, 107, 157, 0.1);
+            border-bottom: 2px solid rgba(255, 107, 157, 0.1);
+            border-right: none;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--pink);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            top: 20px;
+            white-space: nowrap;
+            z-index: 2;
+            border: 2px solid var(--white);
+        }
+
+        .timeline-content h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .timeline-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Success Stories */
+        .success-stories {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            padding: 7rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .story-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 2px solid var(--cream-dark);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--pink-light);
+            box-shadow: 0 30px 60px rgba(255, 107, 157, 0.15);
+        }
+
+        .story-quote {
+            color: var(--navy);
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .story-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--pink);
+            font-family: serif;
+            opacity: 0.5;
+        }
+
+        .story-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            border: 2px solid var(--cream-dark);
+        }
+
+        .author-info h4 {
+            color: var(--navy);
+            margin-bottom: 0.3rem;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            color: var(--white);
+            padding: 6rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.08) 0%, transparent 70%);
+            top: -150px;
+            left: -150px;
+            opacity: 0.5;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 300;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--pink);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-5px);
+            border-color: var(--pink);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header-container, .container {
+                padding: 0 2rem;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .competitions-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            nav ul li:first-child {
+                margin-left: 2rem;
+            }
+            
+            nav ul li {
+                margin-right: 2rem;
+            }
+            
+            .center-image {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-actions .btn-pink {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline-container::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+                margin-left: 60px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-content::after {
+                left: -10px !important;
+                top: 20px;
+                border-left: 2px solid rgba(255, 107, 157, 0.1);
+                border-bottom: 2px solid rgba(255, 107, 157, 0.1);
+                border-right: none;
+            }
+            
+            .timeline-year {
+                left: 0;
+                transform: none;
+            }
+            
+            .center-image img {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container, .container {
+                padding: 0 1.5rem;
+            }
+            
+            .footer-container {
+                padding: 0 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            section {
+                padding: 5rem 0;
+            }
+            
+            .hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .competitions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .center-image img {
+                height: 250px;
+            }
+            
+            .students-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .story-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content {
+                padding: 0 1rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+            }
+            
+            .student-item {
+                padding: 1.2rem;
+            }
+            
+            .center-image img {
+                height: 200px;
+            }
+            
+            .image-caption {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Maadi STEM School</h1>
+                    <p>Center of Egyptian innovation leaders</p>
+                </div>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="overview.html">Who we are</a>
+                            <a href="mission-vision.html">Mission & Vision</a>
+                            <a href="staff.html">Staff</a>
+                            <a href="student-criteria.html">Student Criteria</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown campus-dropdown">
+                        <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-school"></i> School</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="School_laboratory.html">Laboratory</a>
+                                    <a href="classes.html">Classes</a>
+                                    <a href="fablab.html">Fab Lab</a>
+                                    <a href="library.html">Library</a>
+                                    <a href="assembly.html">Assembly</a>
+                                    <a href="playgrounds.html">Playgrounds</a>
+                                </div>
+                            </div>
+                            
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-bed"></i> Dorms</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="studying-hall.html">Studying Hall</a>
+                                    <a href="restaurant.html">Restaurant</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Events and History as normal links -->
+                            <div class="events-history-menu">
+                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li><a href="academics.html">Academics</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="compititions.html">Competitions</a>
+                            <a href="programs.html">Programs</a>
+                            <a href="teamsandclubs.html">Teams & Clubs</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="alumni.html">Alumni</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <a href="overview.html">Who we are</a>
+                    <a href="mission-vision.html">Mission & Vision</a>
+                    <a href="staff.html">Staff</a>
+                    <a href="student-criteria.html">Student Criteria</a>
+                </div>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Campus <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-school"></i> School</h4>
+                        <div class="mobile-campus-links">
+                            <a href="School_laboratory.html">Laboratory</a>
+                            <a href="classes.html">Classes</a>
+                            <a href="fablab.html">Fab Lab</a>
+                            <a href="library.html">Library</a>
+                            <a href="assembly.html">Assembly</a>
+                            <a href="playgrounds.html">Playgrounds</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-bed"></i> Dorms</h4>
+                        <div class="mobile-campus-links">
+                            <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                            <a href="studying-hall.html">Studying Hall</a>
+                            <a href="restaurant.html">Restaurant</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-calendar-alt"></i> Events</h4>
+                        <div class="mobile-campus-links">
+                            <a href="events.html">All Events</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-history"></i> History</h4>
+                        <div class="mobile-campus-links">
+                            <a href="history.html">School History</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li><a href="academics.html">Academics</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <a href="compititions.html">Competitions</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="teamsandclubs.html">Teams & Clubs</a>
+                </div>
+            </li>
+            
+            <li><a href="alumni.html">Alumni</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            
+            <!-- Apply Now button for mobile -->
+            <li><a href="#" class="mobile-menu-btn-pink">Apply Now</a></li>
+        </ul>
+    </div>
+
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Global <span>Competitions</span></h1>
+            <p class="hero-subtitle fade-in">Our students who qualified for the ISEF global and their recognition by the Minister.
+
+</p>
+        </div>
+    </section>
+
+    <!-- Center Image Section -->
+    <div class="center-image-section fade-in">
+        <div class="container">
+            <div class="center-image">
+                <img src="images/janacom.jpg" alt="Students Winning International Competitions">
+            </div>
+            <p class="image-caption">Our students celebrating victory at the International Science Olympiad 2023</p>
+        </div>
+    </div>
+
+    <section class="main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>World-Class <span style="color: var(--pink);">Achievements</span></h2>
+                <p>Our students have won prestigious awards in international competitions across STEM fields</p>
+            </div>
+
+            <div class="competitions-grid">
+                <!-- Competition 1: ISEF -->
+                <div class="competition-card fade-in" data-competition="isef">
+                    <div class="competition-header">
+                        <img src="images/isef.png" alt="ISEF Logo" class="competition-logo">
+                        <div class="competition-badge" style="background: var(--gold);">Grand Award</div>
+                    </div>
+                    <div class="competition-body">
+                        <h3>Intel ISEF (International Science & Engineering Fair)</h3>
+                        <p class="competition-description">The world's largest international pre-college science competition with participants from over 80 countries.</p>
+                        
+                        <div class="competition-stats">
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                        </div>
+
+                        <div class="competition-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">NM</div>
+                                <div class="student-avatar">SA</div>
+                                <div class="student-avatar">+6</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Winning Students</span>
+                        </div>
+                    </div>
+                    <div class="competition-footer">
+                        <a href="javascript:void(0)" class="competition-link show-students-btn" data-competition="isef">
+                            Show Winners <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Competition 2: IMO -->
+                <div class="competition-card fade-in" data-competition="imo">
+                    <div class="competition-header">
+                        <img src="images/imo.png" alt="IMO Logo" class="competition-logo">
+                        <div class="competition-badge" style="background: var(--silver);">Medals</div>
+                    </div>
+                    <div class="competition-body">
+                        <h3>International Mathematical Olympiad (IMO)</h3>
+                        <p class="competition-description">The World Championship Mathematics Competition for high school students, held annually in a different country.</p>
+                        
+                        <div class="competition-stats">
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                        </div>
+
+                        <div class="competition-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">MA</div>
+                                <div class="student-avatar">RA</div>
+                                <div class="student-avatar">+12</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Medalists</span>
+                        </div>
+                    </div>
+                    <div class="competition-footer">
+                        <a href="javascript:void(0)" class="competition-link show-students-btn" data-competition="imo">
+                            Show Winners <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Competition 3: IPhO -->
+                <div class="competition-card fade-in" data-competition="ipho">
+                    <div class="competition-header">
+                        <img src="images/ipho.png" alt="IPhO Logo" class="competition-logo">
+                        <div class="competition-badge" style="background: var(--bronze);">Physics</div>
+                    </div>
+                    <div class="competition-body">
+                        <h3>International Physics Olympiad (IPhO)</h3>
+                        <p class="competition-description">Annual physics competition for high school students testing theoretical and experimental physics knowledge.</p>
+                        
+                        <div class="competition-stats">
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                        </div>
+
+                        <div class="competition-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">HA</div>
+                                <div class="student-avatar">FA</div>
+                                <div class="student-avatar">+16</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Medalists</span>
+                        </div>
+                    </div>
+                    <div class="competition-footer">
+                        <a href="javascript:void(0)" class="competition-link show-students-btn" data-competition="ipho">
+                            Show Winners <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Competition 4: IChO -->
+                <div class="competition-card fade-in" data-competition="icho">
+                    <div class="competition-header">
+                        <img src="images/icho.png" alt="IChO Logo" class="competition-logo">
+                        <div class="competition-badge">Chemistry</div>
+                    </div>
+                    <div class="competition-body">
+                        <h3>International Chemistry Olympiad (IChO)</h3>
+                        <p class="competition-description">Annual academic competition for high school students in chemistry, featuring theoretical and practical examinations.</p>
+                        
+                        <div class="competition-stats">
+                            <div class="stat">
+                              
+                            </div>
+                            <div class="stat">
+                              
+                            </div>
+                            <div class="stat">
+                              
+                            </div>
+                        </div>
+
+                        <div class="competition-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">YA</div>
+                                <div class="student-avatar">KA</div>
+                                <div class="student-avatar">+10</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Medalists</span>
+                        </div>
+                    </div>
+                    <div class="competition-footer">
+                        <a href="javascript:void(0)" class="competition-link show-students-btn" data-competition="icho">
+                            Show Winners <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Competition 5: IOI -->
+                <div class="competition-card fade-in" data-competition="ioi">
+                    <div class="competition-header">
+                        <img src="images/ioi.png" alt="IOI Logo" class="competition-logo">
+                        <div class="competition-badge" style="background: var(--gold);">Programming</div>
+                    </div>
+                    <div class="competition-body">
+                        <h3>International Olympiad in Informatics (IOI)</h3>
+                        <p class="competition-description">Annual competitive programming competition for secondary school students in algorithm design and programming.</p>
+                        
+                        <div class="competition-stats">
+                            <div class="stat">
+                              
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                        </div>
+
+                        <div class="competition-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">NA</div>
+                                <div class="student-avatar">SA</div>
+                                <div class="student-avatar">+9</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Medalists</span>
+                        </div>
+                    </div>
+                    <div class="competition-footer">
+                        <a href="javascript:void(0)" class="competition-link show-students-btn" data-competition="ioi">
+                            Show Winners <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Competition 6: FIRST Robotics -->
+                <div class="competition-card fade-in" data-competition="first">
+                    <div class="competition-header">
+                        <img src="images/first.png" alt="FIRST Robotics Logo" class="competition-logo">
+                        <div class="competition-badge" style="background: var(--silver);">Robotics</div>
+                    </div>
+                    <div class="competition-body">
+                        <h3>FIRST Robotics Competition</h3>
+                        <p class="competition-description">International high school robotics competition where teams design, build, and program industrial-size robots.</p>
+                        
+                        <div class="competition-stats">
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                        </div>
+
+                        <div class="competition-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">LA</div>
+                                <div class="student-avatar">MI</div>
+                                <div class="student-avatar">+15</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Team Members</span>
+                        </div>
+                    </div>
+                    <div class="competition-footer">
+                        <a href="javascript:void(0)" class="competition-link show-students-btn" data-competition="first">
+                            Show Teams <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Students Modal -->
+    <div class="students-modal" id="studentsModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title" id="modalTitle">Competition Winners</h2>
+            <div class="students-list" id="studentsList">
+                <!-- Students will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <section class="achievements-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: var(--white);">Historical <span style="color: var(--pink-light);">Achievements</span></h2>
+                <p style="color: rgba(255, 255, 255, 0.8);">Our journey of excellence in international competitions</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h4>First International Medal</h4>
+                        <p>Our student won Egypt's first silver medal in the International Mathematical Olympiad, opening doors for future generations.</p>
+                    </div>
+                    <div class="timeline-year">2014</div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h4>Breakthrough in ISEF</h4>
+                        <p>First Egyptian team to win a Grand Award at Intel ISEF for innovative water purification technology.</p>
+                    </div>
+                    <div class="timeline-year">2016</div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h4>Robotics Championship</h4>
+                        <p>Our robotics team won the FIRST Robotics Competition Regional Championship, qualifying for world finals.</p>
+                    </div>
+                    <div class="timeline-year">2018</div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h4>Multiple Gold Medals</h4>
+                        <p>Historic achievement with 3 gold medals in IMO and 2 gold medals in IPhO in the same year.</p>
+                    </div>
+                    <div class="timeline-year">2020</div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h4>World Record Performance</h4>
+                        <p>Our students achieved perfect scores in multiple competitions, setting new records for Egyptian teams.</p>
+                    </div>
+                    <div class="timeline-year">2023</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="success-stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student <span style="color: var(--pink);">Success Stories</span></h2>
+                <p>Hear from our champions about their competition experiences</p>
+            </div>
+
+            <div class="stories-grid">
+                <div class="story-card fade-in">
+                    <p class="story-quote">"Winning gold at IMO was a dream come true. The training at Maadi STEM prepared me for the toughest mathematical challenges."</p>
+                    <div class="story-author">
+                        <div class="author-avatar">MA</div>
+                        <div class="author-info">
+                            <h4>Mariam Ahmed</h4>
+                            <p>IMO Gold Medalist 2020 | Now at MIT</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card fade-in">
+                    <p class="story-quote">"Our ISEF project on sustainable energy solutions not only won awards but also got published in a scientific journal. It showed me that I can make real impact."</p>
+                    <div class="story-author">
+                        <div class="author-avatar">SA</div>
+                        <div class="author-info">
+                            <h4>Sarah Ali</h4>
+                            <p>ISEF Grand Award Winner 2021 | Stanford University</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card fade-in">
+                    <p class="story-quote">"Competing in FIRST Robotics taught me more than engineering - it taught me teamwork, leadership, and how to solve real-world problems under pressure."</p>
+                    <div class="story-author">
+                        <div class="author-avatar">LM</div>
+                        <div class="author-info">
+                            <h4>Layla Mahmoud</h4>
+                            <p>FIRST Robotics Champion 2022 | Carnegie Mellon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Maadi STEM School for Girls</h3>
+                <p>Established in 2012, we've been winning international competitions since 2014, bringing pride to Egypt and inspiring future generations of STEM leaders.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Competition Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Training Programs</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Competition Calendar</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Past Winners</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Preparation Guides</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Coaches</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Zahraa Al Maadi, Cairo, Egypt</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> competitions@stemmaadi.edu.eg</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +20 2 1234 5678</a></li>
+                    <li><a href="#"><i class="fas fa-user-tie"></i> Dr. Ahmed Hassan - Head Coach</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Maadi STEM School for Girls. All Rights Reserved. | Winning Competitions Since 2014</p>
+        </div>
+    </footer>
+
+    <script>
+        // Student Data for each competition
+        const studentsData = {
+            isef: {
+                title: "Intel ISEF Award Winners",
+                students: [
+                    { name: "Nourhan Mohamed", year: "2021", program: "Grand Award - Environmental Engineering" },
+                    { name: "Sarah Ali", year: "2020", program: "First Award - Biomedical Sciences" },
+                    { name: "Fatima Hassan", year: "2022", program: "Second Award - Chemistry" },
+                    { name: "Mariam Ahmed", year: "2023", program: "Grand Award - Physics & Astronomy" },
+                    { name: "Layla Mahmoud", year: "2021", program: "Third Award - Robotics" },
+                    { name: "Yasmin Ibrahim", year: "2022", program: "Special Award - Sustainable Energy" },
+                    { name: "Aisha Khalil", year: "2023", program: "First Award - Computer Science" },
+                    { name: "Rana Samir", year: "2020", program: "Second Award - Mathematics" }
+                ]
+            },
+            imo: {
+                title: "International Mathematical Olympiad Medalists",
+                students: [
+                    { name: "Mariam Ahmed", year: "2020", program: "Gold Medal" },
+                    { name: "Rana Ahmed", year: "2019", program: "Gold Medal" },
+                    { name: "Farida Hassan", year: "2021", program: "Silver Medal" },
+                    { name: "Sama El-Shafei", year: "2020", program: "Silver Medal" },
+                    { name: "Yara Ismail", year: "2022", program: "Gold Medal" },
+                    { name: "Nada Tamer", year: "2021", program: "Bronze Medal" },
+                    { name: "Lina Samy", year: "2023", program: "Silver Medal" },
+                    { name: "Jana Karim", year: "2022", program: "Bronze Medal" },
+                    { name: "Mona Ashraf", year: "2023", program: "Bronze Medal" },
+                    { name: "Dina Wael", year: "2021", program: "Silver Medal" },
+                    { name: "Reem Omar", year: "2020", program: "Bronze Medal" },
+                    { name: "Huda Mostafa", year: "2022", program: "Bronze Medal" }
+                ]
+            },
+            ipho: {
+                title: "International Physics Olympiad Medalists",
+                students: [
+                    { name: "Hana Ali", year: "2020", program: "Gold Medal" },
+                    { name: "Farah Abdullah", year: "2021", program: "Gold Medal" },
+                    { name: "Amina Rashid", year: "2022", program: "Silver Medal" },
+                    { name: "Nourhan Salah", year: "2020", program: "Silver Medal" },
+                    { name: "Salma El-Gazzar", year: "2021", program: "Gold Medal" },
+                    { name: "Mariam Farouk", year: "2023", program: "Silver Medal" },
+                    { name: "Nada Ahmed", year: "2022", program: "Bronze Medal" },
+                    { name: "Sarah Khalil", year: "2020", program: "Bronze Medal" },
+                    { name: "Amira Hassan", year: "2021", program: "Gold Medal" },
+                    { name: "Rania Samir", year: "2023", program: "Silver Medal" },
+                    { name: "Layla Mahmoud", year: "2022", program: "Bronze Medal" },
+                    { name: "Zainab Ibrahim", year: "2020", program: "Bronze Medal" }
+                ]
+            },
+            icho: {
+                title: "International Chemistry Olympiad Medalists",
+                students: [
+                    { name: "Yasmin Ali", year: "2019", program: "Gold Medal" },
+                    { name: "Khadija Ahmed", year: "2020", program: "Silver Medal" },
+                    { name: "Asmaa Hassan", year: "2021", program: "Bronze Medal" },
+                    { name: "Rana Mohamed", year: "2022", program: "Silver Medal" },
+                    { name: "Fatma Ibrahim", year: "2020", program: "Bronze Medal" },
+                    { name: "Lina Samir", year: "2021", program: "Silver Medal" },
+                    { name: "Nada Tamer", year: "2022", program: "Gold Medal" },
+                    { name: "Sara Magdy", year: "2023", program: "Bronze Medal" },
+                    { name: "Jana Karim", year: "2020", program: "Bronze Medal" },
+                    { name: "Mona Ashraf", year: "2021", program: "Silver Medal" }
+                ]
+            },
+            ioi: {
+                title: "International Olympiad in Informatics Medalists",
+                students: [
+                    { name: "Nada Ahmed", year: "2020", program: "Gold Medal" },
+                    { name: "Sarah Khalil", year: "2021", program: "Silver Medal" },
+                    { name: "Amira Hassan", year: "2022", program: "Gold Medal" },
+                    { name: "Rania Samir", year: "2020", program: "Bronze Medal" },
+                    { name: "Layla Mahmoud", year: "2021", program: "Silver Medal" },
+                    { name: "Zainab Ibrahim", year: "2022", program: "Bronze Medal" },
+                    { name: "Huda Mostafa", year: "2023", program: "Gold Medal" },
+                    { name: "Dalia Tarek", year: "2020", program: "Silver Medal" },
+                    { name: "Salma Magdy", year: "2021", program: "Bronze Medal" }
+                ]
+            },
+            first: {
+                title: "FIRST Robotics Competition Teams",
+                students: [
+                    { name: "Layla Mahmoud", year: "2022", program: "Team Captain - Champions" },
+                    { name: "Mariam Ibrahim", year: "2022", program: "Engineering Lead" },
+                    { name: "Nourhan Salah", year: "2021", program: "Programming Lead" },
+                    { name: "Sarah Ahmed", year: "2023", program: "Mechanical Lead" },
+                    { name: "Fatima Hassan", year: "2022", program: "Design Lead" },
+                    { name: "Amina Rashid", year: "2021", program: "Strategy Lead" },
+                    { name: "Yasmin Ali", year: "2023", program: "Electrical Lead" },
+                    { name: "Rana Mohamed", year: "2022", program: "Operations Lead" },
+                    { name: "Hana Mostafa", year: "2021", program: "Documentation Lead" },
+                    { name: "Nada Tamer", year: "2023", program: "Sponsorship Lead" }
+                ]
+            }
+        };
+
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Mobile dropdown functionality
+        mobileDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('active');
+                
+                if (content.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = document.querySelectorAll('.mobile-nav a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Fade-in Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Enhanced Show Students Modal
+        const showStudentsBtns = document.querySelectorAll('.show-students-btn');
+        const studentsModal = document.getElementById('studentsModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalTitle = document.getElementById('modalTitle');
+        const studentsList = document.getElementById('studentsList');
+        
+        showStudentsBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const competition = this.dataset.competition;
+                const data = studentsData[competition];
+                
+                if (data) {
+                    modalTitle.textContent = data.title;
+                    studentsList.innerHTML = '';
+                    
+                    data.students.forEach(student => {
+                        const studentItem = document.createElement('div');
+                        studentItem.className = 'student-item';
+                        studentItem.innerHTML = `
+                            <div class="student-name">${student.name}</div>
+                            <div class="student-info">
+                                <div class="student-info-row">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Year: ${student.year}</span>
+                                </div>
+                                <div class="student-info-row">
+                                    <i class="fas fa-award"></i>
+                                    <span>${student.program}</span>
+                                </div>
+                            </div>
+                        `;
+                        studentsList.appendChild(studentItem);
+                    });
+                    
+                    studentsModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            studentsModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        studentsModal.addEventListener('click', (e) => {
+            if (e.target === studentsModal) {
+                studentsModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Enhanced Competition Card Hover Effects
+        const competitionCards = document.querySelectorAll('.competition-card');
+        competitionCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Initialize everything
+        window.addEventListener('load', () => {
+            fadeInOnScroll();
+        });
+    </script>
+</body>
+</html>

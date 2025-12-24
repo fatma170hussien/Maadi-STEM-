@@ -1,0 +1,3630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Exchange Programs | Maadi STEM School for Girls</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a192f;
+            --navy-light: #1a2947;
+            --pink: #FF6B9D;
+            --pink-light: #ff9ec0;
+            --pink-dark: #e05583;
+            --peach: #f5b4b3;
+            --cream: #fef7fa;
+            --cream-dark: #f5eef2;
+            --white: #ffffff;
+            --gray: #7a7f8f;
+            --gold: #FFD700;
+            --silver: #C0C0C0;
+            --bronze: #CD7F32;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 20px 40px rgba(255, 107, 157, 0.1);
+            --shadow-dark: 0 20px 40px rgba(10, 25, 47, 0.15);
+            --card-radius: 25px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        h1, h2, h3, h4, h5, .logo-text, .section-title, .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        header {
+            background-color: transparent;
+            padding: 2rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--pink);
+            padding: 5px;
+            background-color: var(--cream);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo-text h1 {
+            text-shadow: none;
+        }
+
+        .logo-text p {
+            font-size: 0.70rem;
+            color: var(--pink-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+            font-weight: 300;
+            padding-bottom: 10px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            height: 100%;
+        }
+
+        nav ul li:first-child {
+            margin-left: 3rem;
+        }
+
+        nav ul li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-right: 2.8rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.05rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+            opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        header.scrolled nav a {
+            text-shadow: none;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .btn-pink {
+            padding: 0.8rem 2.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+
+        header.scrolled .btn-pink {
+            background-color: transparent;
+            border: 1px solid var(--pink);
+            color: var(--pink);
+        }
+
+        .btn-pink::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn-pink:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+            border-color: var(--pink);
+        }
+
+        .btn-pink:hover::before {
+            left: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+        }
+
+        header.scrolled .mobile-menu-btn {
+            color: var(--pink);
+            text-shadow: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0.5rem 0;
+            gap: 0.5rem;
+        }
+
+        .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover > a i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 10px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            text-shadow: none;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-dropdown .dropdown-menu {
+            min-width: 210px;
+            padding: 0.8rem 0;
+        }
+
+        .campus-main-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .campus-main-item:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-main-item i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nested-dropdown {
+            position: relative;
+        }
+
+        .nested-dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: var(--transition);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            border-left: none;
+            margin-left: 5px;
+        }
+
+        .nested-dropdown:hover .nested-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .nested-dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .nested-dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        /* Enhanced Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--pink);
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .mobile-nav {
+            margin-top: 4rem;
+            width: 100%;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            width: 100%;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .mobile-nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            transition: var(--transition);
+            opacity: 0.8;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav ul li a.active {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        .mobile-nav ul li a:hover {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        .mobile-dropdown {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-dropdown > a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-content {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .mobile-dropdown-content.active {
+            display: block;
+        }
+
+        .mobile-dropdown-content a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.4rem 0;
+            margin-bottom: 0.3rem;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+        }
+
+        .mobile-dropdown-content a:hover {
+            color: var(--pink);
+            border-left-color: var(--pink);
+        }
+
+        .mobile-campus-submenu {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .mobile-campus-submenu h4 {
+            color: var(--pink-light);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-campus-submenu ul {
+            list-style: none;
+        }
+
+        .mobile-campus-submenu ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-campus-submenu ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 1rem;
+            padding-left: 1.5rem;
+            display: block;
+        }
+
+        .mobile-campus-submenu ul li a:hover {
+            color: var(--pink);
+        }
+
+        /* Page-Specific Styles */
+        .hero {
+            height: 70vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.9), rgba(255, 107, 157, 0.3));
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url('images/programs.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7) sepia(0.3) hue-rotate(-10deg) saturate(1.2);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 25, 47, 0.8), rgba(255, 107, 157, 0.2));
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 0 3rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 80px;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -1px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-title span {
+            color: var(--pink);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: var(--pink);
+            bottom: 5px;
+            left: 0;
+            opacity: 0.5;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .programs-intro {
+            padding: 7rem 0;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .programs-intro::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .programs-intro::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 180, 179, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            padding: 7rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2 {
+            font-size: 3.2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 2rem auto 0;
+            font-weight: 300;
+        }
+
+        /* Real Interactive World Map with Real Locations */
+        .world-map-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            position: relative;
+            height: 500px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-dark);
+            overflow: hidden;
+            border: 1px solid var(--cream-dark);
+        }
+
+        .world-map {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: grab;
+            transform-origin: center center;
+            transition: transform 0.3s ease;
+        }
+
+        .world-map:active {
+            cursor: grabbing;
+        }
+
+        .map-point {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--pink);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            box-shadow: 0 0 0 8px rgba(255, 107, 157, 0.3);
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .map-point:hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            box-shadow: 0 0 0 12px rgba(255, 107, 157, 0.5);
+            z-index: 10;
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background: rgba(10, 25, 47, 0.95);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+            z-index: 10;
+            border: 1px solid rgba(255, 107, 157, 0.3);
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .map-point:hover .map-tooltip {
+            opacity: 1;
+        }
+
+        .map-controls {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 5;
+        }
+
+        .map-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(10, 25, 47, 0.8);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+
+        .map-btn:hover {
+            background: var(--pink);
+            transform: scale(1.1);
+        }
+
+        /* Program Categories */
+        .program-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .category-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--cream-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(255, 107, 157, 0.15);
+            border-color: var(--pink-light);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .category-card h3 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .category-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Program Grid with Sharp Corners - FIXED */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .program-card {
+            background: var(--white);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--cream-dark);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* FIXED: Sharp corners for all program cards */
+        .program-card {
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                100% calc(100% - 20px),
+                calc(100% - 20px) 100%,
+                0 100%
+            );
+            border-radius: 0;
+        }
+
+        .program-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(255, 107, 157, 0.15);
+            border-color: var(--pink-light);
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                100% calc(100% - 30px),
+                calc(100% - 30px) 100%,
+                0 100%
+            );
+        }
+
+        /* FIXED: Header styling for consistent image display */
+        .program-card-header {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            position: relative;
+            border-bottom: 2px solid var(--cream-dark);
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            overflow: hidden;
+        }
+
+        /* FIXED: حجم الصور لتملأ المساحة كاملة */
+        .program-logo {
+            width: 85% !important;       /* ملء العرض */
+            height: 70% !important;      /* ملء الارتفاع */
+            object-fit: contain !important;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.15));
+            background-color: white;
+            border-radius: 12px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* FIXED: للصور ذات الخلفية الشفافة */
+        .program-logo.transparent-bg {
+            background-color: white !important;
+            padding: 25px !important;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* FIXED: Badge styling */
+        .program-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: white;
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 2px solid var(--white);
+            clip-path: polygon(
+                0 0,
+                calc(100% - 10px) 0,
+                100% 100%,
+                0 100%
+            );
+        }
+
+        .program-card-body {
+            padding: 1.5rem 2rem;
+            flex-grow: 1;
+        }
+
+        .program-card h3 {
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .program-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .program-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding: 1rem 0;
+            border-top: 2px solid var(--cream-dark);
+            border-bottom: 2px solid var(--cream-dark);
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-value {
+            display: block;
+            color: var(--pink);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            display: block;
+            color: var(--gray);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .program-students {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .student-avatars {
+            display: flex;
+        }
+
+        .student-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: 2px solid var(--white);
+            margin-left: -10px;
+            background: linear-gradient(135deg, var(--pink-light), var(--peach));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .student-avatar:first-child {
+            margin-left: 0;
+        }
+
+        /* FIXED: Footer with sharp corners */
+        .program-card-footer {
+            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 157, 0.05),
+                rgba(255, 107, 157, 0.02));
+            border-top: 2px solid var(--cream-dark);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            clip-path: polygon(
+                0 0,
+                calc(100% - 20px) 0,
+                100% 100%,
+                0 100%
+            );
+        }
+
+        /* FIXED: Button with sharp corners */
+        .program-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--pink-dark);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--pink-light);
+            clip-path: polygon(
+                0 0,
+                calc(100% - 12px) 0,
+                100% 100%,
+                0 100%
+            );
+        }
+
+        .program-link:hover {
+            gap: 1.2rem;
+            color: var(--white);
+            background: var(--pink);
+            border-color: var(--pink);
+            transform: translateX(5px);
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                calc(100% - 12px) 100%,
+                0 100%
+            );
+        }
+
+        /* NEW: View More button styling */
+        .view-more-container {
+            text-align: center;
+            margin: 4rem 0 2rem;
+        }
+
+        .view-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            clip-path: polygon(
+                0 0,
+                calc(100% - 20px) 0,
+                100% 100%,
+                0 100%
+            );
+            box-shadow: 0 10px 30px rgba(10, 25, 47, 0.2);
+        }
+
+        .view-more-btn:hover {
+            gap: 1.5rem;
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            transform: translateY(-5px);
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                calc(100% - 20px) 100%,
+                0 100%
+            );
+            box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
+        }
+
+        /* NEW: Hidden extra programs container */
+        .extra-programs {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .extra-programs.visible {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* NEW: Extra program cards with different style */
+        .extra-program-card {
+            background: var(--white);
+            clip-path: polygon(
+                20px 0,
+                100% 0,
+                100% calc(100% - 20px),
+                calc(100% - 20px) 100%,
+                0 100%,
+                0 20px
+            );
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-dark);
+            transition: var(--transition);
+        }
+
+        .extra-program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 0%,
+                rgba(255, 107, 157, 0.05) 100%);
+            z-index: 1;
+        }
+
+        .extra-program-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 40px 60px rgba(255, 107, 157, 0.15);
+        }
+
+        /* FIXED: للبرامج الإضافية */
+        .extra-program-card-header {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            border-bottom: 2px solid var(--cream-dark);
+            background: linear-gradient(135deg, 
+                rgba(10, 25, 47, 0.03),
+                rgba(10, 25, 47, 0.01));
+            position: relative;
+            z-index: 2;
+        }
+
+        .extra-program-logo {
+            width: 80% !important;       /* ملء العرض */
+            height: 65% !important;      /* ملء الارتفاع */
+            object-fit: contain !important;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.15));
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .extra-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: white;
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 2px solid var(--white);
+            clip-path: polygon(
+                10px 0,
+                calc(100% - 10px) 0,
+                100% 100%,
+                0 100%
+            );
+            z-index: 3;
+        }
+
+        /* Enhanced Students Modal with Sharp Corners */
+        .students-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .students-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 3rem;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--pink-light);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--navy);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .modal-close:hover {
+            color: var(--pink);
+            background: rgba(255, 107, 157, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            color: var(--navy);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .modal-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .students-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .student-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid var(--cream-dark);
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--pink), var(--pink-dark));
+        }
+
+        .student-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 157, 0.1);
+            border-color: var(--pink-light);
+        }
+
+        .student-name {
+            color: var(--navy);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            padding-left: 0.5rem;
+        }
+
+        .student-info {
+            color: var(--gray);
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            padding-left: 0.5rem;
+        }
+
+        .student-info-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .student-info i {
+            color: var(--pink);
+            width: 16px;
+            text-align: center;
+        }
+
+        /* Success Stories */
+        .success-stories {
+            background: linear-gradient(135deg, var(--navy-light), var(--navy));
+            padding: 7rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .success-stories::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+        }
+
+        .success-stories::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245, 180, 179, 0.08) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .story-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 2px solid rgba(255, 107, 157, 0.1);
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 107, 157, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .story-quote {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .story-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--pink);
+            font-family: serif;
+            opacity: 0.5;
+        }
+
+        .story-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .author-info h4 {
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+
+        .author-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Application Process */
+        .application-process {
+            background: var(--cream);
+            padding: 7rem 0;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--cream-dark);
+            z-index: 1;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            border: 5px solid var(--cream);
+        }
+
+        .process-step h4 {
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .process-step p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Timeline */
+        .timeline-container {
+            max-width: 1000px;
+            margin: 5rem auto 0;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--pink), var(--peach));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--cream-dark);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: var(--white);
+            transform: rotate(45deg);
+            border-right: 2px solid var(--cream-dark);
+            border-bottom: 2px solid var(--cream-dark);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+            border-left: 2px solid var(--cream-dark);
+            border-bottom: 2px solid var(--cream-dark);
+            border-right: none;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--pink);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            top: 20px;
+            white-space: nowrap;
+            z-index: 2;
+            border: 2px solid var(--white);
+        }
+
+        .timeline-content h4 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .creative-overlap-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 107, 157, 0.03));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .creative-overlap-section.dark {
+            background: linear-gradient(135deg, var(--navy-light), var(--navy));
+        }
+
+        .creative-overlap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .overlap-section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .overlap-section-title h2 {
+            font-size: 2.8rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .creative-overlap-section.dark .overlap-section-title h2 {
+            color: var(--white);
+        }
+
+        .overlap-section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .overlap-section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 2rem auto 0;
+            font-weight: 300;
+        }
+
+        .creative-overlap-section.dark .overlap-section-title p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .overlap-wrapper {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            margin: 2rem auto;
+        }
+
+        .overlap-frame {
+            position: absolute;
+            width: 320px;
+            height: 240px;
+            border-radius: 20px;
+            overflow: hidden;
+            animation: float 4s ease-in-out infinite;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border: 4px solid;
+        }
+
+        .overlap-frame:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            z-index: 10 !important;
+        }
+
+        .overlap-frame.left {
+            left: 20%;
+            top: 80px;
+            border-color: var(--navy);
+            z-index: 1;
+            animation-delay: 0s;
+        }
+
+        .overlap-frame.right {
+            right: 20%;
+            top: 0;
+            border-color: var(--pink);
+            z-index: 2;
+            animation-delay: 1.5s;
+        }
+
+        .overlap-frame.center {
+            left: 50%;
+            top: 40px;
+            transform: translateX(-50%);
+            border-color: var(--gold);
+            z-index: 3;
+            animation-delay: 0.8s;
+        }
+
+        .overlap-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .overlap-frame:hover img {
+            transform: scale(1.1);
+        }
+
+        /* معلومات التحويم */
+        .overlap-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            border-radius: 16px;
+            z-index: 5;
+        }
+
+        .overlap-frame:hover .overlap-info {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlap-info h3 {
+            color: var(--pink);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .overlap-info p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .overlap-info .info-icon {
+            font-size: 2rem;
+            color: var(--pink-light);
+            margin-bottom: 1rem;
+        }
+
+        /* أنيميشن حركة ناعمة */
+        @keyframes float {
+            0%   { transform: translateY(0px); }
+            50%  { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            color: var(--white);
+            padding: 6rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.08) 0%, transparent 70%);
+            top: -150px;
+            left: -150px;
+            opacity: 0.5;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 300;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--pink);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-5px);
+            border-color: var(--pink);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FIXED: تحسين استجابة الصور */
+        @media (max-width: 768px) {
+            .program-logo {
+                width: 80% !important;
+                height: 65% !important;
+                padding: 15px !important;
+            }
+            
+            .extra-program-logo {
+                width: 75% !important;
+                height: 60% !important;
+                padding: 12px !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .program-logo {
+                width: 85% !important;
+                height: 60% !important;
+                padding: 12px !important;
+            }
+            
+            .extra-program-logo {
+                width: 80% !important;
+                height: 55% !important;
+                padding: 10px !important;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header-container, .container {
+                padding: 0 2rem;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .programs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            nav ul li:first-child {
+                margin-left: 2rem;
+            }
+            
+            nav ul li {
+                margin-right: 2rem;
+            }
+            
+            .overlap-wrapper {
+                height: 350px;
+            }
+            
+            .overlap-frame {
+                width: 280px;
+                height: 210px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-actions .btn-pink {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .process-steps {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+            
+            .process-step {
+                flex: 0 0 calc(50% - 1rem);
+                max-width: none;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .world-map-container {
+                height: 400px;
+            }
+            
+            .overlap-wrapper {
+                height: 300px;
+            }
+            
+            .overlap-frame {
+                width: 240px;
+                height: 180px;
+            }
+            
+            .overlap-frame.left {
+                left: 10%;
+            }
+            
+            .overlap-frame.right {
+                right: 10%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container, .container {
+                padding: 0 1.5rem;
+            }
+            
+            .footer-container {
+                padding: 0 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            section {
+                padding: 5rem 0;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .program-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-container::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+                margin-left: 60px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-content::after {
+                left: -10px !important;
+                top: 20px;
+                border-left: 2px solid var(--cream-dark);
+                border-bottom: 2px solid var(--cream-dark);
+                border-right: none;
+            }
+            
+            .timeline-year {
+                left: 0;
+                transform: none;
+            }
+            
+            .process-step {
+                flex: 0 0 100%;
+            }
+            
+            .world-map-container {
+                height: 350px;
+            }
+            
+            .students-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .overlap-wrapper {
+                height: 250px;
+            }
+            
+            .overlap-frame {
+                width: 200px;
+                height: 150px;
+            }
+            
+            .overlap-frame.left {
+                left: 5%;
+                top: 60px;
+            }
+            
+            .overlap-frame.right {
+                right: 5%;
+                top: 0;
+            }
+            
+            .overlap-info {
+                padding: 1rem;
+            }
+            
+            .overlap-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            .overlap-info p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 60vh;
+                min-height: 500px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content {
+                padding: 0 1rem;
+            }
+            
+            .world-map-container {
+                height: 300px;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+            }
+            
+            .student-item {
+                padding: 1.2rem;
+            }
+            
+            .overlap-wrapper {
+                height: 200px;
+            }
+            
+            .overlap-frame {
+                width: 160px;
+                height: 120px;
+            }
+            
+            .overlap-info {
+                padding: 0.8rem;
+                font-size: 0.8rem;
+            }
+            
+            .overlap-info h3 {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .overlap-info p {
+                font-size: 0.75rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .overlap-info .info-icon {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Maadi STEM School</h1>
+                    <p>Center of Egyptian innovation leaders</p>
+                </div>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="overview.html">Who we are</a>
+                            <a href="mission-vision.html">Mission & Vision</a>
+                            <a href="staff.html">Staff</a>
+                            <a href="student-criteria.html">Student Criteria</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown campus-dropdown">
+                        <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-school"></i> School</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="School_laboratory.html">Laboratory</a>
+                                    <a href="classes.html">Classes</a>
+                                    <a href="fablab.html">Fab Lab</a>
+                                    <a href="library.html">Library</a>
+                                    <a href="assembly.html">Assembly</a>
+                                    <a href="playgrounds.html">Playgrounds</a>
+                                </div>
+                            </div>
+                            
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-bed"></i> Dorms</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="studying-hall.html">Studying Hall</a>
+                                    <a href="restaurant.html">Restaurant</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Events and History as normal links -->
+                            <div class="events-history-menu">
+                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li><a href="academics.html">Academics</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="compititions.html">Competitions</a>
+                            <a href="programs.html">Programs</a>
+                            <a href="teamsandclubs.html">Teams & Clubs</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="alumni.html">Alumni</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <a href="overview.html">Who we are</a>
+                    <a href="mission-vision.html">Mission & Vision</a>
+                    <a href="staff.html">Staff</a>
+                    <a href="student-criteria.html">Student Criteria</a>
+                </div>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Campus <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-school"></i> School</h4>
+                        <div class="mobile-campus-links">
+                            <a href="School_laboratory.html">Laboratory</a>
+                            <a href="classes.html">Classes</a>
+                            <a href="fablab.html">Fab Lab</a>
+                            <a href="library.html">Library</a>
+                            <a href="assembly.html">Assembly</a>
+                            <a href="playgrounds.html">Playgrounds</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-bed"></i> Dorms</h4>
+                        <div class="mobile-campus-links">
+                            <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                            <a href="studying-hall.html">Studying Hall</a>
+                            <a href="restaurant.html">Restaurant</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-calendar-alt"></i> Events</h4>
+                        <div class="mobile-campus-links">
+                            <a href="events.html">All Events</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-history"></i> History</h4>
+                        <div class="mobile-campus-links">
+                            <a href="history.html">School History</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li><a href="academics.html">Academics</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <a href="compititions.html">Competitions</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="teamsandclubs.html">Teams & Clubs</a>
+                </div>
+            </li>
+            
+            <li><a href="alumni.html">Alumni</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            
+            <!-- Apply Now button for mobile -->
+            <li><a href="#" class="mobile-menu-btn-pink">Apply Now</a></li>
+        </ul>
+    </div>
+
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Global Exchange <span>Programs</span></h1>
+            <p class="hero-subtitle fade-in">Connecting our students with prestigious international opportunities since 2012</p>
+        </div>
+    </section>
+
+    <section class="programs-intro">
+        <div class="container">
+            <div class="section-title">
+                <h2>World-Class <span style="color: var(--pink);">Opportunities</span></h2>
+                <p>Our students have participated in prestigious international programs across 20+ countries, building global networks and gaining unparalleled experiences.</p>
+            </div>
+
+            <!-- First Creative Overlap Section -->
+            <div class="creative-overlap-section fade-in">
+                <div class="creative-overlap-container">
+                    <div class="overlap-section-title">
+                        <h2>Global Partnerships</h2>
+                        <p>Our strong relationships with top international institutions create unique opportunities for our students</p>
+                    </div>
+                    
+                    <div class="overlap-wrapper">
+                        <div class="overlap-frame left">
+                            <img src="images/programs.jpg" alt="International University">
+                            <div class="overlap-info">
+                                <div class="info-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <h3>Top Universities</h3>
+                                <p>Partnerships with Yale, Stanford, Harvard, Cambridge and MIT provide our students with exclusive access to world-class education</p>
+                            </div>
+                        </div>
+                        
+                        <div class="overlap-frame right">
+                            <img src="images/programs.jpg" alt="Research Program">
+                            <div class="overlap-info">
+                                <div class="info-icon">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <h3>Research Programs</h3>
+                                <p>Cutting-edge research opportunities at leading scientific institutions with mentorship from top researchers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real Interactive World Map with Accurate Locations -->
+            <div class="world-map-container fade-in">
+                <div class="world-map" id="worldMap">
+                    <!-- Map points will be added dynamically -->
+                </div>
+                <div class="map-controls">
+                    <button class="map-btn" id="zoomInBtn">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button class="map-btn" id="zoomOutBtn">
+                        <i class="fas fa-search-minus"></i>
+                    </button>
+                    <button class="map-btn" id="resetBtn">
+                        <i class="fas fa-home"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="program-categories">
+                <div class="category-card fade-in">
+                    <div class="category-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>University Programs</h3>
+                    <p>Pre-university experiences at world-renowned institutions like Yale, Stanford, and Harvard.</p>
+                </div>
+                
+                <div class="category-card fade-in">
+                    <div class="category-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Leadership Programs</h3>
+                    <p>Developing future leaders through intensive leadership and social entrepreneurship programs.</p>
+                </div>
+                
+                <div class="category-card fade-in">
+                    <div class="category-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>STEM Research</h3>
+                    <p>Cutting-edge research opportunities at leading scientific institutions worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Second Creative Overlap Section -->
+    <div class="creative-overlap-section fade-in dark">
+        <div class="creative-overlap-container">
+            <div class="overlap-section-title">
+                <h2>Student Experiences</h2>
+                <p>Our students gain invaluable experiences through diverse international programs</p>
+            </div>
+            
+            <div class="overlap-wrapper">
+                <div class="overlap-frame left">
+                    <img src="images/programs.jpg" alt="Cultural Exchange">
+                    <div class="overlap-info">
+                        <div class="info-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h3>Cultural Exchange</h3>
+                        <p>Students experience diverse cultures and build international friendships that last a lifetime</p>
+                    </div>
+                </div>
+                
+                <div class="overlap-frame right">
+                    <img src="images/programs.jpg" alt="Academic Excellence">
+                    <div class="overlap-info">
+                        <div class="info-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Academic Excellence</h3>
+                        <p>Learning from world-renowned professors and researchers at top global institutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="programs-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured <span style="color: var(--pink);">Programs</span></h2>
+                <p>Discover the prestigious international programs our students have been accepted to</p>
+            </div>
+
+            <div class="programs-grid">
+                <!-- Program 1: YYGS -->
+                <div class="program-card fade-in" data-program="yygs">
+                    <div class="program-card-header">
+                        <img src="images/yygs.webp" alt="Yale Young Global Scholars Logo" class="program-logo transparent-bg">
+                        <div class="program-badge">Highly Competitive</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>Yale Young Global Scholars (YYGS)</h3>
+                        <p class="program-description">An intensive pre-college program for outstanding high school students from around the world.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                        </div>
+
+                        <div class="program-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">NM</div>
+                                <div class="student-avatar">SA</div>
+                                <div class="student-avatar">+13</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Accepted Students</span>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="yygs">
+                            Show Students <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 2: UWC -->
+                <div class="program-card fade-in" data-program="uwc">
+                    <div class="program-card-header">
+                        <img src="images/uwc.png" alt="United World Colleges Logo" class="program-logo transparent-bg">
+                        <div class="program-badge" style="background: var(--gold);">Full Scholarship</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>United World Colleges (UWC)</h3>
+                        <p class="program-description">Two-year International Baccalaureate program promoting peace and international understanding.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                              
+                            </div>
+                        </div>
+
+                        <div class="program-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">MA</div>
+                                <div class="student-avatar">RA</div>
+                                <div class="student-avatar">+6</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Accepted Students</span>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="uwc">
+                            Show Students <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 3: Stanford -->
+                <div class="program-card fade-in" data-program="stanford">
+                    <div class="program-card-header">
+                        <img src="images/standford.png" alt="Stanford University Logo" class="program-logo">
+                        <div class="program-badge" style="background: var(--silver); color: var(--navy);">Research Focus</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>Stanford University Programs</h3>
+                        <p class="program-description">Summer research and pre-college programs in STEM fields at one of the world's top universities.</p>
+                        
+                        <div class="program-stats">
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                        </div>
+
+                        <div class="program-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">LM</div>
+                                <div class="student-avatar">ZA</div>
+                                <div class="student-avatar">+10</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Accepted Students</span>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="stanford">
+                            Show Students <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 4: ALA -->
+                <div class="program-card fade-in" data-program="ala">
+                    <div class="program-card-header">
+                        <img src="images/ala.png" alt="African Leadership Academy Logo" class="program-logo transparent-bg">
+                        <div class="program-badge" style="background: var(--bronze);">Leadership</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>African Leadership Academy (ALA)</h3>
+                        <p class="program-description">A two-year pre-university program developing Africa's next generation of leaders.</p>
+                        
+                        <div class="program-stats">
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                        </div>
+
+                        <div class="program-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">HA</div>
+                                <div class="student-avatar">FA</div>
+                                <div class="student-avatar">+4</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Accepted Students</span>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="ala">
+                            Show Students <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 5: Cambridge -->
+                <div class="program-card fade-in" data-program="cambridge">
+                    <div class="program-card-header">
+                        <img src="images/cambridge.png" alt="University of Cambridge Logo" class="program-logo">
+                        <div class="program-badge" style="background: linear-gradient(135deg, #A51C30, #800000);">Academic Excellence</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>Cambridge Summer Schools</h3>
+                        <p class="program-description">Academic enrichment programs at the University of Cambridge for exceptional students.</p>
+                        
+                        <div class="program-stats">
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                        </div>
+
+                        <div class="program-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">YA</div>
+                                <div class="student-avatar">KA</div>
+                                <div class="student-avatar">+8</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Accepted Students</span>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="cambridge">
+                            Show Students <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 6: MIT -->
+                <div class="program-card fade-in" data-program="mit">
+                    <div class="program-card-header">
+                        <img src="images/mit.png" alt="Massachusetts Institute of Technology Logo" class="program-logo">
+                        <div class="program-badge" style="background: linear-gradient(135deg, #8A8D8F, #C0C0C0); color: var(--navy);">STEM Focus</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>MIT Launch & Research</h3>
+                        <p class="program-description">Entrepreneurship and research programs at the Massachusetts Institute of Technology.</p>
+                        
+                        <div class="program-stats">
+                            <div class="stat">
+                              
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                        </div>
+
+                        <div class="program-students">
+                            <div class="student-avatars">
+                                <div class="student-avatar">NA</div>
+                                <div class="student-avatar">SA</div>
+                                <div class="student-avatar">+5</div>
+                            </div>
+                            <span style="color: var(--gray); font-size: 0.9rem;">Accepted Students</span>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="mit">
+                            Show Students <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More Button -->
+            <div class="view-more-container">
+                <button class="view-more-btn" id="viewMoreBtn">
+                    <i class="fas fa-plus"></i>
+                    View All Programs (6 More)
+                </button>
+            </div>
+
+            <!-- Extra Programs (Hidden by Default) -->
+            <div class="extra-programs" id="extraPrograms">
+                <!-- Extra Program 1: Harvard -->
+                <div class="extra-program-card fade-in" data-program="harvard">
+                    <div class="extra-program-card-header">
+                        <img src="images/programs.jpg" alt="Harvard Program" class="extra-program-logo">
+                        <div class="extra-badge" style="background: #A51C30;">Ivy League</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>Harvard Pre-College Program</h3>
+                        <p class="program-description">Summer residential program offering college-level courses at Harvard University.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="harvard">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Extra Program 2: Oxford -->
+                <div class="extra-program-card fade-in" data-program="oxford">
+                    <div class="extra-program-card-header">
+                        <img src="images/programs.jpg" alt="Oxford Program" class="extra-program-logo">
+                        <div class="extra-badge" style="background: #002147;">Academic</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>Oxford Royale Academy</h3>
+                        <p class="program-description">Summer programs at Oxford University with academic and leadership focus.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="oxford">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Extra Program 3: Lumiere -->
+                <div class="extra-program-card fade-in" data-program="lumiere">
+                    <div class="extra-program-card-header">
+                        <img src="images/programs.jpg" alt="Lumiere Logo" class="extra-program-logo">
+                        <div class="extra-badge" style="background: linear-gradient(135deg, #FF6B6B, #FF8E53);">Research</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>Lumiere Research Program</h3>
+                        <p class="program-description">One-on-one research mentorship with PhD scholars from top universities.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="lumiere">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Extra Program 4: Pioneer -->
+                <div class="extra-program-card fade-in" data-program="pioneer">
+                    <div class="extra-program-card-header">
+                        <img src="images/programs.jpg" alt="Pioneer Logo" class="extra-program-logo">
+                        <div class="extra-badge" style="background: linear-gradient(135deg, #4A90E2, #2C3E50);">Online</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>Pioneer Academics</h3>
+                        <p class="program-description">Online research program with university professors worldwide.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="pioneer">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Extra Program 5: ISEF -->
+                <div class="extra-program-card fade-in" data-program="isef">
+                    <div class="extra-program-card-header">
+                        <img src="images/programs.jpg" alt="ISEF Logo" class="extra-program-logo">
+                        <div class="extra-badge" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #333;">Competition</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>International Science Fair</h3>
+                        <p class="program-description">Representing Egypt at Intel ISEF and other international competitions.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="isef">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Extra Program 6: MUN -->
+                <div class="extra-program-card fade-in" data-program="mun">
+                    <div class="extra-program-card-header">
+                        <img src="images/programs.jpg" alt="MUN Logo" class="extra-program-logo">
+                        <div class="extra-badge" style="background: linear-gradient(135deg, #5D9CEC, #2E8B57);">Leadership</div>
+                    </div>
+                    <div class="program-card-body">
+                        <h3>Model United Nations</h3>
+                        <p class="program-description">International MUN conferences at Harvard, Oxford, and other institutions.</p>
+                        <div class="program-stats">
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                                
+                            </div>
+                            <div class="stat">
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="program-card-footer">
+                        <a href="javascript:void(0)" class="program-link show-students-btn" data-program="mun">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Students Modal with Sharp Corners -->
+    <div class="students-modal" id="studentsModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title" id="modalTitle">Accepted Students</h2>
+            <div class="students-list" id="studentsList">
+                <!-- Students will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Creative Overlap Section -->
+    <div class="creative-overlap-section fade-in">
+        <div class="creative-overlap-container">
+            <div class="overlap-section-title">
+                <h2>Program Impact</h2>
+                <p>Transformative experiences that shape future leaders and innovators</p>
+            </div>
+            
+            <div class="overlap-wrapper">
+                <div class="overlap-frame left">
+                    <img src="images/programs.jpg" alt="Leadership Development">
+                    <div class="overlap-info">
+                        <div class="info-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Leadership Skills</h3>
+                        <p>Students develop leadership abilities through international collaboration and global problem-solving</p>
+                    </div>
+                </div>
+                
+                <div class="overlap-frame right">
+                    <img src="images/programs.jpg" alt="Career Opportunities">
+                    <div class="overlap-info">
+                        <div class="info-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Career Pathways</h3>
+                        <p>Global networks and experiences open doors to prestigious universities and career opportunities worldwide</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="success-stories">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: var(--white);">Student <span style="color: var(--pink-light);">Success Stories</span></h2>
+                <p style="color: rgba(255, 255, 255, 0.8);">Hear from our alumni about their transformative experiences</p>
+            </div>
+
+            <div class="stories-grid">
+                <div class="story-card fade-in">
+                    <p class="story-quote">"My summer at Yale through YYGS completely changed my perspective on global issues. The connections I made there opened doors I never imagined possible."</p>
+                    <div class="story-author">
+                        <div class="author-avatar">NM</div>
+                        <div class="author-info">
+                            <h4>Nourhan Mohamed</h4>
+                            <p>YYGS 2021 | Now at Harvard University</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card fade-in">
+                    <p class="story-quote">"The UWC experience taught me that education is about more than academics. Living and learning with students from 90+ countries was life-changing."</p>
+                    <div class="story-author">
+                        <div class="author-avatar">RA</div>
+                        <div class="author-info">
+                            <h4>Rana Ahmed</h4>
+                            <p>UWC Dilijan 2019 | Now at Stanford</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card fade-in">
+                    <p class="story-quote">"ALA empowered me to see myself as a change-maker. The leadership skills I gained there continue to guide me in my university studies and beyond."</p>
+                    <div class="story-author">
+                        <div class="author-avatar">HA</div>
+                        <div class="author-info">
+                            <h4>Hana Ali</h4>
+                            <p>ALA 2020 | Social Entrepreneur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="application-process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Application <span style="color: var(--pink);">Timeline</span></h2>
+                <p>Follow our structured process to maximize your chances of acceptance</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <h4>Program Research</h4>
+                    <p>Identify programs that match your academic interests and career goals</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <h4>Application Preparation</h4>
+                    <p>Gather documents, write essays, and prepare for interviews</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <h4>School Support</h4>
+                    <p>Receive guidance from our dedicated programs coordinator</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">4</div>
+                    <h4>Submission & Follow-up</h4>
+                    <p>Submit applications and prepare for next steps</p>
+                </div>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h4>Lumiere Research Scholar Program</h4>
+                        <p>Advanced research opportunities with PhD mentors from top universities. Our students have published research papers through this program.</p>
+                    </div>
+                    <div class="timeline-year">2022-2024</div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h4>Pioneer Academics</h4>
+                        <p>Online research program connecting students with university professors for cutting-edge research projects.</p>
+                    </div>
+                    <div class="timeline-year">2020-2023</div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h4>International Science Fairs</h4>
+                        <p>Representing Egypt at ISEF and other prestigious international science competitions.</p>
+                    </div>
+                    <div class="timeline-year">2018-2024</div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <h4>Model United Nations</h4>
+                        <p>Participating in international MUN conferences at Harvard, Oxford, and other leading institutions.</p>
+                    </div>
+                    <div class="timeline-year">2016-2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Maadi STEM School for Girls</h3>
+                <p>Established in 2012, we've been connecting our students with world-class international opportunities since 2015, building bridges across continents.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Program Resources</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Application Guide</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Program Deadlines</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Scholarship Information</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Alumni Network</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Coordinator</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Zahraa Al Maadi, Cairo, Egypt</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> programs@stemmaadi.edu.eg</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +20 2 1234 5678</a></li>
+                    <li><a href="#"><i class="fas fa-user-tie"></i> Ms. Sarah Ahmed - Programs Coordinator</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Maadi STEM School for Girls. All Rights Reserved. | Global Programs Since 2015</p>
+        </div>
+    </footer>
+
+    <script>
+        // Student Data for each program
+        const studentsData = {
+            yygs: {
+                title: "Yale Young Global Scholars (YYGS) Accepted Students",
+                students: [
+                    { name: "Nourhan Mohamed", year: "2021", program: "Politics, Law & Economics" },
+                    { name: "Sarah Ali", year: "2022", program: "Biological & Biomedical Science" },
+                    { name: "Fatima Hassan", year: "2023", program: "Applied Science & Engineering" },
+                    { name: "Mariam Ahmed", year: "2021", program: "International Affairs" },
+                    { name: "Layla Mahmoud", year: "2022", program: "Sustainable Development" },
+                    { name: "Yasmin Ibrahim", year: "2023", program: "Frontiers of Science & Technology" },
+                    { name: "Aisha Khalil", year: "2021", program: "Literature, Philosophy & Arts" },
+                    { name: "Rana Samir", year: "2022", program: "Solving Global Challenges" },
+                    { name: "Hana Mostafa", year: "2023", program: "Biological & Biomedical Science" },
+                    { name: "Nada Tarek", year: "2021", program: "Politics, Law & Economics" },
+                    { name: "Sara Magdy", year: "2022", program: "Applied Science & Engineering" },
+                    { name: "Jana Hossam", year: "2023", program: "International Affairs" },
+                    { name: "Mona Ashraf", year: "2021", program: "Sustainable Development" },
+                    { name: "Dina Wael", year: "2022", program: "Frontiers of Science & Technology" },
+                    { name: "Reem Omar", year: "2023", program: "Literature, Philosophy & Arts" }
+                ]
+            },
+            uwc: {
+                title: "United World Colleges (UWC) Accepted Students",
+                students: [
+                    { name: "Mariam Ahmed", year: "2019", program: "UWC Dilijan, Armenia" },
+                    { name: "Rana Ahmed", year: "2019", program: "UWC Dilijan, Armenia" },
+                    { name: "Farida Hassan", year: "2020", program: "UWC Maastricht, Netherlands" },
+                    { name: "Sama El-Shafei", year: "2020", program: "UWC Mostar, Bosnia" },
+                    { name: "Yara Ismail", year: "2021", program: "UWC Adriatic, Italy" },
+                    { name: "Nada Tamer", year: "2021", program: "UWC Dilijan, Armenia" },
+                    { name: "Lina Samy", year: "2022", program: "UWC Costa Rica" },
+                    { name: "Jana Karim", year: "2023", program: "UWC Changshu, China" }
+                ]
+            },
+            stanford: {
+                title: "Stanford University Programs Accepted Students",
+                students: [
+                    { name: "Layla Mahmoud", year: "2020", program: "Stanford Summer Session" },
+                    { name: "Zainab Ahmed", year: "2020", program: "Stanford AI4ALL" },
+                    { name: "Amira Hassan", year: "2021", program: "Stanford Pre-Collegiate Studies" },
+                    { name: "Rania Samir", year: "2021", program: "Stanford Math Camp" },
+                    { name: "Nour El-Din", year: "2022", program: "Stanford Summer Humanities Institute" },
+                    { name: "Safa Ibrahim", year: "2022", program: "Stanford Medical Youth Science Program" },
+                    { name: "Huda Mostafa", year: "2023", program: "Stanford Pre-Collegiate Studies" },
+                    { name: "Dalia Tarek", year: "2023", program: "Stanford Summer Session" },
+                    { name: "Salma Magdy", year: "2024", program: "Stanford AI4ALL" },
+                    { name: "Jana Hossam", year: "2024", program: "Stanford Math Camp" },
+                    { name: "Mona Ashraf", year: "2024", program: "Stanford Summer Humanities Institute" },
+                    { name: "Dina Wael", year: "2024", program: "Stanford Medical Youth Science Program" }
+                ]
+            },
+            ala: {
+                title: "African Leadership Academy (ALA) Accepted Students",
+                students: [
+                    { name: "Hana Ali", year: "2020", program: "Entrepreneurship Leadership" },
+                    { name: "Farah Abdullah", year: "2020", program: "Social Sciences" },
+                    { name: "Amina Rashid", year: "2021", program: "Engineering & Technology" },
+                    { name: "Nourhan Salah", year: "2021", program: "Business & Economics" },
+                    { name: "Salma El-Gazzar", year: "2022", program: "Public Health" },
+                    { name: "Mariam Farouk", year: "2023", program: "Environmental Science" }
+                ]
+            },
+            cambridge: {
+                title: "Cambridge Summer Schools Accepted Students",
+                students: [
+                    { name: "Yasmin Ali", year: "2019", program: "Cambridge Trinity College" },
+                    { name: "Khadija Ahmed", year: "2019", program: "Cambridge King's College" },
+                    { name: "Asmaa Hassan", year: "2020", program: "Cambridge Summer Science" },
+                    { name: "Rana Mohamed", year: "2020", program: "Cambridge Engineering" },
+                    { name: "Fatma Ibrahim", year: "2021", program: "Cambridge Computer Science" },
+                    { name: "Lina Samir", year: "2021", program: "Cambridge Mathematics" },
+                    { name: "Nada Tamer", year: "2022", program: "Cambridge Medicine" },
+                    { name: "Sara Magdy", year: "2022", program: "Cambridge Law" },
+                    { name: "Jana Karim", year: "2023", program: "Cambridge Economics" },
+                    { name: "Mona Ashraf", year: "2023", program: "Cambridge International Relations" }
+                ]
+            },
+            mit: {
+                title: "MIT Programs Accepted Students",
+                students: [
+                    { name: "Nada Ahmed", year: "2020", program: "MIT Launch Entrepreneurship" },
+                    { name: "Sarah Khalil", year: "2020", program: "MITES Summer Program" },
+                    { name: "Amira Hassan", year: "2021", program: "MIT Research Science Institute" },
+                    { name: "Rania Samir", year: "2021", program: "MIT Beaver Works Summer Institute" },
+                    { name: "Layla Mahmoud", year: "2022", program: "MIT Online Science, Technology" },
+                    { name: "Zainab Ibrahim", year: "2022", program: "MIT Launch Entrepreneurship" },
+                    { name: "Huda Mostafa", year: "2023", program: "MITES Summer Program" }
+                ]
+            }
+        };
+
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Mobile dropdown functionality
+        mobileDropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                content.classList.toggle('active');
+                
+                if (content.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileMenuLinks = document.querySelectorAll('.mobile-nav a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        if (window.pageYOffset > 50) {
+            header.classList.add('scrolled');
+        }
+        
+        // Fade-in Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // REAL Interactive World Map with Accurate Geographic Coordinates
+        function initializeWorldMap() {
+            const worldMap = document.getElementById('worldMap');
+            if (!worldMap) return;
+            
+            // Real geographic coordinates (latitude, longitude) converted to map percentages
+            const programs = [
+                // USA Programs
+                { lat: 41.3163, lng: -72.9223, name: "Yale University", country: "USA", students: 15, type: "yygs" }, // New Haven, CT
+                { lat: 42.3601, lng: -71.0942, name: "Harvard University", country: "USA", students: 8, type: "harvard" }, // Cambridge, MA
+                { lat: 42.3601, lng: -71.0921, name: "MIT", country: "USA", students: 7, type: "mit" }, // Cambridge, MA (close to Harvard)
+                { lat: 37.4275, lng: -122.1697, name: "Stanford University", country: "USA", students: 12, type: "stanford" }, // Stanford, CA
+                
+                // UK Programs
+                { lat: 52.2053, lng: 0.1218, name: "University of Cambridge", country: "UK", students: 10, type: "cambridge" }, // Cambridge, UK
+                { lat: 51.7548, lng: -1.2544, name: "University of Oxford", country: "UK", students: 6, type: "oxford" }, // Oxford, UK
+                
+                // UWC Schools Worldwide
+                { lat: 40.7415, lng: 44.8624, name: "UWC Dilijan", country: "Armenia", students: 3, type: "uwc" }, // Dilijan, Armenia
+                { lat: 45.7640, lng: 13.7295, name: "UWC Adriatic", country: "Italy", students: 2, type: "uwc" }, // Duino, Italy
+                { lat: 50.8503, lng: 5.6850, name: "UWC Maastricht", country: "Netherlands", students: 1, type: "uwc" }, // Maastricht, Netherlands
+                { lat: 43.3438, lng: 17.8078, name: "UWC Mostar", country: "Bosnia", students: 2, type: "uwc" }, // Mostar, Bosnia
+                
+                // Other Programs
+                { lat: -25.9969, lng: 28.1266, name: "African Leadership Academy", country: "South Africa", students: 6, type: "ala" }, // Johannesburg, South Africa
+                { lat: 35.0116, lng: 135.7681, name: "Kyoto University", country: "Japan", students: 4, type: "other" }, // Kyoto, Japan
+                { lat: 1.2966, lng: 103.7764, name: "National University of Singapore", country: "Singapore", students: 5, type: "other" }, // Singapore
+                { lat: 48.8462, lng: 2.3550, name: "Sciences Po", country: "France", students: 3, type: "other" }, // Paris, France
+            ];
+            
+            // Convert lat/lng to map percentages
+            // For equirectangular projection: x = (lng + 180) / 360 * 100, y = (90 - lat) / 180 * 100
+            programs.forEach(program => {
+                const x = ((program.lng + 180) / 360) * 100;
+                const y = ((90 - program.lat) / 180) * 100;
+                
+                program.x = x;
+                program.y = y;
+            });
+            
+            let scale = 1;
+            let offsetX = 0;
+            let offsetY = 0;
+            let isDragging = false;
+            let startX, startY;
+            
+            // Create map points with accurate positions
+            programs.forEach(program => {
+                const point = document.createElement('div');
+                point.className = 'map-point';
+                point.dataset.type = program.type;
+                point.style.left = `${program.x}%`;
+                point.style.top = `${program.y}%`;
+                
+                const tooltip = document.createElement('div');
+                tooltip.className = 'map-tooltip';
+                tooltip.textContent = `${program.name}\n${program.country}\n${program.students} students`;
+                tooltip.style.whiteSpace = 'pre-line';
+                tooltip.style.textAlign = 'center';
+                tooltip.style.minWidth = '120px';
+                
+                point.appendChild(tooltip);
+                worldMap.appendChild(point);
+                
+                // Add click event to map points
+                point.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const programCard = document.querySelector(`[data-program="${program.type}"]`);
+                    if (programCard) {
+                        programCard.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        
+                        // Add highlight effect
+                        programCard.style.boxShadow = '0 0 0 3px rgba(255, 107, 157, 0.5)';
+                        programCard.style.borderColor = 'var(--pink)';
+                        setTimeout(() => {
+                            programCard.style.boxShadow = 'var(--shadow)';
+                            programCard.style.borderColor = 'var(--cream-dark)';
+                        }, 2000);
+                    }
+                });
+                
+                point.addEventListener('mouseenter', () => {
+                    tooltip.style.opacity = '1';
+                });
+                
+                point.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                });
+            });
+            
+            // Map drag functionality
+            worldMap.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX - offsetX;
+                startY = e.clientY - offsetY;
+                worldMap.style.cursor = 'grabbing';
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                offsetX = e.clientX - startX;
+                offsetY = e.clientY - startY;
+                
+                worldMap.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+            });
+            
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                worldMap.style.cursor = 'grab';
+            });
+            
+            // Touch events for mobile
+            worldMap.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].clientX - offsetX;
+                startY = e.touches[0].clientY - offsetY;
+            });
+            
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                offsetX = e.touches[0].clientX - startX;
+                offsetY = e.touches[0].clientY - startY;
+                
+                worldMap.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+            });
+            
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+            
+            // Smooth zoom controls
+            const zoomInBtn = document.getElementById('zoomInBtn');
+            const zoomOutBtn = document.getElementById('zoomOutBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            
+            const applyZoom = () => {
+                worldMap.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+                worldMap.style.transition = 'transform 0.3s ease';
+            };
+            
+            zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.2, 3);
+                applyZoom();
+            });
+            
+            zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.2, 0.5);
+                applyZoom();
+            });
+            
+            resetBtn.addEventListener('click', () => {
+                scale = 1;
+                offsetX = 0;
+                offsetY = 0;
+                worldMap.style.transform = `translate(0, 0) scale(1)`;
+                worldMap.style.transition = 'transform 0.5s ease';
+            });
+            
+            // Add zoom with mouse wheel
+            worldMap.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                scale = Math.max(0.5, Math.min(3, scale * delta));
+                applyZoom();
+            });
+        }
+        
+        // Enhanced Show Students Modal
+        const showStudentsBtns = document.querySelectorAll('.show-students-btn');
+        const studentsModal = document.getElementById('studentsModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalTitle = document.getElementById('modalTitle');
+        const studentsList = document.getElementById('studentsList');
+        
+        showStudentsBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const program = this.dataset.program;
+                const data = studentsData[program];
+                
+                if (data) {
+                    modalTitle.textContent = data.title;
+                    studentsList.innerHTML = '';
+                    
+                    data.students.forEach(student => {
+                        const studentItem = document.createElement('div');
+                        studentItem.className = 'student-item';
+                        studentItem.innerHTML = `
+                            <div class="student-name">${student.name}</div>
+                            <div class="student-info">
+                                <div class="student-info-row">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Year: ${student.year}</span>
+                                </div>
+                                <div class="student-info-row">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>${student.program}</span>
+                                </div>
+                            </div>
+                        `;
+                        studentsList.appendChild(studentItem);
+                    });
+                    
+                    studentsModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    // For extra programs without student data
+                    modalTitle.textContent = `${this.closest('.program-card, .extra-program-card').querySelector('h3').textContent}`;
+                    studentsList.innerHTML = `
+                        <div style="text-align: center; padding: 2rem;">
+                            <i class="fas fa-info-circle" style="font-size: 3rem; color: var(--pink); margin-bottom: 1rem;"></i>
+                            <h3 style="color: var(--navy); margin-bottom: 1rem;">Program Information</h3>
+                            <p style="color: var(--gray); line-height: 1.6;">
+                                Detailed information about this program and participating students is being compiled.<br>
+                                Please contact the programs coordinator for more details.
+                            </p>
+                        </div>
+                    `;
+                    studentsModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            studentsModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        studentsModal.addEventListener('click', (e) => {
+            if (e.target === studentsModal) {
+                studentsModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Enhanced Program Card Hover Effects
+        const programCards = document.querySelectorAll('.program-card, .extra-program-card');
+        programCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // View More Button Functionality
+        const viewMoreBtn = document.getElementById('viewMoreBtn');
+        const extraPrograms = document.getElementById('extraPrograms');
+        
+        if (viewMoreBtn && extraPrograms) {
+            viewMoreBtn.addEventListener('click', function() {
+                if (extraPrograms.classList.contains('visible')) {
+                    // Hide extra programs
+                    extraPrograms.classList.remove('visible');
+                    this.innerHTML = `
+                        <i class="fas fa-plus"></i>
+                        View All Programs (6 More)
+                    `;
+                    
+                    // Scroll to top of programs section
+                    document.querySelector('.programs-section').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                } else {
+                    // Show extra programs
+                    extraPrograms.classList.add('visible');
+                    this.innerHTML = `
+                        <i class="fas fa-minus"></i>
+                        Hide Extra Programs
+                    `;
+                    
+                    // Scroll to show the new cards
+                    extraPrograms.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Animate the extra cards
+                    const extraCards = extraPrograms.querySelectorAll('.fade-in');
+                    extraCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('visible');
+                        }, index * 100);
+                    });
+                }
+            });
+        }
+        
+        // دالة لضبط حجم الصور تلقائياً
+        function adjustLogoImages() {
+            const logos = document.querySelectorAll('.program-logo, .extra-program-logo');
+            
+            logos.forEach(logo => {
+                // إضافة الأنماط المباشرة للتأكد من تنفيذها
+                logo.style.width = '85%';
+                logo.style.height = '70%';
+                logo.style.objectFit = 'contain';
+                logo.style.backgroundColor = 'white';
+                logo.style.borderRadius = '12px';
+                logo.style.padding = '20px';
+                logo.style.boxSizing = 'border-box';
+                
+                // إضافة خلفية للصور ذات الخلفية الشفافة
+                const src = logo.src.toLowerCase();
+                if (src.includes('uwc') || src.includes('yygs') || src.includes('ala')) {
+                    logo.style.backgroundColor = 'white';
+                    logo.style.padding = '25px';
+                    logo.style.border = '1px solid rgba(0, 0, 0, 0.15)';
+                    logo.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        }
+
+        // Initialize everything
+        window.addEventListener('load', () => {
+            fadeInOnScroll();
+            initializeWorldMap();
+            adjustLogoImages();
+            
+            // Add visible class to initial fade-in elements
+            document.querySelectorAll('.fade-in').forEach((el, index) => {
+                setTimeout(() => {
+                    if (el.getBoundingClientRect().top < window.innerHeight) {
+                        el.classList.add('visible');
+                    }
+                }, index * 100);
+            });
+        });
+        
+        window.addEventListener('resize', adjustLogoImages);
+    </script>
+</body>
+</html>

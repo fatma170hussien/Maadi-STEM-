@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams and Clubs | Maadi STEM</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a192f;          /* Dark navy blue */
+            --navy-light: #1a2947;    /* Lighter navy */
+            --pink: #FF6B9D;          /* Primary pink */
+            --pink-light: #ff9ec0;    /* Light pink */
+            --pink-dark: #e05583;     /* Dark pink */
+            --peach: #f5b4b3;         /* Soft peach accent */
+            --cream: #fef7fa;         /* Pinkish cream background */
+            --cream-dark: #f5eef2;    /* Darker cream */
+            --white: #ffffff;
+            --gray: #7a7f8f;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 20px 40px rgba(255, 107, 157, 0.1);
+            --shadow-dark: 0 20px 40px rgba(10, 25, 47, 0.15);
+            
+            /* Additional variables for this page */
+            --dark-blue: #0a192f;
+            --dark-blue-secondary: #1a2947;
+            --dark-blue-deep: #0e1525;
+            --sharp-shadow: 0 8px 25px rgba(10, 25, 47, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        h1, h2, h3, h4, h5, .logo-text, .section-title, .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        /* ========== HEADER STYLES FROM MAIN PAGE ========== */
+        /* Elegant Header - TRANSPARENT VERSION */
+        header {
+            background-color: transparent;
+            padding: 2rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        /* Header becomes solid on scroll */
+        header.scrolled {
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--pink);
+            padding: 5px;
+            background-color: var(--cream);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo-text h1 {
+            text-shadow: none;
+        }
+
+        .logo-text p {
+            font-size: 0.70rem;
+            color: var(--pink-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+            font-weight: 300;
+            padding-bottom: 10px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Elegant Navigation - INCREASED SPACING FOR HOME LINK */
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            height: 100%;
+        }
+
+        /* Increased gap between logo and first nav item (Home) */
+        nav ul li:first-child {
+            margin-left: 3rem; /* Increased from previous spacing */
+        }
+
+        nav ul li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-right: 2.8rem; /* Standard spacing between nav items */
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.05rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+            opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        header.scrolled nav a {
+            text-shadow: none;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .btn-pink {
+            padding: 0.8rem 2.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+
+        header.scrolled .btn-pink {
+            background-color: transparent;
+            border: 1px solid var(--pink);
+            color: var(--pink);
+        }
+
+        .btn-pink::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn-pink:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+            border-color: var(--pink);
+        }
+
+        .btn-pink:hover::before {
+            left: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header.scrolled .mobile-menu-btn {
+            color: var(--pink);
+            text-shadow: none;
+        }
+
+        /* Dropdown Menu Styles - Standard for all dropdowns */
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0.5rem 0;
+            gap: 0.5rem;
+        }
+
+        .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover > a i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 10px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            text-shadow: none;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        /* Campus Dropdown with NESTED structure */
+        .campus-dropdown .dropdown-menu {
+            min-width: 210px;
+            padding: 0.8rem 0;
+        }
+
+        .campus-main-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .campus-main-item:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-main-item i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nested-dropdown {
+            position: relative;
+        }
+
+        .nested-dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: var(--transition);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            border-left: none;
+            margin-left: 5px;
+        }
+
+        .nested-dropdown:hover .nested-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .nested-dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .nested-dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--pink);
+            cursor: pointer;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-menu ul li {
+            margin: 2rem 0;
+        }
+
+        .mobile-menu ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        .mobile-menu-btn-pink {
+            margin-top: 3rem;
+            padding: 1rem 2.5rem;
+            background-color: transparent;
+            color: var(--pink);
+            border: 1px solid var(--pink);
+            border-radius: 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn-pink:hover {
+            background-color: rgba(255, 107, 157, 0.1);
+        }
+
+        /* Mobile menu dropdown styles */
+        .mobile-menu .dropdown {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-menu .dropdown > a {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-menu .dropdown-menu {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            background: transparent;
+            box-shadow: none;
+            border: none;
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mobile-menu .dropdown-menu a {
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+            border-left: 2px solid rgba(255, 107, 157, 0.3);
+        }
+
+        .mobile-menu .dropdown-menu a:hover {
+            padding-left: 1rem;
+        }
+
+        /* ========== ORIGINAL PAGE STYLES ========== */
+        /* Hero Section with Dynamic Background */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: -120px; /* Compensate for fixed header */
+            padding-top: 120px; /* Add padding for header */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(26, 41, 71, 0.8));
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, var(--white), var(--pink-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* New Teams Section Design */
+        .teams-section {
+            padding: 100px 0;
+            background: var(--bg-page);
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 100px 0 60px;
+            position: relative;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--dark-blue);
+            display: inline-block;
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 20px;
+            background: linear-gradient(45deg, var(--dark-blue), var(--pink-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pink-primary), var(--dark-blue-secondary));
+            border-radius: 5px;
+        }
+
+        /* Teams Stack Design */
+        .stack {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 28px;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            border: none;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pink-primary), var(--dark-blue-secondary));
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.12);
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 999px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card h2 {
+            color: var(--dark-blue);
+            font-size: 32px;
+            margin: 10px 0 14px;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subtitle {
+            color: var(--pink-primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: var(--gray-text);
+            margin-bottom: 25px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .stats {
+            display: flex;
+            gap: 18px;
+            margin-top: 22px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            min-width: 120px;
+            background: linear-gradient(135deg, var(--pink-primary), var(--dark-blue));
+            color: var(--white);
+            padding: 16px 18px;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat h4 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat span {
+            font-size: 14px;
+            opacity: 0.9;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .slider {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .slider img.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+
+        .nav:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .nav.prev {
+            left: 15px;
+        }
+
+        .nav.next {
+            right: 15px;
+        }
+
+        .links {
+            margin-top: 18px;
+        }
+
+        .links a {
+            color: var(--pink-primary);
+            font-weight: 600;
+            margin-right: 14px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+            color: var(--pink-dark);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================== */
+        /* UPDATED CLUBS SECTION WITH BACKGROUND IMAGE */
+        /* =========================== */
+        
+        .clubs-section {
+            color: #ffffff;
+            padding: 80px 0 40px;
+            margin: 60px 0;
+            animation: fadeIn 1s ease-out 0.9s both;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Background image with overlay */
+        .clubs-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(26, 41, 71, 0.9)), 
+                        url('../images/ourclubs.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
+            filter: brightness(0.9);
+        }
+
+        /* Fallback gradient if image doesn't load */
+        .clubs-section {
+            background: linear-gradient(135deg, #0a192f 0%, #1a2947 50%, #FF6B9D 100%);
+        }
+
+        /* Header for clubs section */
+        .clubs-header {
+            padding: 0 0 60px;
+            text-align: center;
+        }
+
+        .clubs-header h1 {
+            font-size: 3.5rem;
+            letter-spacing: 5px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, var(--white), var(--pink-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .clubs-header span {
+            color: #f3b6c9; /* بينك رقيق */
+        }
+
+        /* Cards Layout */
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            padding: 40px 0 80px;
+        }
+
+        /* Card Style */
+        .club-card {
+            border: 2px solid rgba(243, 182, 201, 0.5);
+            padding: 35px;
+            background: rgba(10, 15, 44, 0.7);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .club-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(243, 182, 201, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .club-card:hover::before {
+            left: 100%;
+        }
+
+        .club-card:hover {
+            background: rgba(243, 182, 201, 0.9);
+            color: #0a0f2c;
+            transform: translateY(-12px);
+            border-color: #f3b6c9;
+            box-shadow: 0 20px 40px rgba(243, 182, 201, 0.4);
+        }
+
+        /* Card Content */
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Icon */
+        .club-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #f3b6c9;
+            transition: color 0.4s ease;
+        }
+
+        .club-card:hover .club-icon {
+            color: #0a0f2c;
+        }
+
+        /* Card Text */
+        .club-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+            transition: color 0.4s ease;
+        }
+
+        .club-card:hover h3 {
+            color: #0a0f2c;
+        }
+
+        .club-card p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0.9;
+            transition: color 0.4s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .club-card:hover p {
+            color: #0a0f2c;
+            opacity: 1;
+        }
+
+        /* Animation for cards */
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .club-card {
+            animation: cardAppear 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .club-card:nth-child(1) { animation-delay: 0.1s; }
+        .club-card:nth-child(2) { animation-delay: 0.2s; }
+        .club-card:nth-child(3) { animation-delay: 0.3s; }
+        .club-card:nth-child(4) { animation-delay: 0.4s; }
+        .club-card:nth-child(5) { animation-delay: 0.5s; }
+        .club-card:nth-child(6) { animation-delay: 0.6s; }
+        .club-card:nth-child(7) { animation-delay: 0.7s; }
+        .club-card:nth-child(8) { animation-delay: 0.8s; }
+        .club-card:nth-child(9) { animation-delay: 0.9s; }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to bottom, var(--dark-blue), var(--dark-blue-deep));
+            color: var(--white);
+            padding: 80px 5% 40px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pink-primary), var(--dark-blue-secondary));
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--pink-light);
+            font-weight: bold;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--pink-primary);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--pink-peach);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.05rem;
+            position: relative;
+            padding-left: 0;
+            display: inline-block;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-links a::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: var(--transition);
+            color: var(--pink-primary);
+        }
+
+        .footer-links a:hover {
+            color: var(--pink-light);
+            padding-left: 20px;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+            left: 0;
+        }
+
+        .contact-info p {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--pink-primary);
+            width: 20px;
+            font-size: 1.1rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--pink-peach);
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header-container, .container {
+                padding: 0 2rem;
+            }
+            
+            .campus-dropdown .dropdown-menu {
+                min-width: 200px;
+            }
+            
+            .nested-dropdown-menu {
+                min-width: 200px;
+            }
+            
+            nav ul li:first-child {
+                margin-left: 2rem;
+            }
+            
+            nav ul li {
+                margin-right: 2rem;
+            }
+            
+            .dropdown-menu a {
+                padding: 0.9rem 1.8rem;
+                font-size: 0.95rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-actions .btn-pink {
+                display: none;
+            }
+            
+            .hero {
+                min-height: 600px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .card {
+                grid-template-columns: 1fr;
+                padding: 40px;
+            }
+            
+            .slider {
+                min-height: 300px;
+                order: -1;
+            }
+            
+            .clubs-header h1 {
+                font-size: 3rem;
+            }
+            
+            .clubs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 25px;
+            }
+            
+            .clubs-section::before {
+                background-attachment: scroll;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container, .container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero {
+                min-height: 500px;
+                height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .card h2 {
+                font-size: 26px;
+            }
+            
+            .card {
+                padding: 30px;
+            }
+            
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .clubs-header h1 {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+            
+            .clubs-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .club-card {
+                padding: 25px;
+                min-height: auto;
+            }
+            
+            .club-card h3 {
+                font-size: 1.6rem;
+            }
+            
+            .club-card p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.4rem;
+            }
+            
+            header.scrolled .logo-text h1 {
+                font-size: 1.3rem;
+            }
+            
+            .stat {
+                min-width: 100px;
+                padding: 12px 15px;
+            }
+            
+            .stat h4 {
+                font-size: 18px;
+            }
+            
+            .clubs-header h1 {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+            
+            .club-card {
+                padding: 20px;
+            }
+            
+            .club-icon {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            .club-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .club-card p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== HEADER FROM MAIN PAGE ========== -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Maadi STEM School</h1>
+                    <p>Center of Egyptian innovation leaders</p>
+                </div>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="overview.html">Who we are</a>
+                            <a href="mission-vision.html">Mission & Vision</a>
+                            <a href="staff.html">Staff</a>
+                            <a href="student-criteria.html">Student Criteria</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown campus-dropdown">
+                        <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-school"></i> School</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="School_laboratory.html">Laboratory</a>
+                                    <a href="classes.html">Classes</a>
+                                    <a href="fablab.html">Fab Lab</a>
+                                    <a href="library.html">Library</a>
+                                    <a href="assembly.html">Assembly</a>
+                                    <a href="playgrounds.html">Playgrounds</a>
+                                </div>
+                            </div>
+                            
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-bed"></i> Dorms</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="studying-hall.html">Studying Hall</a>
+                                    <a href="restaurant.html">Restaurant</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Events and History as normal links -->
+                            <div class="events-history-menu">
+                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li><a href="academics.html">Academics</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="compititions.html">Competitions</a>
+                            <a href="programs.html">Programs</a>
+                            <a href="teamsandclubs.html">Teams & Clubs</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="alumni.html">Alumni</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <a href="overview.html">Who we are</a>
+                    <a href="mission-vision.html">Mission & Vision</a>
+                    <a href="staff.html">Staff</a>
+                    <a href="student-criteria.html">Student Criteria</a>
+                </div>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Campus <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-school"></i> School</h4>
+                        <div class="mobile-campus-links">
+                            <a href="School_laboratory.html">Laboratory</a>
+                            <a href="classes.html">Classes</a>
+                            <a href="fablab.html">Fab Lab</a>
+                            <a href="library.html">Library</a>
+                            <a href="assembly.html">Assembly</a>
+                            <a href="playgrounds.html">Playgrounds</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-bed"></i> Dorms</h4>
+                        <div class="mobile-campus-links">
+                            <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                            <a href="studying-hall.html">Studying Hall</a>
+                            <a href="restaurant.html">Restaurant</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-calendar-alt"></i> Events</h4>
+                        <div class="mobile-campus-links">
+                            <a href="events.html">All Events</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-history"></i> History</h4>
+                        <div class="mobile-campus-links">
+                            <a href="history.html">School History</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li><a href="academics.html">Academics</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <a href="compititions.html">Competitions</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="teamsandclubs.html">Teams & Clubs</a>
+                </div>
+            </li>
+            
+            <li><a href="alumni.html">Alumni</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            
+            <!-- Apply Now button for mobile -->
+            <li><a href="#" class="mobile-menu-btn-pink">Apply Now</a></li>
+        </ul>
+    </div>
+
+    <!-- ========== ORIGINAL PAGE CONTENT ========== -->
+    <!-- Hero Section with Dynamic Background -->
+    <section class="hero" id="hero-section">
+        <div class="hero-content">
+            <h1>Teams and Clubs</h1>
+            <p>Where passion meets innovation at Maadi STEM High School</p>
+        </div>
+    </section>
+
+    <!-- Teams Section - New Design -->
+    <div class="teams-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>OUR TEAMS</h2>
+            </div>
+            
+            <div class="stack">
+                <!-- MAADI STEM MUN -->
+                <div class="card">
+                    <div>
+                        <span class="badge">MAADI STEM MUN</span>
+                        <h2>Maadi STEM Model United Nations</h2>
+                        <div class="subtitle">MAADI STEM MUN Activity</div>
+                        <p>
+                            Our prestigious MUN team participates in national and international conferences,
+                            where students represent countries, debate global issues, and develop critical
+                            thinking, public speaking, research, and diplomacy skills. The team has earned
+                            numerous awards and recognition for outstanding performance.
+                        </p>
+                        
+                        
+                    </div>
+
+                    <div class="slider" id="munSlider">
+                        <img src="../images/mun1.png" class="active" alt="" />
+
+                        <button class="nav prev" onclick="prevSlide('munSlider')">‹</button>
+                        <button class="nav next" onclick="nextSlide('munSlider')">›</button>
+                    </div>
+                </div>
+
+                <!-- TEDx -->
+                <div class="card" style="animation-delay:.15s">
+                    <div>
+                        <span class="badge">TEDx MaadiSTEM</span>
+                        <h2>TEDx MaadiSTEM</h2>
+                        <div class="subtitle">TEDx MaadiSTEM Activity</div>
+                        <p>
+                            The official TEDx license holders at Maadi STEM, organizing annual conferences
+                            that bring together thinkers, innovators, and creators. Students learn event
+                            planning, public speaking, marketing, and content creation while spreading
+                            impactful ideas within our community.
+                        </p>
+                        
+                       
+                    </div>
+
+                    <div class="slider" id="tedxSlider">
+                        <img src="../images/tedx.png" class="active" alt="TEDx Event" />
+                        <img src="../images/tedx2.jpg" alt="TEDx Innovation" />
+                         <img src="../images/tedx3.jpg" alt="TEDx Innovation" />
+                         <img src="../images/tedx4.jpg" alt="TEDx Innovation" />
+                        <button class="nav prev" onclick="prevSlide('tedxSlider')">‹</button>
+                        <button class="nav next" onclick="nextSlide('tedxSlider')">›</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clubs Section - Updated Design with Background Image -->
+    <section class="clubs-section">
+        <div class="container">
+            <div class="clubs-header">
+                <h1>OUR <span>CLUBS</span></h1>
+            </div>
+
+            <div class="clubs-grid">
+                <!-- Biology Club -->
+                <div class="club-card">
+                    <div class="card-content">
+                        <h3>Biology Club</h3>
+                        <p>A scientific community that explores life sciences through discussions, experiments, and collaborative learning beyond traditional classrooms. This club encourages hands-on discovery, from microscopic organisms to ecosystems, fostering curiosity and scientific thinking. Members engage in lab work, field studies, and projects related to genetics, ecology, and biotechnology, preparing them for future careers in research, medicine, and environmental science.
+
+</p>
+                    </div>
+                </div>
+
+                <!-- Geology Club -->
+                <div class="club-card">
+                    <div class="card-content">
+                        <h3>Geology Club</h3>
+                        <p>Dedicated to understanding earth sciences with a passion for rocks, minerals, and geological processes. The club organizes rock-hunting trips, mineral identification workshops, and discussions on topics like plate tectonics, volcanoes, and fossil records. It's an ideal space for students interested in how the Earth formed, changes over time, and the natural forces shaping our planet today.
+
+</p>
+                    </div>
+                </div>
+
+                <!-- English Club -->
+                <div class="club-card">
+                    <div class="card-content">
+                        <h3>English Club</h3>
+                        <p>A creative space for debates, writing, and discussions that strengthens communication and language confidence. Members participate in activities such as poetry slams, storytelling sessions, essay contests, and book clubs. The club helps improve public speaking, critical thinking, and expressive writing skills while exploring diverse literary genres and cultures.
+
+</p>
+                    </div>
+                </div>
+
+                <!-- Sports Club -->
+                <div class="club-card">
+                    <div class="card-content">
+                        <h3>Sports Club</h3>
+                        <p>Encouraging teamwork, fitness, and discipline through various physical and athletic activities. Whether through team sports like football and basketball or individual pursuits like running and yoga, this club promotes a healthy lifestyle, leadership, and sportsmanship. It's also a platform for organizing intramural competitions, fitness challenges, and wellness workshops.
+
+</p>
+                    </div>
+                </div>
+
+                <!-- Technology Club -->
+                <div class="club-card">
+                    <div class="card-content">
+                        <h3>Technology Club</h3>
+                        <p>Exploring coding, innovation, and emerging technologies to prepare students for the digital future. Members learn programming languages, develop software and apps, and experiment with concepts in artificial intelligence, cybersecurity, and data science. The club bridges theory with real-world tech solutions, inspiring innovation and problem-solving.
+
+</p>
+                    </div>
+                </div>
+
+                <!-- Media Club -->
+                <div class="club-card">
+                    <div class="card-content">
+                        <h3>Media Club</h3>
+                        <p>Developing skills in photography, videography, and digital storytelling for modern media platforms. Students get hands-on experience in creating content, editing videos, managing social media, and producing podcasts or short films. The club emphasizes visual communication, creative expression, and technical proficiency in today's media-driven world.
+
+</p>
+                    </div>
+                </div>
+
+                <!-- Pathfinders Club -->
+                <div class="club-card">
+                    <div class="card-content">
+                        <h3>Pathfinders</h3>
+                        <p>Develops leadership, outdoor skills, and community service through adventure activities, camping trips, and character-building exercises. More than just an outdoor club, Pathfinders teaches survival skills, teamwork, resilience, and empathy. Members participate in hikes, volunteer projects, and leadership workshops, fostering a spirit of service and exploration.
+
+</p>
+                    </div>
+                </div>
+
+                <!-- Code & Circuits Club -->
+                <div class="club-card">
+                    <div class="card-content">
+                        <h3>Code & Circuits</h3>
+                        <p>Combines programming with electronics to build interactive projects, from simple circuits to complex IoT devices and robotics systems. This club is perfect for those interested in hardware and software integration, offering practical experience with microcontrollers, sensors, and automation. Projects might include smart home systems, robots, or wearable tech.
+
+</p>
+                    </div>
+                </div>
+
+                <!-- Hack Club -->
+                <div class="club-card">
+                    <div class="card-content">
+                        <h3>Hack Club</h3>
+                        <p>Part of a global network of student-led coding clubs where members build projects, learn new technologies, and participate in hackathons. Focused on collaborative coding, innovation, and real-world problem-solving, Hack Club provides resources, mentorship, and a community for young developers to create, share, and compete in tech events.
+
+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Maadi STEM</h3>
+                    <p>High School for Science & Technology. Empowering the next generation of innovators, thinkers, and leaders through excellence in STEM education.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../pages/overview.html">About Us</a></li>
+                        <li><a href="../pages/academics.html">Academics</a></li>
+                        <li><a href="../pages/apply.html">Admissions</a></li>
+                        <li><a href="#">Campus Life</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Maadi, Cairo, Egypt</p>
+                        <p><i class="fas fa-phone"></i> [555] 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@maadistem.edu</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 4:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 Maadi STEM High School. All rights reserved. | Excellence in STEM Education</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========== HEADER FUNCTIONALITY ==========
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Initialize header state
+        if (window.pageYOffset > 50) {
+            header.classList.add('scrolled');
+        }
+
+        // ========== ORIGINAL PAGE FUNCTIONALITY ==========
+        // Dynamic Hero Background Images
+        const heroSection = document.getElementById('hero-section');
+        const heroImages = [
+            '../images/ourclubs2.jpg',
+        ];
+        
+        const fallbackGradients = [
+            'linear-gradient(135deg, #0a192f 0%, #1a2947 50%, #FF6B9D 100%)',
+            'linear-gradient(135deg, #1a2947 0%, #0a192f 50%, #e05583 100%)'
+        ];
+        
+        let currentHeroIndex = 0;
+  
+        function changeHeroBackground() {
+            const img = new Image();
+            img.src = heroImages[currentHeroIndex];
+            
+            img.onload = function() {
+                heroSection.style.backgroundImage = `linear-gradient(rgba(10, 25, 47, 0.7), rgba(26, 41, 71, 0.8)), url('${heroImages[currentHeroIndex]}')`;
+                heroSection.style.transition = 'background-image 1.5s ease-in-out';
+            };
+            
+            img.onerror = function() {
+                heroSection.style.backgroundImage = fallbackGradients[currentHeroIndex];
+                heroSection.style.transition = 'background-image 1.5s ease-in-out';
+            };
+            
+            currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
+        }
+
+        // Initial background
+        changeHeroBackground();
+        
+        // Change hero background every 5 seconds
+        setInterval(changeHeroBackground, 5000);
+
+        // Slider functionality
+        function nextSlide(id) {
+            const slider = document.getElementById(id);
+            const imgs = slider.querySelectorAll('img');
+            let currentIndex = Array.from(imgs).findIndex(img => img.classList.contains('active'));
+            imgs[currentIndex].classList.remove('active');
+            imgs[(currentIndex + 1) % imgs.length].classList.add('active');
+        }
+        
+        function prevSlide(id) {
+            const slider = document.getElementById(id);
+            const imgs = slider.querySelectorAll('img');
+            let currentIndex = Array.from(imgs).findIndex(img => img.classList.contains('active'));
+            imgs[currentIndex].classList.remove('active');
+            imgs[(currentIndex - 1 + imgs.length) % imgs.length].classList.add('active');
+        }
+        
+        // Auto slide for sliders
+        setInterval(() => nextSlide('munSlider'), 5000);
+        setInterval(() => nextSlide('tedxSlider'), 4500);
+
+        // Animated stats counters
+        function animateStats() {
+            const stats = [
+                { id: 'mun-conferences', target: 25, duration: 2000 },
+                { id: 'mun-awards', target: 50, duration: 2500 },
+                { id: 'mun-members', target: 80, duration: 3000 },
+                { id: 'tedx-events', target: 8, duration: 1500 },
+                { id: 'tedx-speakers', target: 60, duration: 2000 },
+                { id: 'tedx-attendees', target: 2000, duration: 3000 }
+            ];
+            
+            stats.forEach(stat => {
+                const element = document.getElementById(stat.id);
+                if (element) {
+                    const startValue = 0;
+                    const endValue = stat.target;
+                    const duration = stat.duration;
+                    const increment = endValue / (duration / 16);
+                    let currentValue = startValue;
+                    
+                    const timer = setInterval(() => {
+                        currentValue += increment;
+                        if (currentValue >= endValue) {
+                            element.textContent = endValue + '+';
+                            clearInterval(timer);
+                        } else {
+                            element.textContent = Math.floor(currentValue) + '+';
+                        }
+                    }, 16);
+                }
+            });
+        }
+        
+        // Trigger stats animation when teams section is in view
+        const teamsSection = document.querySelector('.stack');
+        if (teamsSection) {
+            const teamsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(animateStats, 500);
+                        teamsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            teamsObserver.observe(teamsSection);
+        }
+
+        // Animate club cards on scroll
+        const clubCards = document.querySelectorAll('.club-card');
+        const clubObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        clubCards.forEach(card => {
+            clubObserver.observe(card);
+        });
+
+        // Animation on scroll for cards
+        const cards = document.querySelectorAll('.card');
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        cards.forEach(card => {
+            cardObserver.observe(card);
+        });
+
+        // Handle clubs background image loading
+        window.addEventListener('load', function() {
+            const clubsSection = document.querySelector('.clubs-section');
+            const img = new Image();
+            img.src = '../images/ourclubs.jpg';
+            
+            img.onload = function() {
+                clubsSection.style.background = `linear-gradient(rgba(10, 25, 47, 0.85), rgba(26, 41, 71, 0.9)), url('${img.src}')`;
+                clubsSection.style.backgroundSize = 'cover';
+                clubsSection.style.backgroundPosition = 'center';
+                clubsSection.style.backgroundAttachment = 'fixed';
+            };
+            
+            img.onerror = function() {
+                // Use fallback gradient if image doesn't load
+                clubsSection.style.background = 'linear-gradient(135deg, #0a192f 0%, #1a2947 50%, #FF6B9D 100%)';
+            };
+        });
+
+        // Set active state for current page in navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set Teams & Clubs as active
+            const extracurricLinks = document.querySelectorAll('.dropdown-menu a[href*="teamsandclubs.html"]');
+            extracurricLinks.forEach(link => {
+                link.classList.add('active');
+            });
+            
+            // Also set parent link as active
+            const extracurricParent = document.querySelector('.dropdown > a[href="#"]');
+            if (extracurricParent) {
+                extracurricParent.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

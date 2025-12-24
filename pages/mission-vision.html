@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission & Vision | Maadi STEM School for Girls</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ========== HEADER STYLES ========== */
+        :root {
+            --navy: #0a192f;          /* Dark navy blue */
+            --navy-light: #1a2947;    /* Lighter navy */
+            --pink: #FF6B9D;          /* Primary pink */
+            --pink-light: #ff9ec0;    /* Light pink */
+            --pink-dark: #e05583;     /* Dark pink */
+            --peach: #f5b4b3;         /* Soft peach accent */
+            --cream: #fef7fa;         /* Pinkish cream background */
+            --cream-dark: #f5eef2;    /* Darker cream */
+            --white: #ffffff;
+            --gray: #7a7f8f;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 20px 40px rgba(255, 107, 157, 0.1);
+            --shadow-dark: 0 20px 40px rgba(10, 25, 47, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        h1, h2, h3, h4, h5, .logo-text, .section-title, .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        /* Elegant Header - TRANSPARENT VERSION */
+        header {
+            background-color: transparent;
+            padding: 2rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        /* Header becomes solid on scroll */
+        header.scrolled {
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--pink);
+            padding: 5px;
+            background-color: var(--cream);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo-text h1 {
+            text-shadow: none;
+        }
+
+        .logo-text p {
+            font-size: 0.70rem;
+            color: var(--pink-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+            font-weight: 300;
+            padding-bottom: 10px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Elegant Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            height: 100%;
+        }
+
+        nav ul li:first-child {
+            margin-left: 3rem;
+        }
+
+        nav ul li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-right: 2.8rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.05rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+            opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        header.scrolled nav a {
+            text-shadow: none;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .btn-pink {
+            padding: 0.8rem 2.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+
+        header.scrolled .btn-pink {
+            background-color: transparent;
+            border: 1px solid var(--pink);
+            color: var(--pink);
+        }
+
+        .btn-pink::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn-pink:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+            border-color: var(--pink);
+        }
+
+        .btn-pink:hover::before {
+            left: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header.scrolled .mobile-menu-btn {
+            color: var(--pink);
+            text-shadow: none;
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0.5rem 0;
+            gap: 0.5rem;
+        }
+
+        .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover > a i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 10px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            text-shadow: none;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        /* Campus Dropdown with NESTED structure */
+        .campus-dropdown .dropdown-menu {
+            min-width: 210px;
+            padding: 0.8rem 0;
+        }
+
+        .campus-main-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .campus-main-item:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-main-item i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nested-dropdown {
+            position: relative;
+        }
+
+        .nested-dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: var(--transition);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            border-left: none;
+            margin-left: 5px;
+        }
+
+        .nested-dropdown:hover .nested-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .nested-dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .nested-dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            padding: 2rem;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--pink);
+            cursor: pointer;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-menu ul li {
+            margin: 2rem 0;
+        }
+
+        .mobile-menu ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        .mobile-menu-btn-pink {
+            margin-top: 3rem;
+            padding: 1rem 2.5rem;
+            background-color: transparent;
+            color: var(--pink);
+            border: 1px solid var(--pink);
+            border-radius: 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn-pink:hover {
+            background-color: rgba(255, 107, 157, 0.1);
+        }
+
+        /* Mobile menu dropdown styles */
+        .mobile-menu .dropdown {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-menu .dropdown > a {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-menu .dropdown-menu {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            background: transparent;
+            box-shadow: none;
+            border: none;
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mobile-menu .dropdown-menu a {
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+            border-left: 2px solid rgba(255, 107, 157, 0.3);
+        }
+
+        .mobile-menu .dropdown-menu a:hover {
+            padding-left: 1rem;
+        }
+
+        /* ========== ORIGINAL PAGE STYLES ========== */
+        /* Elegant Design with Home Page Colors and Fonts */
+        :root {
+            --pink: #FF6B9D;
+            --pink-light: #FF8FB1;
+            --pink-pale: #FFE4EC;
+            --peach: #F5B4B3;
+            --cream: #F7E8E4;
+            --navy: #0A192F;
+            --navy-light: #1A2F4F;
+            --navy-dark: #06101F;
+            --white: #FFFFFF;
+            --off-white: #FAF7F5;
+            --gray-light: #F1F1F1;
+            --shadow-soft: 0 10px 40px rgba(255, 107, 157, 0.08);
+            --shadow-medium: 0 20px 60px rgba(255, 107, 157, 0.12);
+            --transition-elegant: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section with Background Image - Matching Home Page */
+        .mv-hero {
+            height: 85vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.92)), 
+                        url('../images/mission_vision.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Alternative image options (you can change the URL):
+           Science Lab: https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80
+           STEM Classroom: https://images.unsplash.com/photo-1596496181871-9681eacf2ce6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80
+           Girls in Lab: https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80
+           Future Scientists: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80
+        */
+        
+        .mv-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 107, 157, 0.1) 0%, transparent 60%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-badge {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--pink-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            display: block;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+            40% {transform: translateX(-50%) translateY(-10px);}
+            60% {transform: translateX(-50%) translateY(-5px);}
+        }
+        
+        /* Section Header - Matching Home Page */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .section-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--pink);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .section-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--navy-light);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Mission & Vision Cards */
+        .mv-overview {
+            padding: 100px 0;
+            background-color: var(--off-white);
+            position: relative;
+        }
+        
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            margin-top: 60px;
+        }
+        
+        .mv-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-elegant);
+            height: 100%;
+            position: relative;
+            border: 1px solid var(--cream);
+        }
+        
+        .mv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--pink-pale);
+        }
+        
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+        }
+        
+        .mv-card-content {
+            padding: 40px;
+        }
+        
+        .mv-card-icon {
+            font-size: 2.5rem;
+            color: var(--pink);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        
+        .mv-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+        
+        .mv-card-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--pink);
+            margin-bottom: 1.5rem;
+        }
+        
+        .mv-card-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--navy-light);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        
+        .mv-card-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .mv-card-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--cream);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: var(--transition-elegant);
+        }
+        
+        .mv-card-features li:hover {
+            padding-left: 5px;
+        }
+        
+        .mv-card-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .mv-card-features i {
+            color: var(--pink);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+        
+        .mv-card-features span {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--navy);
+            line-height: 1.6;
+        }
+        
+        /* Pillars Section - Matching Home Page */
+        .pillars-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--navy-light), var(--navy));
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pillars-section .section-header {
+            margin-bottom: 60px;
+        }
+        
+        .pillars-section .section-label {
+            color: var(--pink-light);
+        }
+        
+        .pillars-section .section-title {
+            color: var(--white);
+            font-size: 2.8rem;
+            font-weight: 600;
+        }
+        
+        .pillars-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        
+        .pillars-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pillar-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-elegant);
+            backdrop-filter: blur(5px);
+            text-align: center;
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 107, 157, 0.3);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .pillar-icon {
+            font-size: 2.5rem;
+            color: var(--pink-light);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        
+        .pillar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .pillar-description {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+        
+        /* Quote Section - Matching Home Page */
+        .quote-section {
+            padding: 100px 0;
+            background-color: var(--cream);
+            position: relative;
+        }
+        
+        .quote-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .quote-icon {
+            font-size: 2.5rem;
+            color: var(--pink);
+            margin-bottom: 2rem;
+            opacity: 0.5;
+        }
+        
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--navy);
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .quote-author {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--pink);
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .value-card {
+            padding: 40px 30px;
+            border-radius: 15px;
+            background-color: var(--off-white);
+            border: 1px solid var(--cream);
+            transition: var(--transition-elegant);
+            position: relative;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--pink);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .value-icon {
+            font-size: 2.2rem;
+            color: var(--pink);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        
+        .value-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+        
+        .value-description {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--navy-light);
+            line-height: 1.6;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--navy-light), var(--navy));
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--pink-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+        
+        /* CTA Section - Matching Home Page */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(255, 107, 157, 0.9), rgba(245, 180, 179, 0.9)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 40px;
+            background: var(--navy);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transition-elegant);
+            box-shadow: 0 10px 30px rgba(10, 25, 47, 0.2);
+        }
+        
+        .cta-button:hover {
+            background: var(--navy-light);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(10, 25, 47, 0.3);
+        }
+        
+        .cta-button i {
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to bottom, var(--navy), #0e1525);
+            color: var(--white);
+            padding: 80px 0 40px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-weight: 300;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 300;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--pink);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-5px);
+            border-color: var(--pink);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design - Matching Home Page */
+        @media (max-width: 1200px) {
+            .header-container {
+                padding: 0 2rem;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .pillars-container,
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .footer-container {
+                padding: 0 2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .mv-hero {
+                height: 70vh;
+                min-height: 500px;
+                padding-top: 100px;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .mv-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .quote-text {
+                font-size: 1.8rem;
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-actions .btn-pink {
+                display: none;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+            
+            .mv-hero {
+                height: 60vh;
+                min-height: 400px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .mv-card-content {
+                padding: 30px 25px;
+            }
+            
+            .pillar-card {
+                padding: 30px 20px;
+            }
+            
+            .cta-title {
+                font-size: 2.2rem;
+            }
+            
+            .cta-text {
+                font-size: 1.1rem;
+            }
+            
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.7rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-badge {
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .mv-card-title {
+                font-size: 1.8rem;
+            }
+            
+            .pillars-container,
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.4rem;
+            }
+            
+            header.scrolled .logo-text h1 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* NEW: Events and History as regular menu items */
+        .events-history-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .events-history-menu a {
+            padding: 0.9rem 2rem !important;
+            border-left: 3px solid transparent !important;
+        }
+
+        .events-history-menu a:hover {
+            border-left: 3px solid var(--pink) !important;
+            padding-left: 2.3rem !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER & NAVIGATION BAR ===== -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Maadi STEM School</h1>
+                    <p>Center of Egyptian innovation leaders</p>
+                </div>
+            </div>
+            
+            <!-- Navigation Bar -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    
+                    <!-- About Dropdown -->
+                    <li class="dropdown">
+                        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="overview.html">Who we are</a>
+                            <a href="mission-vision.html">Mission & Vision</a>
+                            <a href="staff.html">Staff</a>
+                            <a href="student-criteria.html">Student Criteria</a>
+                        </div>
+                    </li>
+                    
+                    <!-- Campus Dropdown with NESTED structure -->
+                    <li class="dropdown campus-dropdown">
+                        <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <!-- School - Nested Dropdown -->
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-school"></i> School</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="School_laboratory.html">Laboratory</a>
+                                    <a href="classes.html">Classes</a>
+                                    <a href="fablab.html">Fab Lab</a>
+                                    <a href="library.html">Library</a>
+                                    <a href="assembly.html">Assembly</a>
+                                    <a href="playgrounds.html">Playgrounds</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Dorms - Nested Dropdown -->
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-bed"></i> Dorms</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="studying-hall.html">Studying Hall</a>
+                                    <a href="restaurant.html">Restaurant</a>
+                                </div>
+                            </div>
+                            
+                            <!-- UPDATED: Events and History as normal links -->
+                            <div class="events-history-menu">
+                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li><a href="academics.html">Academics</a></li>
+                    
+                    <!-- Extracurriculars Dropdown -->
+                    <li class="dropdown">
+                        <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="competitions.html">Competitions</a>
+                            <a href="programs.html">Programs</a>
+                            <a href="teamsandclubs.html">Teams & Clubs</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="alumni.html">Alumni</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            
+            <!-- About Dropdown Mobile -->
+            <li class="dropdown">
+                <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="overview.html">Overview</a>
+                    <a href="history.html">History</a>
+                    <a href="staff.html">Staff</a>
+                    <a href="mission-vision.html" class="active">Mission & Vision</a>
+                    <a href="student-criteria.html">Student Criteria</a>
+                </div>
+            </li>
+            
+            <!-- Campus Dropdown Mobile -->
+            <li class="dropdown">
+                <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <!-- School Subsection -->
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-school"></i> School</h4>
+                        <ul>
+                            <li><a href="School_laboratory.html">Laboratory</a></li>
+                            <li><a href="classes.html">Classes</a></li>
+                            <li><a href="fablab.html">Fab Lab</a></li>
+                            <li><a href="library.html">Library</a></li>
+                            <li><a href="assembly.html">Assembly</a></li>
+                            <li><a href="playgrounds.html">Playgrounds</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Dorms Subsection -->
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-bed"></i> Dorms</h4>
+                        <ul>
+                            <li><a href="rooms-bathrooms.html">Dorm Rooms</a></li>
+                            <li><a href="studying-hall.html">Studying Hall</a></li>
+                            <li><a href="restaurant.html">Restaurant</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Events Subsection -->
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-calendar-alt"></i> Events</h4>
+                        <ul>
+                            <li><a href="upcoming-events.html">Upcoming Events</a></li>
+                            <li><a href="past-events.html">Past Events</a></li>
+                            <li><a href="event-calendar.html">Event Calendar</a></li>
+                            <li><a href="special-events.html">Special Events</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            
+            <li><a href="academics.html">Academics</a></li>
+            
+            <!-- Extracurriculars Dropdown Mobile -->
+            <li class="dropdown">
+                <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="competitions.html">Competitions</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="teamsandclubs.html">Teams & Clubs</a>
+                </div>
+            </li>
+            
+            <li><a href="alumni.html">Alumni</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="apply.html" class="mobile-menu-btn-pink">Apply Now</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section with Background Image -->
+    <section class="mv-hero">
+        <div class="hero-content">
+            <span class="hero-badge fade-in">Our Guiding Philosophy</span>
+            <h1 class="hero-title fade-in">Mission & Vision</h1>
+            <p class="hero-subtitle fade-in">Forging the future of STEM education through purpose-driven innovation and transformative leadership for young women in Egypt</p>
+            <br><br><br><br><br>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Overview -->
+    <section class="mv-overview">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Core Principles</span>
+                <h2 class="section-title">Our Foundation</h2>
+                <p class="section-subtitle">Two complementary perspectives that guide our educational journey and define our aspirations for the future</p>
+            </div>
+            
+            <div class="mv-grid">
+                <!-- Mission Card -->
+                <div class="mv-card fade-in">
+                    <div class="mv-card-content">
+                        <div class="mv-card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="mv-card-title">Our Mission</h3>
+                        <p class="mv-card-subtitle">The Purpose That Drives Us</p>
+                        <p class="mv-card-text">At Maadi STEM School for Girls, our mission is to provide exceptional STEM education that nurtures intellectual curiosity, fosters creativity, and develops compassionate leaders who will make meaningful contributions to our global society.</p>
+                        
+                        <ul class="mv-card-features">
+                            <li>
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Developing life-long learners through diverse, curiosity-driven courses</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-flask"></i>
+                                <span>Engaging students in hands-on science activities to build academic excellence</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-handshake"></i>
+                                <span>Fostering collaboration between students, educators, and communities</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-briefcase"></i>
+                                <span>Providing workplace-ready skills for STEM career success</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-globe"></i>
+                                <span>Cultivating global awareness in student-centered learning environments</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Vision Card -->
+                <div class="mv-card fade-in">
+                    <div class="mv-card-content">
+                        <div class="mv-card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="mv-card-title">Our Vision</h3>
+                        <p class="mv-card-subtitle">The Future We're Creating</p>
+                        <p class="mv-card-text">Maadi STEM School aspires to create independent learners equipped with critical thinking, collaboration, communication, and creativity skills who can apply scientific knowledge to contemporary issues and global challenges.</p>
+                        
+                        <ul class="mv-card-features">
+                            <li>
+                                <i class="fas fa-brain"></i>
+                                <span>Shaping Egypt's future through female STEM leadership</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-globe"></i>
+                                <span>Creating a global model for girls' STEM education excellence</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Developing innovative problem-solvers for 21st-century challenges</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-hands-helping"></i>
+                                <span>Empowering young women as agents of positive change</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-chart-line"></i>
+                                <span>Setting new standards for STEM education innovation</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pillars Section -->
+    <section class="pillars-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Educational Framework</span>
+                <h2 class="section-title">The Four Pillars</h2>
+                <p class="section-subtitle">Foundational principles that guide every aspect of learning and development at Maadi STEM School</p>
+            </div>
+            
+            <div class="pillars-container">
+                <div class="pillar-card fade-in">
+                    <div class="pillar-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="pillar-title">Critical Thinking</h3>
+                    <p class="pillar-description">Developing analytical minds that can solve complex scientific problems through evidence-based reasoning and logical analysis.</p>
+                </div>
+                
+                <div class="pillar-card fade-in">
+                    <div class="pillar-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="pillar-title">Collaboration</h3>
+                    <p class="pillar-description">Fostering teamwork and communication skills essential for scientific research and innovative project development.</p>
+                </div>
+                
+                <div class="pillar-card fade-in">
+                    <div class="pillar-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="pillar-title">Creativity</h3>
+                    <p class="pillar-description">Encouraging innovative thinking and original solutions to real-world challenges across STEM disciplines.</p>
+                </div>
+                
+                <div class="pillar-card fade-in">
+                    <div class="pillar-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="pillar-title">Global Application</h3>
+                    <p class="pillar-description">Applying scientific knowledge to address contemporary global issues with cultural awareness and ethical consideration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-container fade-in">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <p class="quote-text">"Empowering young women to become innovative problem-solvers and leaders in STEM fields through hands-on learning and real-world applications."</p>
+                <p class="quote-author">Maadi STEM School for Girls</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-label">Our Commitment</span>
+                <h2 class="section-title">Core Values</h2>
+                <p class="section-subtitle">The principles that define our educational approach and shape our school culture</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="value-title">Student-Centered Learning</h3>
+                    <p class="value-description">Creating personalized educational experiences that recognize and nurture each student's unique talents, interests, and learning styles.</p>
+                </div>
+                
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="value-title">Community Partnership</h3>
+                    <p class="value-description">Building strong collaborations with higher education institutions, industry partners, and local communities to enhance learning opportunities.</p>
+                </div>
+                
+                <div class="value-card fade-in">
+                    <div class="value-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="value-title">Career Readiness</h3>
+                    <p class="value-description">Equipping students with both academic knowledge and practical skills necessary for success in STEM careers and workplace environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Maadi STEM School for Girls</h3>
+                <p>Established in 2012, Maadi STEM School for Girls has been dedicated to providing transformative STEM education that empowers students to become innovative thinkers and future leaders.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="mission-vision.html"><i class="fas fa-chevron-right"></i> Mission & Vision</a></li>
+                    <li><a href="academics.html"><i class="fas fa-chevron-right"></i> Academics</a></li>
+                    <li><a href="admissions.html"><i class="fas fa-chevron-right"></i> Admissions</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Campus Life</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Maadi, Cairo, Egypt</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +20 (2) 1234-5678</a></li>
+                    <li><a href="mailto:info@maadistemschool.edu.eg"><i class="fas fa-envelope"></i> info@maadistemschool.edu.eg</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Sunday - Thursday: 8:00 AM - 4:00 PM</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 Maadi STEM School for Girls. All Rights Reserved. | Founded 2012</p>
+        </div>
+    </footer>
+
+    <script>
+        // ===== HEADER FUNCTIONALITY =====
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuBtn && mobileMenuClose && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            mobileMenuClose.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        }
+        
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        
+        if (header) {
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Initialize header state
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            }
+        }
+        
+        // Animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Initial check
+        fadeInOnScroll();
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Set active state for current page in navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set Mission & Vision as active
+            const missionLinks = document.querySelectorAll('.dropdown-menu a[href*="mission-vision.html"]');
+            missionLinks.forEach(link => {
+                link.classList.add('active');
+            });
+            
+            // Also set parent link as active
+            const aboutParent = document.querySelector('.dropdown > a[href="#"]');
+            if (aboutParent) {
+                aboutParent.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
