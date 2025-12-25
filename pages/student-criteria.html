@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admission Criteria - Maadi STEM School</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a192f;          /* Dark navy blue */
+            --navy-light: #1a2947;    /* Lighter navy */
+            --pink: #FF6B9D;          /* Primary pink */
+            --pink-light: #ff9ec0;    /* Light pink */
+            --pink-dark: #e05583;     /* Dark pink */
+            --peach: #f5b4b3;         /* Soft peach accent */
+            --cream: #fef7fa;         /* Pinkish cream background */
+            --cream-dark: #f5eef2;    /* Darker cream */
+            --white: #ffffff;
+            --gray: #7a7f8f;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 8px 30px rgba(10, 25, 47, 0.08);
+            --shadow-dark: 0 20px 40px rgba(10, 25, 47, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.8;
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, .logo-text, .section-title, .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        /* === NAVBAR === */
+        header {
+            background-color: transparent;
+            padding: 2rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--pink);
+            padding: 5px;
+            background-color: var(--cream);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo-text h1 {
+            text-shadow: none;
+        }
+
+        .logo-text p {
+            font-size: 0.70rem;
+            color: var(--pink-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+            font-weight: 300;
+            padding-bottom: 10px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            height: 100%;
+        }
+
+        nav ul li:first-child {
+            margin-left: 3rem;
+        }
+
+        nav ul li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-right: 2.8rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.05rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+            opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        header.scrolled nav a {
+            text-shadow: none;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .btn-pink {
+            padding: 0.8rem 2.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+
+        header.scrolled .btn-pink {
+            background-color: transparent;
+            border: 1px solid var(--pink);
+            color: var(--pink);
+        }
+
+        .btn-pink::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn-pink:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+            border-color: var(--pink);
+        }
+
+        .btn-pink:hover::before {
+            left: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header.scrolled .mobile-menu-btn {
+            color: var(--pink);
+            text-shadow: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0.5rem 0;
+            gap: 0.5rem;
+        }
+
+        .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover > a i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 10px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            text-shadow: none;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-dropdown .dropdown-menu {
+            min-width: 210px;
+            padding: 0.8rem 0;
+        }
+
+        .campus-main-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .campus-main-item:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-main-item i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nested-dropdown {
+            position: relative;
+        }
+
+        .nested-dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: var(--transition);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            border-left: none;
+            margin-left: 5px;
+        }
+
+        .nested-dropdown:hover .nested-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .nested-dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .nested-dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--pink);
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu ul li {
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .mobile-menu ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            transition: var(--transition);
+            opacity: 0.9;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        .mobile-menu-btn-pink {
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background-color: transparent;
+            color: var(--pink);
+            border: 1px solid var(--pink);
+            border-radius: 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .mobile-menu-btn-pink:hover {
+            background-color: rgba(255, 107, 157, 0.1);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 12rem 0 5rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(245, 180, 179, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .page-header h1 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 span {
+            color: var(--pink);
+        }
+
+        /* Main Content */
+        .criteria-section {
+            padding: 5rem 0;
+            background-color: var(--cream);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3.2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 2rem auto 0;
+            font-weight: 300;
+        }
+
+        /* Cards Container */
+        .criteria-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        /* Elegant Cards */
+        .criteria-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--cream-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .criteria-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-dark);
+            border-color: var(--pink-light);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: var(--white);
+            font-size: 1.8rem;
+            box-shadow: 0 10px 20px rgba(255, 107, 157, 0.2);
+        }
+
+        .criteria-card h3 {
+            color: var(--navy);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .criteria-card h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--pink);
+            bottom: 0;
+            left: 0;
+        }
+
+        .criteria-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .criteria-list li {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .criteria-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--pink);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .important-note {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.05), rgba(255, 107, 157, 0.1));
+            border-left: 4px solid var(--pink);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .important-note h4 {
+            color: var(--navy);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .important-note h4 i {
+            color: var(--pink);
+        }
+
+        .important-note p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Timeline with S-Curve - FIXED VERSION */
+        .timeline-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--cream), var(--cream-dark));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 4rem;
+            min-height: 800px;
+        }
+
+        /* S-shaped curve path using SVG background */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                var(--pink) 0%, 
+                var(--peach) 20%, 
+                var(--pink) 40%, 
+                var(--peach) 60%, 
+                var(--pink) 80%, 
+                var(--peach) 100%);
+            border-radius: 10px;
+            z-index: 1;
+            /* Create the S-curve effect */
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="800" viewBox="0 0 6 800"><path d="M3,0 C3,200 6,250 3,400 C0,550 3,600 3,800" stroke="black" fill="transparent" stroke-width="6"/></svg>');
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="6" height="800" viewBox="0 0 6 800"><path d="M3,0 C3,200 6,250 3,400 C0,550 3,600 3,800" stroke="black" fill="transparent" stroke-width="6"/></svg>');
+        }
+
+        /* Animated glow effect for the curve */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 100%;
+            background: radial-gradient(circle at center, 
+                rgba(255, 107, 157, 0.3) 0%, 
+                transparent 70%);
+            z-index: 0;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                opacity: 0.5;
+                width: 20px;
+            }
+            to {
+                opacity: 0.8;
+                width: 30px;
+            }
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+            min-height: 150px;
+        }
+
+        /* Alternate item positioning to create S-pattern */
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--cream-dark);
+            transition: var(--transition);
+            position: relative;
+            z-index: 3;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: var(--shadow-dark);
+            border-color: var(--pink);
+        }
+
+        /* Add decorative curves to timeline cards */
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, var(--pink-light) 0%, transparent 70%);
+            opacity: 0.1;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -50px;
+            top: -30px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -50px;
+            bottom: -30px;
+        }
+
+        .timeline-content h4 {
+            color: var(--navy);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .timeline-content h4 i {
+            color: var(--pink);
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Position dots along the S-curve */
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            border-radius: 50%;
+            border: 5px solid var(--white);
+            box-shadow: 0 0 0 3px var(--pink-light), 0 5px 20px rgba(255, 107, 157, 0.4);
+            z-index: 4;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Position dots in S-shape pattern */
+        .timeline-item:nth-child(1) .timeline-dot {
+            transform: translateX(-50%);
+            top: 10%;
+        }
+
+        .timeline-item:nth-child(2) .timeline-dot {
+            transform: translateX(-50%);
+            top: 30%;
+        }
+
+        .timeline-item:nth-child(3) .timeline-dot {
+            transform: translateX(-50%);
+            top: 50%;
+        }
+
+        .timeline-item:nth-child(4) .timeline-dot {
+            transform: translateX(-50%);
+            top: 70%;
+        }
+
+        .timeline-item:nth-child(5) .timeline-dot {
+            transform: translateX(-50%);
+            top: 90%;
+        }
+
+        /* Connect dots with curved lines */
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: var(--top-pos);
+            transform: translateX(-50%);
+            width: 4px;
+            height: var(--line-height);
+            background: linear-gradient(to bottom, 
+                rgba(255, 107, 157, 0.4), 
+                rgba(245, 180, 179, 0.4));
+            z-index: 1;
+            border-radius: 2px;
+        }
+
+        .timeline-item:nth-child(1)::after {
+            --top-pos: calc(10% + 30px);
+            --line-height: calc(30% - 60px);
+        }
+
+        .timeline-item:nth-child(2)::after {
+            --top-pos: calc(30% + 30px);
+            --line-height: calc(30% - 60px);
+        }
+
+        .timeline-item:nth-child(3)::after {
+            --top-pos: calc(50% + 30px);
+            --line-height: calc(30% - 60px);
+        }
+
+        .timeline-item:nth-child(4)::after {
+            --top-pos: calc(70% + 30px);
+            --line-height: calc(30% - 60px);
+        }
+
+        /* Hover effects for timeline items */
+        .timeline-dot:hover {
+            transform: translateX(-50%) scale(1.3);
+            box-shadow: 0 0 0 6px rgba(255, 107, 157, 0.2), 0 10px 30px rgba(255, 107, 157, 0.6);
+        }
+
+        /* Add content connectors - curved lines to timeline items */
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--pink), transparent);
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to left, var(--pink), transparent);
+            z-index: 2;
+        }
+
+        /* Curve the connector lines */
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, var(--pink) 0%, transparent 70%);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, var(--pink) 0%, transparent 70%);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* Animate the dots when in view */
+        @keyframes dotPulse {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 0 0 3px var(--pink-light), 0 5px 20px rgba(255, 107, 157, 0.4);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.1);
+                box-shadow: 0 0 0 5px rgba(255, 107, 157, 0.3), 0 8px 25px rgba(255, 107, 157, 0.5);
+            }
+        }
+
+        .timeline-dot {
+            animation: dotPulse 2s infinite ease-in-out;
+        }
+
+        .timeline-dot:nth-child(1) { animation-delay: 0s; }
+        .timeline-dot:nth-child(2) { animation-delay: 0.4s; }
+        .timeline-dot:nth-child(3) { animation-delay: 0.8s; }
+        .timeline-dot:nth-child(4) { animation-delay: 1.2s; }
+        .timeline-dot:nth-child(5) { animation-delay: 1.6s; }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 7rem 0;
+            background: linear-gradient(135deg, var(--navy-light), var(--navy));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245, 180, 179, 0.08) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+        }
+
+        .btn-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--pink-dark), var(--pink));
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-cta:hover::before {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            color: var(--white);
+            padding: 6rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.08) 0%, transparent 70%);
+            top: -150px;
+            left: -150px;
+            opacity: 0.5;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 300;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--pink);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-5px);
+            border-color: var(--pink);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .header-container, .container {
+                padding: 0 2rem;
+            }
+            
+            .page-header h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-actions .btn-pink {
+                display: none;
+            }
+            
+            .page-header {
+                padding: 10rem 0 4rem;
+            }
+            
+            .page-header h1 {
+                font-size: 3rem;
+            }
+            
+            /* Mobile adjustments for curved timeline */
+            .timeline::before {
+                left: 30px;
+                transform: none;
+                height: 85%;
+                /* Straight line for mobile */
+                mask-image: none;
+                -webkit-mask-image: none;
+                background: linear-gradient(to bottom, var(--pink), var(--peach));
+            }
+            
+            .timeline::after {
+                left: 30px;
+                transform: none;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+                margin-left: 50px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 0;
+            }
+            
+            /* Adjust dot positions for mobile */
+            .timeline-item:nth-child(1) .timeline-dot,
+            .timeline-item:nth-child(2) .timeline-dot,
+            .timeline-item:nth-child(3) .timeline-dot,
+            .timeline-item:nth-child(4) .timeline-dot,
+            .timeline-item:nth-child(5) .timeline-dot {
+                left: 30px;
+                transform: translateX(0);
+            }
+            
+            .timeline-item:nth-child(1)::after,
+            .timeline-item:nth-child(2)::after,
+            .timeline-item:nth-child(3)::after,
+            .timeline-item:nth-child(4)::after {
+                left: 30px;
+                transform: none;
+            }
+            
+            /* Remove curved connectors on mobile */
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -25px;
+                right: auto;
+                width: 25px;
+                background: linear-gradient(to left, var(--pink), transparent);
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                display: none;
+            }
+            
+            .timeline-dot:hover {
+                transform: scale(1.3);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container, .container {
+                padding: 0 1.5rem;
+            }
+            
+            .footer-container {
+                padding: 0 1.5rem;
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .page-header {
+                padding: 8rem 0 3rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-header p {
+                font-size: 1.1rem;
+            }
+            
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.7rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.4rem;
+            }
+            
+            .criteria-cards {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .criteria-card {
+                padding: 2rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 2.8rem;
+            }
+            
+            .timeline-container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 7rem 0 2.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .cta-content p {
+                font-size: 1.1rem;
+            }
+            
+            .btn-cta {
+                padding: 1rem 2.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Maadi STEM School</h1>
+                    <p>Center of Egyptian innovation leaders</p>
+                </div>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="../pages/overview.html">Who we are</a>
+                            <a href="../pages/mission-vision.html">Mission & Vision</a>
+                            <a href="../pages/staff.html">Staff</a>
+                            <a href="../pages/student-criteria.html" class="active">Student Criteria</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown campus-dropdown">
+                        <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-school"></i> School</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="../pages/School_laboratory.html">Laboratory</a>
+                                    <a href="../pages/classes.html">Classes</a>
+                                    <a href="../pages/fablab.html">Fab Lab</a>
+                                    <a href="../pages/library.html">Library</a>
+                                    <a href="../pages/assembly.html">Assembly</a>
+                                    <a href="../pages/playgrounds.html">Playgrounds</a>
+                                </div>
+                            </div>
+                            
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-bed"></i> Dorms</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="../pages/rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="../pages/studying-hall.html">Studying Hall</a>
+                                    <a href="../pages/restaurant.html">Restaurant</a>
+                                </div>
+                            </div>
+                            
+                            <div class="events-history-menu">
+                                <a href="../pages/events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                                <a href="../pages/history.html"><i class="fas fa-history"></i> History</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li><a href="../pages/academics.html">Academics</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="../pages/compititions.html">Competitions</a>
+                            <a href="../pages/programs.html">Programs</a>
+                            <a href="../pages/teamsandclubs.html">Teams & Clubs</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="../pages/alumni.html">Alumni</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="../pages/overview.html">Who we are</a>
+                    <a href="../pages/mission-vision.html">Mission & Vision</a>
+                    <a href="../pages/staff.html">Staff</a>
+                    <a href="../pages/student-criteria.html" class="active">Student Criteria</a>
+                </div>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-school"></i> School</h4>
+                        <ul>
+                            <li><a href="../pages/School_laboratory.html">Laboratory</a></li>
+                            <li><a href="../pages/classes.html">Classes</a></li>
+                            <li><a href="../pages/fablab.html">Fab Lab</a></li>
+                            <li><a href="../pages/library.html">Library</a></li>
+                            <li><a href="../pages/assembly.html">Assembly</a></li>
+                            <li><a href="../pages/playgrounds.html">Playgrounds</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-bed"></i> Dorms</h4>
+                        <ul>
+                            <li><a href="../pages/rooms-bathrooms.html">Dorm Rooms</a></li>
+                            <li><a href="../pages/studying-hall.html">Studying Hall</a></li>
+                            <li><a href="../pages/restaurant.html">Restaurant</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-calendar-alt"></i> Events</h4>
+                        <ul>
+                            <li><a href="../pages/events.html">All Events</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-history"></i> History</h4>
+                        <ul>
+                            <li><a href="../pages/history.html">School History</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            
+            <li><a href="../pages/academics.html">Academics</a></li>
+            
+            <li class="dropdown">
+                <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="../pages/competitions.html">Competitions</a>
+                    <a href="../pages/programs.html">Programs</a>
+                    <a href="../pages/teams-clubs.html">Teams & Clubs</a>
+                </div>
+            </li>
+            
+            <li><a href="../pages/alumni.html">Alumni</a></li>
+            <li><a href="../pages/contact.html">Contact</a></li>
+            <li><a href="../pages/apply.html" class="mobile-menu-btn-pink">Apply Now</a></li>
+        </ul>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Student <span>Admission Criteria</span></h1>
+            <p>Discover the requirements and procedures for joining Egypt's prestigious STEM schools in 2025</p>
+        </div>
+    </section>
+
+    <!-- Main Criteria Section -->
+    <section class="criteria-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Admission Requirements 2025</h2>
+                <p>To join Egypt's Excellence STEM Schools, students must meet specific academic, health, and age requirements</p>
+            </div>
+
+            <div class="criteria-cards">
+                <!-- Basic Requirements Card -->
+                <div class="criteria-card">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Basic Requirements</h3>
+                    <ul class="criteria-list">
+                        <li>Egyptian nationality only</li>
+                        <li>Middle school certificate completion</li>
+                        <li>Age must not exceed 18 years by October 1, 2025</li>
+                        <li>Good health condition with medical clearance</li>
+                        <li>No chronic, infectious, or psychological diseases</li>
+                    </ul>
+                </div>
+
+                <!-- Academic Requirements Card -->
+                <div class="criteria-card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Academic Excellence</h3>
+                    <ul class="criteria-list">
+                        <li>Minimum overall grade of 98% (274.5 marks)</li>
+                        <li>OR 95% (266 marks) with perfect score in at least one subject</li>
+                        <li>Perfect score subjects: Science, Mathematics, or English</li>
+                        <li>First-round completion of basic education (2024/2025)</li>
+                        <li>Middle school graduation certificate</li>
+                    </ul>
+                </div>
+
+                <!-- Admission Tests Card -->
+                <div class="criteria-card">
+                    <div class="card-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Admission Tests</h3>
+                    <ul class="criteria-list">
+                        <li>English subject</li>
+                        <li>Mathematics subject</li>
+                        <li>Science subject</li>
+                        <li>IQ test</li>
+                        <li>From 4th grade to 9th grade content</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Important Note -->
+            <div class="important-note">
+                <h4><i class="fas fa-exclamation-circle"></i> Important Notice</h4>
+                <p>All applications must be submitted electronically through the Ministry of Education's official website only. Paper applications are not accepted. The application fee is approximately 250 EGP, payable through designated channels. Late submissions will not be considered under any circumstances.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Timeline with S-Curve -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Application Timeline</h2>
+                <p>Follow these steps to complete your application successfully</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline">
+                    <!-- Step 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4><i class="fas fa-laptop"></i> Step 1: Online Registration</h4>
+                            <p>Register electronically through the Ministry of Education's official website during the specified application period. Complete all required fields accurately.</p>
+                        </div>
+                        <div class="timeline-dot">1</div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4><i class="fas fa-file-upload"></i> Step 2: Document Submission</h4>
+                            <p>Upload required documents: personal photo, success statement, birth certificate, and payment receipt (approx. 250 EGP). Print and sign the application form.</p>
+                        </div>
+                        <div class="timeline-dot">2</div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4><i class="fas fa-tasks"></i> Step 3: Physical Submission</h4>
+                            <p>Submit the printed application form with certified documents to the relevant educational administration office for verification and processing.</p>
+                        </div>
+                        <div class="timeline-dot">3</div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4><i class="fas fa-clipboard-list"></i> Step 4: Aptitude Tests</h4>
+                            <p>Take electronic aptitude tests covering logical thinking, mental readiness, mathematics, science, and English language at designated test centers.</p>
+                        </div>
+                        <div class="timeline-dot">4</div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h4><i class="fas fa-user-check"></i> Step 5: Interviews & Results</h4>
+                            <p>Successful candidates proceed to personal interviews. Final admission results are announced on the official website and through educational administrations.</p>
+                        </div>
+                        <div class="timeline-dot">5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Maadi STEM School for Girls</h3>
+                <p>Established in 2012, Maadi STEM School for Girls has been dedicated to providing transformative education that empowers students to become compassionate leaders and innovative thinkers.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="pages/academics.html"><i class="fas fa-chevron-right"></i> Academics</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Admissions</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Campus Life</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Information</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Zahraa Al Maadi as Sarayat Al Gharbeyah, behind Future School, No.5 . Cairo, Egypt.</a></li>
+                    <li><a href="#"><i class="fas fa-map-pin"></i> Postal code : 11742</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> maadisch@stemmaadi.moe.edu.eg</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Sunday - Thursday: 8:00 AM - 3:00 PM</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Maadi STEM School for Girls. All Rights Reserved. | Founded 2012</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+        
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Initialize header state
+        if (window.pageYOffset > 50) {
+            header.classList.add('scrolled');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for timeline animation
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Initialize timeline items with animation
+        timelineItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            item.style.transitionDelay = `${index * 0.2}s`;
+            observer.observe(item);
+        });
+
+        // Add hover effect to timeline dots
+        const timelineDots = document.querySelectorAll('.timeline-dot');
+        timelineDots.forEach(dot => {
+            dot.addEventListener('mouseenter', function() {
+                this.style.transform = this.style.transform.includes('scale') 
+                    ? this.style.transform.replace('scale(1.1)', 'scale(1.3)')
+                    : 'translateX(-50%) scale(1.3)';
+            });
+            
+            dot.addEventListener('mouseleave', function() {
+                this.style.transform = this.style.transform.includes('scale') 
+                    ? this.style.transform.replace('scale(1.3)', 'scale(1.1)')
+                    : 'translateX(-50%) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

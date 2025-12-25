@@ -890,7 +890,7 @@
             );
         }
 
-        /* FIXED: Header styling for consistent image display */
+        /* FIXED: Header styling for round logos at top */
         .program-card-header {
             height: 180px;
             display: flex;
@@ -903,26 +903,30 @@
             overflow: hidden;
         }
 
-        /* FIXED: حجم الصور لتملأ المساحة كاملة */
+        /* FIXED: Round logos at top size */
         .program-logo {
-            width: 85% !important;       /* ملء العرض */
-            height: 70% !important;      /* ملء الارتفاع */
+            width: 120px !important;
+            height: 120px !important;
             object-fit: contain !important;
             filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.15));
             background-color: white;
-            border-radius: 12px;
+            border-radius: 50% !important;
             transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            box-sizing: border-box;
+            border: 3px solid var(--white);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            padding: 15px !important;
+            box-sizing: border-box !important;
         }
 
         /* FIXED: للصور ذات الخلفية الشفافة */
         .program-logo.transparent-bg {
             background-color: white !important;
-            padding: 25px !important;
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px !important;
+        }
+
+        .program-card:hover .program-logo {
+            transform: scale(1.1) rotate(5deg);
+            border-color: var(--pink-light);
         }
 
         /* FIXED: Badge styling */
@@ -941,6 +945,7 @@
                 100% 100%,
                 0 100%
             );
+            background: linear-gradient(135deg, var(--pink), var(--pink-dark));
         }
 
         .program-card-body {
@@ -952,6 +957,7 @@
             color: var(--navy);
             margin-bottom: 0.8rem;
             font-size: 1.4rem;
+            text-align: center;
         }
 
         .program-description {
@@ -959,6 +965,7 @@
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            text-align: center;
         }
 
         .program-stats {
@@ -996,6 +1003,7 @@
             align-items: center;
             gap: 0.8rem;
             margin-bottom: 1.5rem;
+            justify-content: center;
         }
 
         .student-avatars {
@@ -1036,6 +1044,8 @@
                 100% 100%,
                 0 100%
             );
+            display: flex;
+            justify-content: center;
         }
 
         /* FIXED: Button with sharp corners */
@@ -1174,9 +1184,9 @@
             box-shadow: 0 40px 60px rgba(255, 107, 157, 0.15);
         }
 
-        /* FIXED: للبرامج الإضافية */
+        /* FIXED: للبرامج الإضافية - روند اللوجو */
         .extra-program-card-header {
-            height: 160px;
+            height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1190,15 +1200,21 @@
         }
 
         .extra-program-logo {
-            width: 80% !important;       /* ملء العرض */
-            height: 65% !important;      /* ملء الارتفاع */
+            width: 120px !important;
+            height: 120px !important;
             object-fit: contain !important;
             filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.15));
             background-color: white;
-            border-radius: 10px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            box-sizing: border-box;
+            border-radius: 50% !important;
+            border: 3px solid var(--white);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            padding: 15px !important;
+            box-sizing: border-box !important;
+        }
+
+        .extra-program-card:hover .extra-program-logo {
+            transform: scale(1.1) rotate(-5deg);
+            border-color: var(--navy-light);
         }
 
         .extra-badge {
@@ -1919,36 +1935,7 @@
             transform: translateY(0);
         }
 
-        /* FIXED: تحسين استجابة الصور */
-        @media (max-width: 768px) {
-            .program-logo {
-                width: 80% !important;
-                height: 65% !important;
-                padding: 15px !important;
-            }
-            
-            .extra-program-logo {
-                width: 75% !important;
-                height: 60% !important;
-                padding: 12px !important;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .program-logo {
-                width: 85% !important;
-                height: 60% !important;
-                padding: 12px !important;
-            }
-            
-            .extra-program-logo {
-                width: 80% !important;
-                height: 55% !important;
-                padding: 10px !important;
-            }
-        }
-
-        /* Responsive Design */
+        /* Responsive Design for Round Logos */
         @media (max-width: 1200px) {
             .header-container, .container {
                 padding: 0 2rem;
@@ -2034,6 +2021,16 @@
             
             .overlap-frame.right {
                 right: 10%;
+            }
+            
+            .program-logo {
+                width: 100px !important;
+                height: 100px !important;
+            }
+            
+            .extra-program-logo {
+                width: 100px !important;
+                height: 100px !important;
             }
         }
 
@@ -2144,6 +2141,18 @@
             .overlap-info p {
                 font-size: 0.85rem;
             }
+            
+            .program-logo {
+                width: 90px !important;
+                height: 90px !important;
+                padding: 12px !important;
+            }
+            
+            .extra-program-logo {
+                width: 90px !important;
+                height: 90px !important;
+                padding: 12px !important;
+            }
         }
 
         @media (max-width: 576px) {
@@ -2199,6 +2208,18 @@
             .overlap-info .info-icon {
                 font-size: 1.5rem;
                 margin-bottom: 0.5rem;
+            }
+            
+            .program-logo {
+                width: 80px !important;
+                height: 80px !important;
+                padding: 10px !important;
+            }
+            
+            .extra-program-logo {
+                width: 80px !important;
+                height: 80px !important;
+                padding: 10px !important;
             }
         }
     </style>
@@ -2404,7 +2425,7 @@
                         </div>
                         
                         <div class="overlap-frame right">
-                            <img src="images/programs.jpg" alt="Research Program">
+                            <img src="../images/competitions/research program.jpg" alt="Research Program">
                             <div class="overlap-info">
                                 <div class="info-icon">
                                     <i class="fas fa-flask"></i>
@@ -2508,7 +2529,7 @@
                 <!-- Program 1: YYGS -->
                 <div class="program-card fade-in" data-program="yygs">
                     <div class="program-card-header">
-                        <img src="images/yygs.webp" alt="Yale Young Global Scholars Logo" class="program-logo transparent-bg">
+                        <img src="../images/competitions/yygs.jpg" alt="Yale Young Global Scholars Logo" class="program-logo transparent-bg">
                         <div class="program-badge">Highly Competitive</div>
                     </div>
                     <div class="program-card-body">
@@ -2516,13 +2537,16 @@
                         <p class="program-description">An intensive pre-college program for outstanding high school students from around the world.</p>
                         <div class="program-stats">
                             <div class="stat">
-                               
+                                <span class="stat-value">15+</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">2018-24</span>
+                                <span class="stat-label">Years</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">6</span>
+                                <span class="stat-label">Tracks</span>
                             </div>
                         </div>
 
@@ -2545,7 +2569,7 @@
                 <!-- Program 2: UWC -->
                 <div class="program-card fade-in" data-program="uwc">
                     <div class="program-card-header">
-                        <img src="images/uwc.png" alt="United World Colleges Logo" class="program-logo transparent-bg">
+                        <img src="../images/competitions/uwc.jpg" alt="United World Colleges Logo" class="program-logo transparent-bg">
                         <div class="program-badge" style="background: var(--gold);">Full Scholarship</div>
                     </div>
                     <div class="program-card-body">
@@ -2553,13 +2577,16 @@
                         <p class="program-description">Two-year International Baccalaureate program promoting peace and international understanding.</p>
                         <div class="program-stats">
                             <div class="stat">
-                                
+                                <span class="stat-value">8</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                               
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Countries</span>
                             </div>
                             <div class="stat">
-                              
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">Scholarship</span>
                             </div>
                         </div>
 
@@ -2582,7 +2609,7 @@
                 <!-- Program 3: Stanford -->
                 <div class="program-card fade-in" data-program="stanford">
                     <div class="program-card-header">
-                        <img src="images/standford.png" alt="Stanford University Logo" class="program-logo">
+                        <img src="../images/competitions/standford.png" alt="Stanford University Logo" class="program-logo">
                         <div class="program-badge" style="background: var(--silver); color: var(--navy);">Research Focus</div>
                     </div>
                     <div class="program-card-body">
@@ -2591,13 +2618,16 @@
                         
                         <div class="program-stats">
                             <div class="stat">
-                               
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">6</span>
+                                <span class="stat-label">Programs</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Years</span>
                             </div>
                         </div>
 
@@ -2629,13 +2659,16 @@
                         
                         <div class="program-stats">
                             <div class="stat">
-                               
+                                <span class="stat-value">6</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">4</span>
+                                <span class="stat-label">Years</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">90%</span>
+                                <span class="stat-label">Scholarship</span>
                             </div>
                         </div>
 
@@ -2658,7 +2691,7 @@
                 <!-- Program 5: Cambridge -->
                 <div class="program-card fade-in" data-program="cambridge">
                     <div class="program-card-header">
-                        <img src="images/cambridge.png" alt="University of Cambridge Logo" class="program-logo">
+                        <img src="../images/competitions/cambridge.webp" alt="University of Cambridge Logo" class="program-logo">
                         <div class="program-badge" style="background: linear-gradient(135deg, #A51C30, #800000);">Academic Excellence</div>
                     </div>
                     <div class="program-card-body">
@@ -2667,13 +2700,16 @@
                         
                         <div class="program-stats">
                             <div class="stat">
-                                
+                                <span class="stat-value">10</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Years</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">8</span>
+                                <span class="stat-label">Colleges</span>
                             </div>
                         </div>
 
@@ -2696,7 +2732,7 @@
                 <!-- Program 6: MIT -->
                 <div class="program-card fade-in" data-program="mit">
                     <div class="program-card-header">
-                        <img src="images/mit.png" alt="Massachusetts Institute of Technology Logo" class="program-logo">
+                        <img src="../images/competitions/mit.webp" alt="Massachusetts Institute of Technology Logo" class="program-logo">
                         <div class="program-badge" style="background: linear-gradient(135deg, #8A8D8F, #C0C0C0); color: var(--navy);">STEM Focus</div>
                     </div>
                     <div class="program-card-body">
@@ -2705,13 +2741,16 @@
                         
                         <div class="program-stats">
                             <div class="stat">
-                              
+                                <span class="stat-value">7</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">4</span>
+                                <span class="stat-label">Programs</span>
                             </div>
                             <div class="stat">
-                               
+                                <span class="stat-value">2020-23</span>
+                                <span class="stat-label">Active</span>
                             </div>
                         </div>
 
@@ -2745,7 +2784,7 @@
                 <!-- Extra Program 1: Harvard -->
                 <div class="extra-program-card fade-in" data-program="harvard">
                     <div class="extra-program-card-header">
-                        <img src="images/programs.jpg" alt="Harvard Program" class="extra-program-logo">
+                        <img src="../images/competitions/harvard.png" alt="Harvard Program" class="extra-program-logo">
                         <div class="extra-badge" style="background: #A51C30;">Ivy League</div>
                     </div>
                     <div class="program-card-body">
@@ -2753,13 +2792,16 @@
                         <p class="program-description">Summer residential program offering college-level courses at Harvard University.</p>
                         <div class="program-stats">
                             <div class="stat">
-                                
+                                <span class="stat-value">8</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">4</span>
+                                <span class="stat-label">Years</span>
                             </div>
                             <div class="stat">
-                              
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Courses</span>
                             </div>
                         </div>
                     </div>
@@ -2773,7 +2815,7 @@
                 <!-- Extra Program 2: Oxford -->
                 <div class="extra-program-card fade-in" data-program="oxford">
                     <div class="extra-program-card-header">
-                        <img src="images/programs.jpg" alt="Oxford Program" class="extra-program-logo">
+                        <img src="../images/competitions/oxford.webp" alt="Oxford Program" class="extra-program-logo">
                         <div class="extra-badge" style="background: #002147;">Academic</div>
                     </div>
                     <div class="program-card-body">
@@ -2781,13 +2823,16 @@
                         <p class="program-description">Summer programs at Oxford University with academic and leadership focus.</p>
                         <div class="program-stats">
                             <div class="stat">
-
+                                <span class="stat-value">6</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">Colleges</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">2019-23</span>
+                                <span class="stat-label">Active</span>
                             </div>
                         </div>
                     </div>
@@ -2801,7 +2846,7 @@
                 <!-- Extra Program 3: Lumiere -->
                 <div class="extra-program-card fade-in" data-program="lumiere">
                     <div class="extra-program-card-header">
-                        <img src="images/programs.jpg" alt="Lumiere Logo" class="extra-program-logo">
+                        <img src="../images/competitions/lumiere-research.jpg" alt="Lumiere Logo" class="extra-program-logo">
                         <div class="extra-badge" style="background: linear-gradient(135deg, #FF6B6B, #FF8E53);">Research</div>
                     </div>
                     <div class="program-card-body">
@@ -2809,13 +2854,16 @@
                         <p class="program-description">One-on-one research mentorship with PhD scholars from top universities.</p>
                         <div class="program-stats">
                             <div class="stat">
-                               
+                                <span class="stat-value">4</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">100%</span>
+                                <span class="stat-label">Scholarship</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">Papers</span>
                             </div>
                         </div>
                     </div>
@@ -2829,7 +2877,7 @@
                 <!-- Extra Program 4: Pioneer -->
                 <div class="extra-program-card fade-in" data-program="pioneer">
                     <div class="extra-program-card-header">
-                        <img src="images/programs.jpg" alt="Pioneer Logo" class="extra-program-logo">
+                        <img src="../images/competitions/pioneer-research.webp" alt="Pioneer Logo" class="extra-program-logo">
                         <div class="extra-badge" style="background: linear-gradient(135deg, #4A90E2, #2C3E50);">Online</div>
                     </div>
                     <div class="program-card-body">
@@ -2837,13 +2885,16 @@
                         <p class="program-description">Online research program with university professors worldwide.</p>
                         <div class="program-stats">
                             <div class="stat">
-                               
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">10+</span>
+                                <span class="stat-label">Fields</span>
                             </div>
                             <div class="stat">
-                               
+                                <span class="stat-value">2020-23</span>
+                                <span class="stat-label">Active</span>
                             </div>
                         </div>
                     </div>
@@ -2857,7 +2908,7 @@
                 <!-- Extra Program 5: ISEF -->
                 <div class="extra-program-card fade-in" data-program="isef">
                     <div class="extra-program-card-header">
-                        <img src="images/programs.jpg" alt="ISEF Logo" class="extra-program-logo">
+                        <img src="../images/competitions/isef-logo.webp" alt="ISEF Logo" class="extra-program-logo">
                         <div class="extra-badge" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #333;">Competition</div>
                     </div>
                     <div class="program-card-body">
@@ -2865,13 +2916,16 @@
                         <p class="program-description">Representing Egypt at Intel ISEF and other international competitions.</p>
                         <div class="program-stats">
                             <div class="stat">
-                               
+                                <span class="stat-value">12</span>
+                                <span class="stat-label">Students</span>
                             </div>
                             <div class="stat">
-                               
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">Awards</span>
                             </div>
                             <div class="stat">
-                               
+                                <span class="stat-value">2018-24</span>
+                                <span class="stat-label">Active</span>
                             </div>
                         </div>
                     </div>
@@ -2885,7 +2939,7 @@
                 <!-- Extra Program 6: MUN -->
                 <div class="extra-program-card fade-in" data-program="mun">
                     <div class="extra-program-card-header">
-                        <img src="images/programs.jpg" alt="MUN Logo" class="extra-program-logo">
+                        <img src="../images/competitions/mun.jpg" alt="MUN Logo" class="extra-program-logo">
                         <div class="extra-badge" style="background: linear-gradient(135deg, #5D9CEC, #2E8B57);">Leadership</div>
                     </div>
                     <div class="program-card-body">
@@ -2893,13 +2947,16 @@
                         <p class="program-description">International MUN conferences at Harvard, Oxford, and other institutions.</p>
                         <div class="program-stats">
                             <div class="stat">
-                                
+                                <span class="stat-value">15</span>
+                                <span class="stat-label">Delegates</span>
                             </div>
                             <div class="stat">
-                                
+                                <span class="stat-value">8</span>
+                                <span class="stat-label">Conferences</span>
                             </div>
                             <div class="stat">
-                               
+                                <span class="stat-value">5</span>
+                                <span class="stat-label">Awards</span>
                             </div>
                         </div>
                     </div>
@@ -3589,21 +3646,21 @@
             
             logos.forEach(logo => {
                 // إضافة الأنماط المباشرة للتأكد من تنفيذها
-                logo.style.width = '85%';
-                logo.style.height = '70%';
+                logo.style.width = '120px';
+                logo.style.height = '120px';
                 logo.style.objectFit = 'contain';
                 logo.style.backgroundColor = 'white';
-                logo.style.borderRadius = '12px';
-                logo.style.padding = '20px';
+                logo.style.borderRadius = '50%';
+                logo.style.border = '3px solid var(--white)';
+                logo.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.1)';
+                logo.style.padding = '15px';
                 logo.style.boxSizing = 'border-box';
                 
                 // إضافة خلفية للصور ذات الخلفية الشفافة
                 const src = logo.src.toLowerCase();
                 if (src.includes('uwc') || src.includes('yygs') || src.includes('ala')) {
                     logo.style.backgroundColor = 'white';
-                    logo.style.padding = '25px';
-                    logo.style.border = '1px solid rgba(0, 0, 0, 0.15)';
-                    logo.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                    logo.style.padding = '20px';
                 }
             });
         }

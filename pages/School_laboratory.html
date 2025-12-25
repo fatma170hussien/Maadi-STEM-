@@ -48,17 +48,24 @@
             letter-spacing: -0.5px;
         }
 
-        /* HEADER - Updated to match final code style */
+        /* === NAVBAR - COPIED FROM STAFF PAGE === */
         header {
-            background-color: rgba(10, 25, 47, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 0;
+            background-color: transparent;
+            padding: 2rem 0;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
             transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
             border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .header-container {
@@ -84,32 +91,52 @@
             border: 2px solid var(--pink);
             padding: 5px;
             background-color: var(--cream);
-            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
         }
 
         .logo-text h1 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--white);
             letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo-text h1 {
+            text-shadow: none;
         }
 
         .logo-text p {
-            font-size: 0.85rem;
+            font-size: 0.70rem;
             color: var(--pink-light);
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-top: 0.3rem;
             font-weight: 300;
+            padding-bottom: 10px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
         }
 
-        /* Main Navigation */
-        .desktop-nav ul {
+        nav ul {
             display: flex;
             list-style: none;
-            gap: 2.8rem;
+            align-items: center;
+            height: 100%;
         }
 
-        .desktop-nav a {
+        nav ul li:first-child {
+            margin-left: 3rem;
+        }
+
+        nav ul li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-right: 2.8rem;
+        }
+
+        nav a {
             color: var(--white);
             text-decoration: none;
             font-weight: 400;
@@ -118,9 +145,17 @@
             position: relative;
             transition: var(--transition);
             opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
 
-        .desktop-nav a::after {
+        header.scrolled nav a {
+            text-shadow: none;
+        }
+
+        nav a::after {
             content: '';
             position: absolute;
             width: 0;
@@ -131,213 +166,305 @@
             transition: width 0.4s ease;
         }
 
-        .desktop-nav a:hover, .desktop-nav a.active {
+        nav a:hover, nav a.active {
             color: var(--pink);
             opacity: 1;
         }
 
-        .desktop-nav a:hover::after, .desktop-nav a.active::after {
+        nav a:hover::after, nav a.active::after {
             width: 100%;
         }
 
-        /* Dropdown Menu */
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .btn-pink {
+            padding: 0.8rem 2.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+
+        header.scrolled .btn-pink {
+            background-color: transparent;
+            border: 1px solid var(--pink);
+            color: var(--pink);
+        }
+
+        .btn-pink::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn-pink:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+            border-color: var(--pink);
+        }
+
+        .btn-pink:hover::before {
+            left: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header.scrolled .mobile-menu-btn {
+            color: var(--pink);
+            text-shadow: none;
+        }
+
         .dropdown {
             position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0.5rem 0;
+            gap: 0.5rem;
+        }
+
+        .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover > a i {
+            transform: rotate(180deg);
         }
 
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
-            background: rgba(26, 41, 71, 0.95);
+            margin-top: 0.5rem;
+            background-color: rgba(10, 25, 47, 0.95);
             backdrop-filter: blur(10px);
             min-width: 220px;
-            border-radius: 0 0 15px 15px;
-            padding: 1.5rem 0;
-            display: none;
-            z-index: 1000;
-            border: 1px solid rgba(255, 107, 157, 0.2);
+            border-radius: 10px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            z-index: 1000;
         }
 
         .dropdown:hover .dropdown-menu {
-            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         .dropdown-menu a {
             display: block;
-            padding: 0.8rem 2rem;
-            color: rgba(255, 255, 255, 0.9);
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             font-size: 1rem;
-            font-weight: 400;
             transition: var(--transition);
             border-left: 3px solid transparent;
+            text-shadow: none;
+            white-space: nowrap;
         }
 
         .dropdown-menu a:hover {
             color: var(--pink);
             background-color: rgba(255, 107, 157, 0.1);
             border-left: 3px solid var(--pink);
-            padding-left: 2.5rem;
+            padding-left: 2.3rem;
         }
 
-        /* ENHANCED CAMPUS NAVIGATION BAR - From final code */
-        .campus-nav-container {
-            background: linear-gradient(135deg, rgba(26, 41, 71, 0.98), rgba(14, 21, 37, 0.98));
-            border-bottom: 3px solid var(--pink);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-            margin-top: 80px;
-            position: sticky;
-            top: 80px;
-            z-index: 999;
-            backdrop-filter: blur(10px);
+        .campus-dropdown .dropdown-menu {
+            min-width: 210px;
+            padding: 0.8rem 0;
         }
 
-        .campus-nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 3rem;
-        }
-
-        .campus-nav-items {
+        .campus-main-item {
             display: flex;
-            list-style: none;
-            justify-content: space-around;
-            padding: 0.5rem 0;
-        }
-
-        .campus-nav-item {
-            position: relative;
-            flex: 1;
-            text-align: center;
-        }
-
-        .campus-nav-link {
-            display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 1rem;
-            color: var(--white);
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: var(--transition);
+            border-left: 3px solid transparent;
             position: relative;
-            border-radius: 10px;
-            gap: 0.8rem;
         }
 
-        .campus-nav-link:hover {
-            background: rgba(255, 107, 157, 0.1);
+        .campus-main-item:hover {
             color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
         }
 
-        .campus-nav-link.active {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(245, 180, 179, 0.1));
-            color: var(--pink);
-            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.2);
+        .campus-main-item i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
         }
 
-        .nav-icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+        .nested-dropdown {
+            position: relative;
+        }
+
+        .nested-dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
             transition: var(--transition);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            border-left: none;
+            margin-left: 5px;
         }
 
-        .campus-nav-link:hover .nav-icon {
-            transform: scale(1.2);
-            color: var(--pink);
+        .nested-dropdown:hover .nested-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
         }
 
-        /* Enhanced Dropdown Menus - From final code */
-        .nav-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, rgba(26, 41, 71, 0.98), rgba(14, 21, 37, 0.98));
-            backdrop-filter: blur(15px);
-            min-width: 300px;
-            border-radius: 15px;
-            padding: 2rem;
-            display: none;
-            z-index: 1000;
-            border: 1px solid rgba(255, 107, 157, 0.2);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-            margin-top: 10px;
-        }
-
-        .nav-dropdown::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 10px solid rgba(26, 41, 71, 0.98);
-        }
-
-        .campus-nav-item:hover .nav-dropdown {
+        .nested-dropdown-menu a {
             display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-
-        .nav-dropdown h4 {
-            color: var(--pink);
-            margin-bottom: 1.2rem;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .dropdown-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .nav-dropdown a {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.8rem 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             font-size: 0.95rem;
-            font-weight: 400;
             transition: var(--transition);
-            border-radius: 8px;
             border-left: 3px solid transparent;
         }
 
-        .nav-dropdown a:hover {
+        .nested-dropdown-menu a:hover {
             color: var(--pink);
-            background: rgba(255, 107, 157, 0.1);
+            background-color: rgba(255, 107, 157, 0.1);
             border-left: 3px solid var(--pink);
-            transform: translateX(5px);
+            padding-left: 2.3rem;
         }
 
-        .nav-dropdown a.active {
-            color: var(--pink);
-            background: rgba(255, 107, 157, 0.15);
-            border-left: 3px solid var(--pink);
-            font-weight: 500;
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            padding: 2rem;
+            overflow-y: auto;
         }
 
-        .dropdown-icon {
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--pink);
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu ul li {
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .mobile-menu ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            transition: var(--transition);
+            opacity: 0.9;
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-menu ul li a:hover {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        .mobile-menu-btn-pink {
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            background-color: transparent;
+            color: var(--pink);
+            border: 1px solid var(--pink);
+            border-radius: 30px;
             font-size: 1.1rem;
-            width: 24px;
-            color: var(--pink-light);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .mobile-menu-btn-pink:hover {
+            background-color: rgba(255, 107, 157, 0.1);
         }
 
         /* HERO SECTION - Updated to match final code style */
@@ -548,56 +675,27 @@
             box-shadow: 0 5px 15px rgba(236, 112, 146, 0.3);
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 300px;
-            height: 100vh;
-            background: var(--navy);
-            padding: 2rem;
-            transition: var(--transition);
-            z-index: 2000;
-            overflow-y: auto;
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
         }
 
-        .mobile-menu.active {
-            right: 0;
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .mobile-menu-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            margin-top: 3rem;
-        }
-
-        .mobile-menu li {
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--navy);
             margin-bottom: 1rem;
         }
 
-        .mobile-menu a {
-            color: var(--white);
-            text-decoration: none;
-            display: block;
-            padding: 0.8rem 1rem;
-            border-radius: 5px;
-            transition: var(--transition);
-        }
-
-        .mobile-menu a:hover {
-            background: rgba(255, 107, 157, 0.1);
-            color: var(--pink);
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.1rem;
         }
 
         /* Footer */
@@ -723,7 +821,6 @@
         /* Responsive Design */
         @media (max-width: 1200px) {
             .header-container,
-            .campus-nav,
             .container,
             .hero-content,
             .breadcrumb-content {
@@ -736,51 +833,25 @@
         }
 
         @media (max-width: 992px) {
-            .campus-nav-items {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .campus-nav-item {
-                width: 100%;
-            }
-            
-            .campus-nav-link {
-                flex-direction: row;
-                justify-content: flex-start;
-                text-align: left;
-                padding: 1rem 2rem;
-            }
-            
-            .nav-icon {
-                margin-bottom: 0;
-                margin-right: 1rem;
-            }
-            
-            .nav-dropdown {
-                position: static;
-                transform: none;
-                width: 100%;
-                margin-top: 0;
-                border-radius: 0;
-                box-shadow: none;
-                background: rgba(14, 21, 37, 0.95);
-                display: none;
-                padding: 1rem;
-            }
-            
-            .nav-dropdown::before {
+            nav {
                 display: none;
             }
             
-            .dropdown-grid {
-                grid-template-columns: 1fr;
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-actions .btn-pink {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
             }
         }
 
         @media (max-width: 768px) {
             .header-container,
-            .campus-nav,
             .container,
             .hero-content,
             .footer-container,
@@ -811,10 +882,6 @@
             .lab-features {
                 grid-template-columns: 1fr;
             }
-            
-            .desktop-nav {
-                display: none;
-            }
         }
 
         @media (max-width: 576px) {
@@ -830,29 +897,10 @@
                 font-size: 0.7rem;
             }
         }
-
-        /* Header Actions */
-        .header-actions {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .header-actions {
-                display: block;
-            }
-            
-            .mobile-menu-btn {
-                background: none;
-                border: none;
-                color: var(--white);
-                font-size: 1.5rem;
-                cursor: pointer;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Elegant Header - Updated to match final code style -->
+    <!-- Header with complete navbar -->
     <header id="header">
         <div class="header-container">
             <div class="logo-container">
@@ -867,16 +915,18 @@
                 <ul>
                     <li><a href="../index.html">Home</a></li>
                     
+                    <!-- About Dropdown -->
                     <li class="dropdown">
                         <a href="#">About <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="overview.html">Who we are</a>
-                            <a href="mission-vision.html">Mission & Vision</a>
-                            <a href="staff.html">Staff</a>
-                            <a href="student-criteria.html">Student Criteria</a>
+                            <a href="../pages/overview.html">Who we are</a>
+                            <a href="../pages/mission-vision.html">Mission & Vision</a>
+                            <a href="../pages/staff.html">Staff</a>
+                            <a href="../pages/student-criteria.html">Student Criteria</a>
                         </div>
                     </li>
                     
+                    <!-- Campus Dropdown -->
                     <li class="dropdown campus-dropdown">
                         <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
@@ -886,12 +936,12 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
                                 <div class="nested-dropdown-menu">
-                                    <a href="School_laboratory.html">Laboratory</a>
-                                    <a href="classes.html">Classes</a>
-                                    <a href="fablab.html">Fab Lab</a>
-                                    <a href="library.html">Library</a>
-                                    <a href="assembly.html">Assembly</a>
-                                    <a href="playgrounds.html">Playgrounds</a>
+                                    <a href="../pages/School_laboratory.html" class="active">Laboratory</a>
+                                    <a href="../pages/classes.html">Classes</a>
+                                    <a href="../pages/fablab.html">Fab Lab</a>
+                                    <a href="../pages/library.html">Library</a>
+                                    <a href="../pages/assembly.html">Assembly</a>
+                                    <a href="../pages/playgrounds.html">Playgrounds</a>
                                 </div>
                             </div>
                             
@@ -901,45 +951,41 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
                                 <div class="nested-dropdown-menu">
-                                    <a href="rooms-bathrooms.html">Dorm Rooms</a>
-                                    <a href="studying-hall.html">Studying Hall</a>
-                                    <a href="restaurant.html">Restaurant</a>
+                                    <a href="../pages/rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="../pages/studying-hall.html">Studying Hall</a>
+                                    <a href="../pages/restaurant.html">Restaurant</a>
                                 </div>
                             </div>
                             
                             <!-- Events and History as normal links -->
                             <div class="events-history-menu">
-                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
-                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                                <a href="../pages/events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                                <a href="../pages/history.html"><i class="fas fa-history"></i> History</a>
                             </div>
                         </div>
                     </li>
                     
-                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="../pages/academics.html">Academics</a></li>
                     
+                    <!-- Extracurriculars Dropdown -->
                     <li class="dropdown">
                         <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="compititions.html">Competitions</a>
-                            <a href="programs.html">Programs</a>
-                            <a href="teamsandclubs.html">Teams & Clubs</a>
+                            <a href="../pages/compititions.html">Competitions</a>
+                            <a href="../pages/programs.html">Programs</a>
+                            <a href="../pages/teamsandclubs.html">Teams & Clubs</a>
                         </div>
                     </li>
                     
-                    <li><a href="alumni.html">Alumni</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="../pages/alumni.html">Alumni</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
                 </ul>
             </nav>
             
-            <div class="header-actions">
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
         </div>
     </header>
 
-    <!-- MOBILE MENU -->
+    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <button class="mobile-menu-close" id="mobileMenuClose">
             <i class="fas fa-times"></i>
@@ -947,103 +993,86 @@
         <ul>
             <li><a href="../index.html">Home</a></li>
             
+            <!-- About Dropdown Mobile -->
             <li class="dropdown">
-                <a href="#" class="mobile-dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-menu mobile-dropdown-content">
-                    <a href="overview.html">Who we are</a>
-                    <a href="mission-vision.html">Mission & Vision</a>
-                    <a href="staff.html">Staff</a>
-                    <a href="student-criteria.html">Student Criteria</a>
+                <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="../pages/overview.html">Who we are</a>
+                    <a href="../pages/mission-vision.html">Mission & Vision</a>
+                    <a href="../pages/staff.html">Staff</a>
+                    <a href="../pages/student-criteria.html">Student Criteria</a>
                 </div>
             </li>
             
+            <!-- Campus Dropdown Mobile -->
             <li class="dropdown">
-                <a href="#" class="mobile-dropdown-toggle">Campus <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-menu mobile-dropdown-content">
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-school"></i> School</h4>
-                        <div class="mobile-campus-links">
-                            <a href="School_laboratory.html">Laboratory</a>
-                            <a href="classes.html">Classes</a>
-                            <a href="fablab.html">Fab Lab</a>
-                            <a href="library.html">Library</a>
-                            <a href="assembly.html">Assembly</a>
-                            <a href="playgrounds.html">Playgrounds</a>
-                        </div>
+                <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-school"></i> School</h4>
+                        <ul>
+                            <li><a href="../pages/School_laboratory.html" class="active">Laboratory</a></li>
+                            <li><a href="../pages/classes.html">Classes</a></li>
+                            <li><a href="../pages/fablab.html">Fab Lab</a></li>
+                            <li><a href="../pages/library.html">Library</a></li>
+                            <li><a href="../pages/assembly.html">Assembly</a></li>
+                            <li><a href="../pages/playgrounds.html">Playgrounds</a></li>
+                        </ul>
                     </div>
                     
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-bed"></i> Dorms</h4>
-                        <div class="mobile-campus-links">
-                            <a href="rooms-bathrooms.html">Dorm Rooms</a>
-                            <a href="studying-hall.html">Studying Hall</a>
-                            <a href="restaurant.html">Restaurant</a>
-                        </div>
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-bed"></i> Dorms</h4>
+                        <ul>
+                            <li><a href="../pages/rooms-bathrooms.html">Dorm Rooms</a></li>
+                            <li><a href="../pages/studying-hall.html">Studying Hall</a></li>
+                            <li><a href="../pages/restaurant.html">Restaurant</a></li>
+                        </ul>
                     </div>
                     
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-calendar-alt"></i> Events</h4>
-                        <div class="mobile-campus-links">
-                            <a href="events.html">All Events</a>
-                        </div>
+                    <!-- Events and History for mobile -->
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-calendar-alt"></i> Events</h4>
+                        <ul>
+                            <li><a href="../pages/events.html">All Events</a></li>
+                        </ul>
                     </div>
                     
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-history"></i> History</h4>
-                        <div class="mobile-campus-links">
-                            <a href="history.html">School History</a>
-                        </div>
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-history"></i> History</h4>
+                        <ul>
+                            <li><a href="../pages/history.html">School History</a></li>
+                        </ul>
                     </div>
                 </div>
             </li>
             
-            <li><a href="academics.html">Academics</a></li>
+            <li><a href="../pages/academics.html">Academics</a></li>
             
+            <!-- Extracurriculars Dropdown Mobile -->
             <li class="dropdown">
-                <a href="#" class="mobile-dropdown-toggle">Extracurriculars <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-menu mobile-dropdown-content">
-                    <a href="compititions.html">Competitions</a>
-                    <a href="programs.html">Programs</a>
-                    <a href="teamsandclubs.html">Teams & Clubs</a>
+                <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="../pages/competitions.html">Competitions</a>
+                    <a href="../pages/programs.html">Programs</a>
+                    <a href="../pages/teams-clubs.html">Teams & Clubs</a>
                 </div>
             </li>
             
-            <li><a href="alumni.html">Alumni</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            
-            <!-- Apply Now button for mobile -->
-            <li><a href="#" class="mobile-menu-btn-pink">Apply Now</a></li>
+            <li><a href="../pages/alumni.html">Alumni</a></li>
+            <li><a href="../pages/contact.html">Contact</a></li>
+            <li><a href="../pages/apply.html" class="mobile-menu-btn-pink">Apply Now</a></li>
         </ul>
     </div>
 
-    <!-- Enhanced Hero Section for Laboratories - Updated to match final code style -->
+    <!-- Enhanced Hero Section for Laboratories -->
     <section class="hero-labs">
         <div class="hero-content">
             <h1 class="hero-title">Advanced <span>Laboratory Facilities</span></h1>
             <p class="hero-subtitle">State-of-the-art laboratories equipped with cutting-edge technology to support hands-on learning, scientific research, and innovation in STEM education.</p>
             <a href="#laboratories" class="btn-hero">Explore Our Labs</a>
             
-            <div class="breadcrumb-content" style="margin-top: 3rem; justify-content: center;">
-                <a href="#">Home</a>
-                <span>›</span>
-                <a href="#">Campus Life</a>
-                <span>›</span>
-                <a href="#">School</a>
-                <span>›</span>
-                <a href="#" style="color: var(--pink); font-weight: 500;">Laboratories</a>
-            </div>
         </div>
     </section>
-
-    <!-- Breadcrumb Navigation -->
-    <div class="breadcrumb">
-        <div class="breadcrumb-content">
-            <a href="index.html">Home</a> <span>></span>
-            <a href="#">Campus Life</a> <span>></span>
-            <a href="../pages/School_laboratory.html">School</a> <span>></span>
-            <span>Laboratories</span>
-        </div>
-    </div>
 
     <!-- Main Content -->
     <main class="container" id="laboratories">
@@ -1391,85 +1420,50 @@
     </footer>
 
     <script>
-        // Enhanced JavaScript for new features
-        
-        // Mobile menu functionality
+        // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenuClose = document.getElementById('mobileMenuClose');
         const mobileMenu = document.getElementById('mobileMenu');
         
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-        
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-        
-        // Mobile submenu toggle
-        document.querySelectorAll('.mobile-dropdown > a').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                const submenu = this.nextElementSibling;
-                submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
-        });
+        }
+        
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
         
         // Close mobile menu when clicking on a link
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a:not(.mobile-dropdown > a)');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
         });
-        
-        // Header scroll effect - Updated to match final code
+
+        // Header scroll effect
         const header = document.getElementById('header');
-        
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 100) {
-                header.style.backgroundColor = 'rgba(10, 25, 47, 0.98)';
-                header.style.backdropFilter = 'blur(15px)';
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
             } else {
-                header.style.backgroundColor = 'rgba(10, 25, 47, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
+                header.classList.remove('scrolled');
             }
         });
-        
+
         // Initialize header state
-        if (window.pageYOffset > 100) {
-            header.style.backgroundColor = 'rgba(10, 25, 47, 0.98)';
-            header.style.backdropFilter = 'blur(15px)';
+        if (window.pageYOffset > 50) {
+            header.classList.add('scrolled');
         }
-        
-        // Enhanced navigation hover effects - From final code
-        const campusNavItems = document.querySelectorAll('.campus-nav-item');
-        
-        campusNavItems.forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                const dropdown = this.querySelector('.nav-dropdown');
-                if (dropdown) {
-                    dropdown.style.display = 'block';
-                }
-            });
-            
-            item.addEventListener('mouseleave', function(e) {
-                const dropdown = this.querySelector('.nav-dropdown');
-                if (dropdown) {
-                    setTimeout(() => {
-                        if (!this.matches(':hover') && !dropdown.matches(':hover')) {
-                            dropdown.style.display = 'none';
-                        }
-                    }, 300);
-                }
-            });
-        });
-        
+
         // Lab card animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
@@ -1524,36 +1518,6 @@
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0) scale(1)';
             });
-        });
-
-        // Touch support for mobile navigation
-        campusNavItems.forEach(item => {
-            item.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                const dropdown = this.querySelector('.nav-dropdown');
-                if (dropdown) {
-                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                }
-            });
-        });
-
-        // Fade-in animation for hero elements
-        const fadeElements = document.querySelectorAll('.hero-title, .hero-subtitle, .btn-hero');
-        fadeElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        });
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                fadeElements.forEach((el, index) => {
-                    setTimeout(() => {
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                    }, index * 200);
-                });
-            }, 300);
         });
     </script>
 </body>
