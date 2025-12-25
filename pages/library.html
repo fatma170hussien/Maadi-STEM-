@@ -950,6 +950,228 @@
             transform: translateY(0);
         }
 
+                /* Cultural Competitions Section */
+        .competitions-section {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            padding: 5rem 0;
+        }
+
+        .competitions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .competition-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .competition-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(255, 107, 157, 0.2);
+            border-color: var(--pink);
+        }
+
+        .competition-card.highlight-card {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            border: 2px solid var(--pink);
+        }
+
+        .competition-icon {
+            font-size: 3rem;
+            color: var(--pink);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-card .competition-icon {
+            color: var(--pink-light);
+        }
+
+        .competition-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+
+        .highlight-card h3 {
+            color: var(--white);
+        }
+
+        .competition-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .highlight-card p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .achievement-badge.gold {
+            background: linear-gradient(135deg, var(--gold) 0%, #FFEC8B 100%);
+            color: var(--navy);
+        }
+
+        .achievement-badge.silver {
+            background: linear-gradient(135deg, var(--silver) 0%, #E8E8E8 100%);
+            color: var(--navy);
+        }
+
+        .achievement-badge.bronze {
+            background: linear-gradient(135deg, var(--bronze) 0%, #E8B796 100%);
+            color: var(--white);
+        }
+
+        .achievement-badge.special {
+            background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+            color: var(--white);
+        }
+
+        .success-story {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid var(--pink);
+        }
+
+        .success-story h4 {
+            color: var(--pink-light);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .success-story p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        .highlight {
+            color: var(--pink-light);
+            font-weight: 600;
+        }
+
+        /* Achievements Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 25, 47, 0.9), transparent);
+            padding: 1.5rem;
+            color: var(--white);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .gallery-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .additional-achievements {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .additional-achievements h4 {
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .additional-achievements ul {
+            list-style: none;
+        }
+
+        .additional-achievements ul li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--gray);
+        }
+
+        .additional-achievements ul li i {
+            position: absolute;
+            left: 0;
+            top: 0.3rem;
+            color: var(--pink);
+        }
+
+        /* Responsive Design for Competitions Section */
+        @media (max-width: 768px) {
+            .competitions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .competition-card {
+                padding: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+        }
         /* Services - Minimal Design */
         .services-section {
             background: var(--cream-dark);
@@ -1439,7 +1661,56 @@
             </div>
         </div>
     </section>
+    <!-- Cultural Competitions Section -->
+    <section class="competitions-section">
+        <div class="container">
+            <div class="section-title">
 
+                <!-- Achievements Gallery -->
+                <div class="achievements-gallery">
+                    <div class="section-title">
+                        <h3 style="font-size: 2rem; margin-bottom: 2rem;">Achievement <span style="color: var(--pink);">Moments</span></h3>
+                    </div>
+                    
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="../images/library9.jpg" alt="Arab Reading Challenge Award">
+                            <div class="gallery-overlay">
+                                <h4>Arab Reading Challenge</h4>
+                                <p>National Recognition Ceremony</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="../images/library10.jpg" alt="Scientific Writing Competition">
+                            <div class="gallery-overlay">
+                                <h4>Scientific Writing</h4>
+                                <p>Research Excellence Award</p>
+                            </div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="../images/library11.jpg" alt="Infographic Competition Winners">
+                            <div class="gallery-overlay">
+                                <h4>Infographic Competition</h4>
+                                <p>Creative Visualization Winners</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="additional-achievements">
+                        <h4>Other Notable Achievements:</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Multiple advanced positions in various cultural competitions</li>
+                            <li><i class="fas fa-check-circle"></i> Continuous participation in national and international reading initiatives</li>
+                            <li><i class="fas fa-check-circle"></i> Development of students' research and presentation skills</li>
+                            <li><i class="fas fa-check-circle"></i> Fostering a culture of continuous learning and knowledge sharing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <!-- Achievements Section -->
     <section class="achievements-section">
         <div class="container">
