@@ -554,7 +554,7 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background-image: url('images/academics.jpg');
+            background-image: url('../images/heroacadimics.jpg');
             background-size: cover;
             background-position: center;
             filter: brightness(0.7) sepia(0.3) hue-rotate(-10deg) saturate(1.2);
@@ -1792,7 +1792,7 @@
     <header id="header">
         <div class="header-container">
             <div class="logo-container">
-                <img src="../images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
+                <img src="images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
                 <div class="logo-text">
                     <h1>Maadi STEM School</h1>
                     <p>Center of Egyptian innovation leaders</p>
@@ -1801,15 +1801,16 @@
             
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     
                     <li class="dropdown">
-                        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                        <a href="../pages/overview.html">About <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="overview.html">Who we are</a>
-                            <a href="mission-vision.html">Mission & Vision</a>
-                            <a href="staff.html">Staff</a>
-                            <a href="student-criteria.html">Student Criteria</a>
+                            <a href="../pages/overview.html">Overview</a>
+                            <a href="../pages/history.html">History</a>
+                            <a href="../pages/staff.html">Staff</a>
+                            <a href="../pages/mission-vision.html">Mission & Vision</a>
+                            <a href="../pages/student-criteria.html">Student Criteria</a>
                         </div>
                     </li>
                     
@@ -1822,12 +1823,12 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
                                 <div class="nested-dropdown-menu">
-                                    <a href="School_laboratory.html">Laboratory</a>
-                                    <a href="classes.html">Classes</a>
-                                    <a href="fablab.html">Fab Lab</a>
-                                    <a href="library.html">Library</a>
-                                    <a href="assembly.html">Assembly</a>
-                                    <a href="playgrounds.html">Playgrounds</a>
+                                    <a href="../pages/School_laboratory.html">Laboratory</a>
+                                    <a href="../pages/classes.html">Classes</a>
+                                    <a href="../pages/fablab.html">Fab Lab</a>
+                                    <a href="../pages/library.html">Library</a>
+                                    <a href="../pages/assembly.html">Assembly</a>
+                                    <a href="../pages/playgrounds.html">Playgrounds</a>
                                 </div>
                             </div>
                             
@@ -1837,33 +1838,40 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
                                 <div class="nested-dropdown-menu">
-                                    <a href="rooms-bathrooms.html">Dorm Rooms</a>
-                                    <a href="studying-hall.html">Studying Hall</a>
-                                    <a href="restaurant.html">Restaurant</a>
+                                    <a href="../pages/rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="../pages/studying-hall.html">Studying Hall</a>
+                                    <a href="../pages/restaurant.html">Restaurant</a>
                                 </div>
                             </div>
                             
-                            <!-- Events and History as normal links -->
-                            <div class="events-history-menu">
-                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
-                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-calendar-alt"></i> Events</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="../pages/upcoming-events.html">Upcoming Events</a>
+                                    <a href="../pages/past-events.html">Past Events</a>
+                                    <a href="../pages/event-calendar.html">Event Calendar</a>
+                                    <a href="../pages/special-events.html">Special Events</a>
+                                </div>
                             </div>
                         </div>
                     </li>
                     
-                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="../pages/academics.html" class="active">Academics</a></li>
                     
                     <li class="dropdown">
                         <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="compititions.html">Competitions</a>
-                            <a href="programs.html">Programs</a>
-                            <a href="teamsandclubs.html">Teams & Clubs</a>
+                            <a href="../pages/competitions.html">Competitions</a>
+                            <a href="../pages/programs.html">Programs</a>
+                            <a href="../pages/teamsandclubs.html">Teams & Clubs</a>
                         </div>
                     </li>
                     
-                    <li><a href="alumni.html">Alumni</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="../pages/alumni.html">Alumni</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
                 </ul>
             </nav>
             
@@ -1875,81 +1883,84 @@
         </div>
     </header>
 
-    <!-- MOBILE MENU -->
+    <!-- Mobile Menu - Same as programs page -->
     <div class="mobile-menu" id="mobileMenu">
         <button class="mobile-menu-close" id="mobileMenuClose">
             <i class="fas fa-times"></i>
         </button>
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            
-            <li class="dropdown">
-                <a href="#" class="mobile-dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-menu mobile-dropdown-content">
-                    <a href="overview.html">Who we are</a>
-                    <a href="mission-vision.html">Mission & Vision</a>
-                    <a href="staff.html">Staff</a>
-                    <a href="student-criteria.html">Student Criteria</a>
-                </div>
-            </li>
-            
-            <li class="dropdown">
-                <a href="#" class="mobile-dropdown-toggle">Campus <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-menu mobile-dropdown-content">
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-school"></i> School</h4>
-                        <div class="mobile-campus-links">
-                            <a href="School_laboratory.html">Laboratory</a>
-                            <a href="classes.html">Classes</a>
-                            <a href="fablab.html">Fab Lab</a>
-                            <a href="library.html">Library</a>
-                            <a href="assembly.html">Assembly</a>
-                            <a href="playgrounds.html">Playgrounds</a>
+        
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                        About <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="mobile-dropdown-content">
+                        <a href="../pages/overview.html">Overview</a>
+                        <a href="../pages/history.html">History</a>
+                        <a href="../pages/staff.html">Staff</a>
+                        <a href="../pages/mission-vision.html">Mission & Vision</a>
+                        <a href="../pages/student-criteria.html">Student Criteria</a>
+                    </div>
+                </li>
+                
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                        Campus <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="mobile-dropdown-content">
+                        <div class="mobile-campus-submenu">
+                            <h4><i class="fas fa-school"></i> School</h4>
+                            <ul>
+                                <li><a href="pages/School_laboratory.html">Laboratory</a></li>
+                                <li><a href="pages/classes.html">Classes</a></li>
+                                <li><a href="pages/fablab.html">Fab Lab</a></li>
+                                <li><a href="pages/library.html">Library</a></li>
+                                <li><a href="pages/assembly.html">Assembly</a></li>
+                                <li><a href="pages/playgrounds.html">Playgrounds</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mobile-campus-submenu">
+                            <h4><i class="fas fa-bed"></i> Dorms</h4>
+                            <ul>
+                                <li><a href="pages/rooms-bathrooms.html">Dorm Rooms</a></li>
+                                <li><a href="pages/studying-hall.html">Studying Hall</a></li>
+                                <li><a href="pages/restaurant.html">Restaurant</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mobile-campus-submenu">
+                            <h4><i class="fas fa-calendar-alt"></i> Events</h4>
+                            <ul>
+                                <li><a href="pages/upcoming-events.html">Upcoming Events</a></li>
+                                <li><a href="pages/past-events.html">Past Events</a></li>
+                                <li><a href="pages/event-calendar.html">Event Calendar</a></li>
+                                <li><a href="pages/special-events.html">Special Events</a></li>
+                            </ul>
                         </div>
                     </div>
-                    
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-bed"></i> Dorms</h4>
-                        <div class="mobile-campus-links">
-                            <a href="rooms-bathrooms.html">Dorm Rooms</a>
-                            <a href="studying-hall.html">Studying Hall</a>
-                            <a href="restaurant.html">Restaurant</a>
-                        </div>
+                </li>
+                
+                <li><a href="pages/academics.html" class="active">Academics</a></li>
+                
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                        Extracurriculars <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="mobile-dropdown-content">
+                        <a href="pages/competitions.html">Competitions</a>
+                        <a href="pages/programs.html">Programs</a>
+                        <a href="pages/teamsandclubs.html">Teams & Clubs</a>
                     </div>
-                    
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-calendar-alt"></i> Events</h4>
-                        <div class="mobile-campus-links">
-                            <a href="events.html">All Events</a>
-                        </div>
-                    </div>
-                    
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-history"></i> History</h4>
-                        <div class="mobile-campus-links">
-                            <a href="history.html">School History</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            
-            <li><a href="academics.html">Academics</a></li>
-            
-            <li class="dropdown">
-                <a href="#" class="mobile-dropdown-toggle">Extracurriculars <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-menu mobile-dropdown-content">
-                    <a href="compititions.html">Competitions</a>
-                    <a href="programs.html">Programs</a>
-                    <a href="teamsandclubs.html">Teams & Clubs</a>
-                </div>
-            </li>
-            
-            <li><a href="alumni.html">Alumni</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            
-            <!-- Apply Now button for mobile -->
-            <li><a href="#" class="mobile-menu-btn-pink">Apply Now</a></li>
-        </ul>
+                </li>
+                
+                <li><a href="pages/alumni.html">Alumni</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </div>
 
     <section class="hero">
@@ -2054,23 +2065,30 @@
             <!-- Capstone Gallery -->
             <div class="capstone-gallery">
                 <div class="capstone-item fade-in">
-                    <img src="images/cap.png" alt="Capstone Project Presentation" class="capstone-image">
+                    <img src="../images/cap1.jpg" alt="Capstone Project Presentation" class="capstone-image">
                     <div class="capstone-overlay">
                         <h4>Clean Water Solutions</h4>
                         <p>Grade 11 students developing affordable water purification systems for rural communities</p>
                     </div>
                 </div>
 
-                <div class="capstone-item fade-in">
-                    <img src="images/cap2.png" alt="Capstone Project Workshop" class="capstone-image">
-                    <div class="capstone-overlay">
-                        <h4>Renewable Energy</h4>
-                        <p>Grade 10 teams creating innovative solar and wind energy solutions for Egyptian villages</p>
-                    </div>
-                </div>
+              <div class="capstone-item fade-in">
+    <!-- استبدال الصورة بفيديو -->
+    <video class="capstone-video" autoplay muted loop playsinline>
+        <source src="../videos/cap1.mp4" type="video/mp4">
+        <source src="../videos/cap1.mp4" type="video/webm">
+        <!-- نسخة احتياطية للصورة إذا لم يدعم المتصفح الفيديو -->
+        <img src="../images/cap2.jpg" alt="Capstone Project Workshop">
+    </video>
+    
+    <div class="capstone-overlay">
+        <h4>Renewable Energy</h4>
+        <p>Grade 10 teams creating innovative solar and wind energy solutions for Egyptian villages</p>
+    </div>
+</div>
 
                 <div class="capstone-item large fade-in">
-                    <img src="images/cap3.png" alt="Capstone Project Exhibition" class="capstone-image">
+                    <img src="../images/cap5.jpg" alt="Capstone Project Exhibition" class="capstone-image">
                     <div class="capstone-overlay">
                         <h4>Final Exhibition</h4>
                         <p>Teams present their work to a committee of top Egyptian university professors for evaluation</p>
@@ -2078,14 +2096,14 @@
                 </div>
 
                 <div class="capstone-item fade-in">
-                    <img src="images/cap4.png" alt="Capstone Prototype Development" class="capstone-image">
+                    <img src="../images/cap4.jpg" alt="Capstone Prototype Development" class="capstone-image">
                     <div class="capstone-overlay">
                         <h4>Prototype Development</h4>
                         <p>Students design and build testable prototypes in our fabrication lab</p>
                     </div>
                 </div>
                 <div class="capstone-item fade-in">
-                    <img src="images/cap4.png" alt="Capstone Prototype Development" class="capstone-image">
+                    <img src="../images/cap3.jpg" alt="Capstone Prototype Development" class="capstone-image">
                     <div class="capstone-overlay">
                         <h4>Prototype Development</h4>
                         <p>Students design and build testable prototypes in our fabrication lab</p>
@@ -2446,28 +2464,50 @@
         </div>
     </section>
 
-    
-
-    <!-- NEW: Media Section with Images Only -->
-    <section class="media-section">
+    <!-- NEW: Combined Media & Class System Section -->
+    <section class="combined-section">
         <div class="container">
             <div class="section-title">
-                <h2>Academic <span style="color: var(--pink);">Gallery</span></h2>
-                <p>Capturing moments of learning, discovery, and innovation in our STEM classrooms</p>
+                <h2 style="color: var(--white);">Classroom <span style="color: var(--pink-light);">Experience</span></h2>
+                <p style="color: rgba(255, 255, 255, 0.8);">Innovative learning environments and teaching methods that inspire excellence</p>
             </div>
 
-            <div class="image-gallery">
-                <div class="gallery-img fade-in">
-                    <img src="images/cap.png" alt="Student Presentation">
-                </div>
-                <div class="gallery-img fade-in">
-                    <img src="images/cap2.png" alt="Laboratory Work">
-                </div>
-                <div class="gallery-img fade-in">
-                    <img src="images/cap3.png" alt="Class Discussion">
-                </div>
-                <div class="gallery-img fade-in">
-                    <img src="images/cap4.png" alt="Team Collaboration">
+        
+                <div class="class-system-content fade-in">
+                    <h3 style="color: var(--white); margin-bottom: 2rem; font-size: 1.8rem;">Unique Class System</h3>
+                    <div class="class-features">
+                        <div class="class-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <h3>Small Class Sizes</h3>
+                            <p>Maximum 24 students per class compared to 60-70 in most Egyptian schools, allowing for personalized attention and active participation.</p>
+                        </div>
+
+                        <div class="class-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h3>Harkness Pedagogy</h3>
+                            <p>Students lead discussions around oval tables while teachers facilitate. This method develops critical thinking and communication skills.</p>
+                        </div>
+
+                        <div class="class-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-microscope"></i>
+                            </div>
+                            <h3>Practical Sessions</h3>
+                            <p>Weekly laboratory sessions in fully-equipped science labs where students conduct experiments and develop hands-on skills.</p>
+                        </div>
+
+                        <div class="class-feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3>Self-Directed Learning</h3>
+                            <p>Students research concepts in college-level references, present topics to peers, and suggest materials for deeper understanding.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
