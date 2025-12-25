@@ -509,7 +509,7 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            background-image: url('images/bgcompitition.jpg');
+            background-image: url('../images/competitions/com17.jpg');
             background-size: cover;
             background-position: center;
             filter: brightness(0.7) sepia(0.3) hue-rotate(-10deg) saturate(1.2);
@@ -1478,13 +1478,276 @@
                 font-size: 0.9rem;
             }
         }
+        
+    /* Winners Photos Carousel Section */
+.winners-photos {
+    background: linear-gradient(135deg, var(--navy-light), var(--navy));
+    padding: 7rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.winners-photos::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 107, 157, 0.1) 0%, transparent 70%);
+    top: -200px;
+    left: -200px;
+}
+
+.winners-photos::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 180, 179, 0.08) 0%, transparent 70%);
+    bottom: -150px;
+    right: -150px;
+}
+
+.winners-photos .section-title h2 {
+    color: var(--white);
+}
+
+.winners-photos .section-title p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.photo-carousel-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 4rem auto 2rem;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.photo-carousel-track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 1rem;
+}
+
+.photo-slide {
+    flex: 0 0 300px;
+    height: 400px;
+}
+
+.photo-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+}
+
+.photo-frame:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--pink);
+    box-shadow: 0 30px 60px rgba(255, 107, 157, 0.3);
+}
+
+.winner-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.photo-frame:hover .winner-photo {
+    transform: scale(1.1);
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(10, 25, 47, 0.9), transparent);
+    padding: 2rem 1.5rem 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+}
+
+.photo-frame:hover .photo-overlay {
+    transform: translateY(0);
+}
+
+.photo-info {
+    text-align: center;
+    color: var(--white);
+}
+
+.photo-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.photo-info p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    color: var(--pink-light);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    font-size: 1.3rem;
+}
+
+.carousel-btn:hover {
+    background: var(--pink);
+    border-color: var(--pink);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+}
+
+.prev-btn {
+    left: -30px;
+}
+
+.next-btn {
+    right: -30px;
+}
+
+.autoplay-control {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.autoplay-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.autoplay-btn:hover {
+    background: var(--pink);
+    border-color: var(--pink);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+}
+
+.autoplay-btn i {
+    font-size: 1.1rem;
+}
+
+/* Responsive Design for Photo Carousel */
+@media (max-width: 1200px) {
+    .photo-slide {
+        flex: 0 0 280px;
+        height: 380px;
+    }
+    
+    .prev-btn {
+        left: 10px;
+    }
+    
+    .next-btn {
+        right: 10px;
+    }
+}
+
+@media (max-width: 992px) {
+    .photo-slide {
+        flex: 0 0 250px;
+        height: 350px;
+    }
+    
+    .photo-carousel-track {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-slide {
+        flex: 0 0 220px;
+        height: 320px;
+    }
+    
+    .photo-carousel-track {
+        gap: 1rem;
+    }
+    
+    .carousel-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+    }
+    
+    .prev-btn {
+        left: 5px;
+    }
+    
+    .next-btn {
+        right: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .photo-slide {
+        flex: 0 0 200px;
+        height: 300px;
+    }
+    
+    .photo-overlay {
+        padding: 1.5rem 1rem 1rem;
+    }
+    
+    .photo-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .photo-info p {
+        font-size: 0.8rem;
+    }
+    
+    .autoplay-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
     </style>
 </head>
 <body>
+    <!-- FIXED HEADER -->
     <header id="header">
         <div class="header-container">
             <div class="logo-container">
-                <img src="../images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
+                <img src="images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
                 <div class="logo-text">
                     <h1>Maadi STEM School</h1>
                     <p>Center of Egyptian innovation leaders</p>
@@ -1493,15 +1756,16 @@
             
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     
                     <li class="dropdown">
-                        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                        <a href="../pages/overview.html">About <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="overview.html">Who we are</a>
-                            <a href="mission-vision.html">Mission & Vision</a>
-                            <a href="staff.html">Staff</a>
-                            <a href="student-criteria.html">Student Criteria</a>
+                            <a href="../pages/overview.html">Overview</a>
+                            <a href="../pages/history.html">History</a>
+                            <a href="../pages/staff.html">Staff</a>
+                            <a href="../pages/mission-vision.html">Mission & Vision</a>
+                            <a href="../pages/student-criteria.html">Student Criteria</a>
                         </div>
                     </li>
                     
@@ -1514,12 +1778,12 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
                                 <div class="nested-dropdown-menu">
-                                    <a href="School_laboratory.html">Laboratory</a>
-                                    <a href="classes.html">Classes</a>
-                                    <a href="fablab.html">Fab Lab</a>
-                                    <a href="library.html">Library</a>
-                                    <a href="assembly.html">Assembly</a>
-                                    <a href="playgrounds.html">Playgrounds</a>
+                                    <a href="../pages/School_laboratory.html">Laboratory</a>
+                                    <a href="../pages/classes.html">Classes</a>
+                                    <a href="../pages/fablab.html">Fab Lab</a>
+                                    <a href="../pages/library.html">Library</a>
+                                    <a href="../pages/assembly.html">Assembly</a>
+                                    <a href="../pages/playgrounds.html">Playgrounds</a>
                                 </div>
                             </div>
                             
@@ -1529,33 +1793,40 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
                                 <div class="nested-dropdown-menu">
-                                    <a href="rooms-bathrooms.html">Dorm Rooms</a>
-                                    <a href="studying-hall.html">Studying Hall</a>
-                                    <a href="restaurant.html">Restaurant</a>
+                                    <a href="../pages/rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="../pages/studying-hall.html">Studying Hall</a>
+                                    <a href="../pages/restaurant.html">Restaurant</a>
                                 </div>
                             </div>
                             
-                            <!-- Events and History as normal links -->
-                            <div class="events-history-menu">
-                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
-                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-calendar-alt"></i> Events</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="../pages/upcoming-events.html">Upcoming Events</a>
+                                    <a href="../pages/past-events.html">Past Events</a>
+                                    <a href="../pages/event-calendar.html">Event Calendar</a>
+                                    <a href="../pages/special-events.html">Special Events</a>
+                                </div>
                             </div>
                         </div>
                     </li>
                     
-                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="../pages/academics.html">Academics</a></li>
                     
                     <li class="dropdown">
                         <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="compititions.html">Competitions</a>
-                            <a href="programs.html">Programs</a>
-                            <a href="teamsandclubs.html">Teams & Clubs</a>
+                            <a href="../pages/competitions.html" class="active">Competitions</a>
+                            <a href="../pages/programs.html">Programs</a>
+                            <a href="../pages/teamsandclubs.html">Teams & Clubs</a>
                         </div>
                     </li>
                     
-                    <li><a href="alumni.html">Alumni</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="../pages/alumni.html">Alumni</a></li>
+                    <li><a href="../pages/contact.html">Contact</a></li>
                 </ul>
             </nav>
             
@@ -1567,81 +1838,84 @@
         </div>
     </header>
 
-    <!-- MOBILE MENU -->
+    <!-- Enhanced Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <button class="mobile-menu-close" id="mobileMenuClose">
             <i class="fas fa-times"></i>
         </button>
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            
-            <li class="dropdown">
-                <a href="#" class="mobile-dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-menu mobile-dropdown-content">
-                    <a href="overview.html">Who we are</a>
-                    <a href="mission-vision.html">Mission & Vision</a>
-                    <a href="staff.html">Staff</a>
-                    <a href="student-criteria.html">Student Criteria</a>
-                </div>
-            </li>
-            
-            <li class="dropdown">
-                <a href="#" class="mobile-dropdown-toggle">Campus <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-menu mobile-dropdown-content">
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-school"></i> School</h4>
-                        <div class="mobile-campus-links">
-                            <a href="School_laboratory.html">Laboratory</a>
-                            <a href="classes.html">Classes</a>
-                            <a href="fablab.html">Fab Lab</a>
-                            <a href="library.html">Library</a>
-                            <a href="assembly.html">Assembly</a>
-                            <a href="playgrounds.html">Playgrounds</a>
+        
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                        About <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="mobile-dropdown-content">
+                        <a href="../pages/overview.html">Overview</a>
+                        <a href="../pages/history.html">History</a>
+                        <a href="../pages/staff.html">Staff</a>
+                        <a href="../pages/mission-vision.html">Mission & Vision</a>
+                        <a href="../pages/student-criteria.html">Student Criteria</a>
+                    </div>
+                </li>
+                
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                        Campus <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="mobile-dropdown-content">
+                        <div class="mobile-campus-submenu">
+                            <h4><i class="fas fa-school"></i> School</h4>
+                            <ul>
+                                <li><a href="pages/School_laboratory.html">Laboratory</a></li>
+                                <li><a href="pages/classes.html">Classes</a></li>
+                                <li><a href="pages/fablab.html">Fab Lab</a></li>
+                                <li><a href="pages/library.html">Library</a></li>
+                                <li><a href="pages/assembly.html">Assembly</a></li>
+                                <li><a href="pages/playgrounds.html">Playgrounds</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mobile-campus-submenu">
+                            <h4><i class="fas fa-bed"></i> Dorms</h4>
+                            <ul>
+                                <li><a href="pages/rooms-bathrooms.html">Dorm Rooms</a></li>
+                                <li><a href="pages/studying-hall.html">Studying Hall</a></li>
+                                <li><a href="pages/restaurant.html">Restaurant</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mobile-campus-submenu">
+                            <h4><i class="fas fa-calendar-alt"></i> Events</h4>
+                            <ul>
+                                <li><a href="pages/upcoming-events.html">Upcoming Events</a></li>
+                                <li><a href="pages/past-events.html">Past Events</a></li>
+                                <li><a href="pages/event-calendar.html">Event Calendar</a></li>
+                                <li><a href="pages/special-events.html">Special Events</a></li>
+                            </ul>
                         </div>
                     </div>
-                    
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-bed"></i> Dorms</h4>
-                        <div class="mobile-campus-links">
-                            <a href="rooms-bathrooms.html">Dorm Rooms</a>
-                            <a href="studying-hall.html">Studying Hall</a>
-                            <a href="restaurant.html">Restaurant</a>
-                        </div>
+                </li>
+                
+                <li><a href="pages/academics.html">Academics</a></li>
+                
+                <li class="mobile-dropdown">
+                    <a href="javascript:void(0)" class="mobile-dropdown-toggle">
+                        Extracurriculars <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="mobile-dropdown-content">
+                        <a href="pages/competitions.html" class="active">Competitions</a>
+                        <a href="pages/programs.html">Programs</a>
+                        <a href="pages/teamsandclubs.html">Teams & Clubs</a>
                     </div>
-                    
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-calendar-alt"></i> Events</h4>
-                        <div class="mobile-campus-links">
-                            <a href="events.html">All Events</a>
-                        </div>
-                    </div>
-                    
-                    <div class="mobile-campus-section">
-                        <h4 class="mobile-campus-title"><i class="fas fa-history"></i> History</h4>
-                        <div class="mobile-campus-links">
-                            <a href="history.html">School History</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            
-            <li><a href="academics.html">Academics</a></li>
-            
-            <li class="dropdown">
-                <a href="#" class="mobile-dropdown-toggle">Extracurriculars <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-menu mobile-dropdown-content">
-                    <a href="compititions.html">Competitions</a>
-                    <a href="programs.html">Programs</a>
-                    <a href="teamsandclubs.html">Teams & Clubs</a>
-                </div>
-            </li>
-            
-            <li><a href="alumni.html">Alumni</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            
-            <!-- Apply Now button for mobile -->
-            <li><a href="#" class="mobile-menu-btn-pink">Apply Now</a></li>
-        </ul>
+                </li>
+                
+                <li><a href="pages/alumni.html">Alumni</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </div>
 
     <section class="hero">
@@ -1659,9 +1933,9 @@
     <div class="center-image-section fade-in">
         <div class="container">
             <div class="center-image">
-                <img src="../images/competitions/hero.jpg" alt="Students Winning International Competitions">
+                <img src="../images/competitions/com7.jpeg" alt="Students Winning International Competitions">
             </div>
-            <p class="image-caption">Our students celebrating victory at ISEF Science fair 2024</p>
+            <p class="image-caption">Our students celebrating victory at the International Science Olympiad 2023</p>
         </div>
     </div>
 
@@ -1676,7 +1950,7 @@
                 <!-- Competition 1: ISEF -->
                 <div class="competition-card fade-in" data-competition="isef">
                     <div class="competition-header">
-                        <img src="../images/competitions/isef-logo.webp" alt="ISEF Logo" class="competition-logo">
+                        <img src="../images/competitions/1.jfif" alt="ISEF Logo" class="competition-logo">
                         <div class="competition-badge" style="background: var(--gold);">Grand Award</div>
                     </div>
                     <div class="competition-body">
@@ -1714,7 +1988,7 @@
                 <!-- Competition 2: IMO -->
                 <div class="competition-card fade-in" data-competition="imo">
                     <div class="competition-header">
-                        <img src="../images/competitions/imo.webp" alt="IMO Logo" class="competition-logo">
+                        <img src="../images/competitions/2.png" alt="IMO Logo" class="competition-logo">
                         <div class="competition-badge" style="background: var(--silver);">Medals</div>
                     </div>
                     <div class="competition-body">
@@ -1752,7 +2026,7 @@
                 <!-- Competition 3: IPhO -->
                 <div class="competition-card fade-in" data-competition="ipho">
                     <div class="competition-header">
-                        <img src="../images/competitions/ipho.png" alt="IPhO Logo" class="competition-logo">
+                        <img src="../images/competitions/3.png" alt="IPhO Logo" class="competition-logo">
                         <div class="competition-badge" style="background: var(--bronze);">Physics</div>
                     </div>
                     <div class="competition-body">
@@ -1790,7 +2064,7 @@
                 <!-- Competition 4: IChO -->
                 <div class="competition-card fade-in" data-competition="icho">
                     <div class="competition-header">
-                        <img src="images/icho.png" alt="IChO Logo" class="competition-logo">
+                        <img src="../images/competitions/4.png" alt="IChO Logo" class="competition-logo">
                         <div class="competition-badge">Chemistry</div>
                     </div>
                     <div class="competition-body">
@@ -1828,7 +2102,7 @@
                 <!-- Competition 5: IOI -->
                 <div class="competition-card fade-in" data-competition="ioi">
                     <div class="competition-header">
-                        <img src="../images/competitions/ioi.png" alt="IOI Logo" class="competition-logo">
+                        <img src="../images/competitions/5.png" alt="IOI Logo" class="competition-logo">
                         <div class="competition-badge" style="background: var(--gold);">Programming</div>
                     </div>
                     <div class="competition-body">
@@ -1866,7 +2140,7 @@
                 <!-- Competition 6: FIRST Robotics -->
                 <div class="competition-card fade-in" data-competition="first">
                     <div class="competition-header">
-                        <img src="images/first.png" alt="FIRST Robotics Logo" class="competition-logo">
+                        <img src="../images/competitions/6.png" alt="FIRST Robotics Logo" class="competition-logo">
                         <div class="competition-badge" style="background: var(--silver);">Robotics</div>
                     </div>
                     <div class="competition-body">
@@ -1903,7 +2177,230 @@
             </div>
         </div>
     </section>
+<!-- Winners Photos Carousel -->
+<section class="winners-photos">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our <span style="color: var(--pink);">Champions Gallery</span></h2>
+            <p>Celebrating the outstanding achievements of our competition winners</p>
+        </div>
 
+        <div class="photo-carousel-container">
+            <div class="photo-carousel-track" id="photoCarousel">
+                <!-- Photo 1 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com10.jpg" alt="Gold Medal Winner" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Mariam Ahmed</h3>
+                                <p>Gold Medal - IMO 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com11.jpg" alt="ISEF Winner" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Sarah Ali</h3>
+                                <p>ISEF Grand Award 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 3 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com12.jpg" alt="Robotics Champion" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Layla Mahmoud</h3>
+                                <p>FIRST Robotics 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 4 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com13.jpg" alt="Physics Olympiad Winner" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Hana Ali</h3>
+                                <p>Gold Medal - IPhO 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 5 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com14.jpg" alt="Chemistry Olympiad Winner" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Yasmin Ali</h3>
+                                <p>Gold Medal - IChO 2019</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 6 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com15.jpg" alt="Informatics Olympiad Winner" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Nada Ahmed</h3>
+                                <p>Gold Medal - IOI 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 7 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com16.jpg" alt="ISEF Award Winner" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Fatima Hassan</h3>
+                                <p>ISEF Second Award 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 8 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com17.jpg" alt="Mathematics Olympiad Winner" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Rana Ahmed</h3>
+                                <p>Gold Medal - IMO 2019</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 9 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com18.jpg" alt="Physics Olympiad Silver" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Amina Rashid</h3>
+                                <p>Silver Medal - IPhO 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 10 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com19.jpg" alt="Chemistry Olympiad Silver" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Khadija Ahmed</h3>
+                                <p>Silver Medal - IChO 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 11 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com20.jpg" alt="Informatics Olympiad Gold" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Amira Hassan</h3>
+                                <p>Gold Medal - IOI 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 12 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com21.jpg" alt="Physics Gold Medalist" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Salma El-Gazzar</h3>
+                                <p>Gold Medal - IPhO 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 13 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com7.jpeg" alt="Robotics Team Lead" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Mariam Ibrahim</h3>
+                                <p>FIRST Engineering Lead</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 14 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com9.jpg" alt="Programming Champion" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Nourhan Salah</h3>
+                                <p>Programming Lead - Robotics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 15 -->
+                <div class="photo-slide">
+                    <div class="photo-frame">
+                        <img src="../images/competitions/com8.JPG" alt="Multiple Award Winner" class="winner-photo">
+                        <div class="photo-overlay">
+                            <div class="photo-info">
+                                <h3>Lina Samy</h3>
+                                <p>Silver Medal - IMO 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="carousel-btn prev-btn" id="prevPhotoBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next-btn" id="nextPhotoBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Autoplay Control -->
+            <div class="autoplay-control">
+                <button class="autoplay-btn" id="autoplayBtn">
+                    <i class="fas fa-pause" id="autoplayIcon"></i>
+                    <span id="autoplayText">Pause Autoplay</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- Enhanced Students Modal -->
     <div class="students-modal" id="studentsModal">
         <div class="modal-content">
@@ -2280,6 +2777,236 @@
         window.addEventListener('load', () => {
             fadeInOnScroll();
         });
+        // Winners Photos Carousel
+const photoCarousel = document.getElementById('photoCarousel');
+const prevPhotoBtn = document.getElementById('prevPhotoBtn');
+const nextPhotoBtn = document.getElementById('nextPhotoBtn');
+const autoplayBtn = document.getElementById('autoplayBtn');
+const autoplayIcon = document.getElementById('autoplayIcon');
+const autoplayText = document.getElementById('autoplayText');
+
+const slides = document.querySelectorAll('.photo-slide');
+const totalSlides = slides.length;
+let currentSlide = 0;
+let slideWidth = slides[0].offsetWidth + 32; // Width + gap
+let isAutoPlaying = true;
+let autoPlayInterval;
+
+// Clone first few slides and append to end for infinite effect
+function initializeInfiniteCarousel() {
+    const track = document.querySelector('.photo-carousel-track');
+    const firstSlides = Array.from(slides).slice(0, 5).map(slide => slide.cloneNode(true));
+    
+    firstSlides.forEach(slide => {
+        track.appendChild(slide);
+    });
+    
+    // Update slide width after initialization
+    slideWidth = slides[0].offsetWidth + 32;
+}
+
+// Update carousel position
+function updateCarouselPosition() {
+    photoCarousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+}
+
+// Next slide function
+function nextPhoto() {
+    currentSlide++;
+    
+    // If we've reached the cloned slides, reset to beginning seamlessly
+    if (currentSlide >= totalSlides) {
+        photoCarousel.style.transition = 'none';
+        currentSlide = 0;
+        updateCarouselPosition();
+        
+        // Force reflow
+        photoCarousel.offsetHeight;
+        
+        // Re-enable transition
+        photoCarousel.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    }
+    
+    updateCarouselPosition();
+}
+
+// Previous slide function
+function prevPhoto() {
+    currentSlide--;
+    
+    if (currentSlide < 0) {
+        photoCarousel.style.transition = 'none';
+        currentSlide = totalSlides - 1;
+        updateCarouselPosition();
+        
+        // Force reflow
+        photoCarousel.offsetHeight;
+        
+        // Re-enable transition
+        photoCarousel.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    }
+    
+    updateCarouselPosition();
+}
+
+// Auto play function
+function startAutoPlay() {
+    autoPlayInterval = setInterval(nextPhoto, 3000); // Change slide every 3 seconds
+}
+
+function stopAutoPlay() {
+    clearInterval(autoPlayInterval);
+}
+
+function toggleAutoPlay() {
+    isAutoPlaying = !isAutoPlaying;
+    
+    if (isAutoPlaying) {
+        autoplayIcon.className = 'fas fa-pause';
+        autoplayText.textContent = 'Pause Autoplay';
+        startAutoPlay();
+    } else {
+        autoplayIcon.className = 'fas fa-play';
+        autoplayText.textContent = 'Play Autoplay';
+        stopAutoPlay();
+    }
+}
+
+// Event Listeners
+prevPhotoBtn.addEventListener('click', () => {
+    stopAutoPlay();
+    prevPhoto();
+    if (isAutoPlaying) {
+        setTimeout(startAutoPlay, 5000);
+    }
+});
+
+nextPhotoBtn.addEventListener('click', () => {
+    stopAutoPlay();
+    nextPhoto();
+    if (isAutoPlaying) {
+        setTimeout(startAutoPlay, 5000);
+    }
+});
+
+autoplayBtn.addEventListener('click', toggleAutoPlay);
+
+// Touch and drag support for mobile
+let isDragging = false;
+let startPos = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
+
+photoCarousel.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startPos = e.clientX;
+    stopAutoPlay();
+    photoCarousel.style.cursor = 'grabbing';
+});
+
+photoCarousel.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    
+    const currentPosition = e.clientX;
+    const diff = currentPosition - startPos;
+    
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+            prevPhoto();
+        } else {
+            nextPhoto();
+        }
+        isDragging = false;
+        photoCarousel.style.cursor = 'grab';
+        
+        if (isAutoPlaying) {
+            setTimeout(startAutoPlay, 5000);
+        }
+    }
+});
+
+photoCarousel.addEventListener('mouseup', () => {
+    isDragging = false;
+    photoCarousel.style.cursor = 'grab';
+});
+
+photoCarousel.addEventListener('mouseleave', () => {
+    isDragging = false;
+    photoCarousel.style.cursor = 'grab';
+});
+
+// Touch events for mobile
+photoCarousel.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startPos = e.touches[0].clientX;
+    stopAutoPlay();
+});
+
+photoCarousel.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    
+    const currentPosition = e.touches[0].clientX;
+    const diff = startPos - currentPosition;
+    
+    if (Math.abs(diff) > 30) {
+        if (diff > 0) {
+            nextPhoto();
+        } else {
+            prevPhoto();
+        }
+        isDragging = false;
+        
+        if (isAutoPlaying) {
+            setTimeout(startAutoPlay, 5000);
+        }
+    }
+});
+
+photoCarousel.addEventListener('touchend', () => {
+    isDragging = false;
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+        stopAutoPlay();
+        prevPhoto();
+        if (isAutoPlaying) {
+            setTimeout(startAutoPlay, 5000);
+        }
+    } else if (e.key === 'ArrowRight') {
+        stopAutoPlay();
+        nextPhoto();
+        if (isAutoPlaying) {
+            setTimeout(startAutoPlay, 5000);
+        }
+    }
+});
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    slideWidth = document.querySelector('.photo-slide').offsetWidth + 32;
+    updateCarouselPosition();
+});
+
+// Initialize carousel
+initializeInfiniteCarousel();
+startAutoPlay();
+
+// Add hover effect to photos
+const photoFrames = document.querySelectorAll('.photo-frame');
+photoFrames.forEach(frame => {
+    frame.addEventListener('mouseenter', () => {
+        stopAutoPlay();
+    });
+    
+    frame.addEventListener('mouseleave', () => {
+        if (isAutoPlaying) {
+            startAutoPlay();
+        }
+    });
+});
     </script>
 </body>
 </html>
