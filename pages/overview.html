@@ -307,6 +307,83 @@
             padding-left: 2.3rem;
         }
 
+        /* Campus Dropdown - Updated to match Staff page */
+        .campus-dropdown .dropdown-menu {
+            min-width: 210px;
+            padding: 0.8rem 0;
+        }
+
+        .campus-main-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .campus-main-item:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-main-item i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nested-dropdown {
+            position: relative;
+        }
+
+        .nested-dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: var(--transition);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            border-left: none;
+            margin-left: 5px;
+        }
+
+        .nested-dropdown:hover .nested-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .nested-dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .nested-dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
         /* Mobile Menu */
         .mobile-menu {
             position: fixed;
@@ -1035,13 +1112,41 @@
                         </div>
                     </li>
                     
-                    <li class="dropdown">
+                    <!-- Campus Dropdown - Updated to match Staff page -->
+                    <li class="dropdown campus-dropdown">
                         <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="School_laboratory.html">Laboratories</a>
-                            <a href="classes.html">Classrooms</a>
-                            <a href="library.html">Library</a>
-                            <a href="playgrounds.html">Sports Facilities</a>
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-school"></i> School</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="School_laboratory.html">Laboratory</a>
+                                    <a href="classes.html">Classes</a>
+                                    <a href="fablab.html">Fab Lab</a>
+                                    <a href="library.html">Library</a>
+                                    <a href="assembly.html">Assembly</a>
+                                    <a href="playgrounds.html">Playgrounds</a>
+                                </div>
+                            </div>
+                            
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-bed"></i> Dorms</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="studying-hall.html">Studying Hall</a>
+                                    <a href="restaurant.html">Restaurant</a>
+                                </div>
+                            </div>
+                            
+                            <div class="events-history-menu">
+                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                            </div>
                         </div>
                     </li>
                     
@@ -1085,13 +1190,44 @@
                 </div>
             </li>
             
+            <!-- Updated Mobile Campus Menu to match structure -->
             <li class="dropdown">
                 <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown-menu">
-                    <a href="School_laboratory.html">Laboratories</a>
-                    <a href="classes.html">Classrooms</a>
-                    <a href="library.html">Library</a>
-                    <a href="playgrounds.html">Sports Facilities</a>
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-school"></i> School</h4>
+                        <ul>
+                            <li><a href="School_laboratory.html">Laboratory</a></li>
+                            <li><a href="classes.html">Classes</a></li>
+                            <li><a href="fablab.html">Fab Lab</a></li>
+                            <li><a href="library.html">Library</a></li>
+                            <li><a href="assembly.html">Assembly</a></li>
+                            <li><a href="playgrounds.html">Playgrounds</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-bed"></i> Dorms</h4>
+                        <ul>
+                            <li><a href="rooms-bathrooms.html">Dorm Rooms</a></li>
+                            <li><a href="studying-hall.html">Studying Hall</a></li>
+                            <li><a href="restaurant.html">Restaurant</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-calendar-alt"></i> Events</h4>
+                        <ul>
+                            <li><a href="events.html">All Events</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="campus-submenu">
+                        <h4><i class="fas fa-history"></i> History</h4>
+                        <ul>
+                            <li><a href="history.html">School History</a></li>
+                        </ul>
+                    </div>
                 </div>
             </li>
             
@@ -1384,9 +1520,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
