@@ -545,7 +545,7 @@
 
         .hero-scroll {
             position: absolute;
-            bottom: 3rem;
+            bottom: 5rem;
             left: 50%;
             transform: translateX(-50%);
             color: var(--white);
@@ -617,6 +617,7 @@
             z-index: 1;
         }
 
+        /* VIDEO FIX: Adjust video container to fill its parent */
         .video-card {
             background: var(--white);
             border-radius: 25px;
@@ -631,6 +632,7 @@
             width: 100%;
         }
 
+        /* VIDEO FIX: Make video player fill container */
         .video-player-wrapper {
             position: relative;
             overflow: hidden;
@@ -638,6 +640,25 @@
             height: 100%;
             cursor: pointer;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* VIDEO FIX: Make video fill container without white spaces */
+        .elegant-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Changed from 'contain' to 'cover' */
+            display: block;
+            background: var(--navy);
+            cursor: pointer;
+        }
+
+        /* VIDEO FIX: For centered mode, use contain to show full video */
+        .centered-video-container .elegant-video {
+            object-fit: contain;
+            background: var(--navy);
         }
 
         .video-player-wrapper.centered {
@@ -722,15 +743,6 @@
         .elegant-play-btn.playing {
             transform: scale(0.8);
             opacity: 0;
-        }
-
-        .elegant-video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            background: var(--navy);
-            cursor: pointer;
         }
 
         .video-content {
@@ -1479,7 +1491,7 @@
             }
             
             .elegant-video {
-                object-fit: contain;
+                object-fit: cover;
             }
             
             .centered-video-container {
@@ -1617,13 +1629,12 @@
             z-index: 1;
         }
 
+        /* VIDEO FIX: Responsive adjustments */
         .video-card {
             background: var(--white);
             border-radius: 25px;
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(10, 25, 47, 0.1);
-            display: grid;
-            grid-template-columns: 2fr 1fr;
             height: 450px;
             position: relative;
             border: 1px solid rgba(255, 107, 157, 0.1);
@@ -1715,10 +1726,11 @@
             opacity: 0;
         }
 
+        /* VIDEO FIX: Make sure video fills container */
         .elegant-video {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             display: block;
             background: var(--navy);
             cursor: pointer;
@@ -2069,7 +2081,7 @@
             }
             
             .elegant-video {
-                object-fit: contain;
+                object-fit: cover;
             }
         }
 
@@ -2418,132 +2430,7 @@
         </div>
     </section>
 
-    <!-- ===== IMAGE CARDS SECTION ===== -->
-    <section class="image-cards-section">
-        <div class="section-title">
-            <h2>Explore Our Campus</h2>
-            <p>Discover the state-of-the-art facilities and innovative learning environments at Maadi STEM School for Girls</p>
-        </div>
-        
-        <div class="image-cards-container">
-            <div class="cards-grid">
-                <!-- Card 1: STEM Laboratories -->
-                <div class="image-card">
-                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                        alt="STEM Laboratories" class="card-image">
-                    <div class="card-overlay">
-                        <div class="card-icon">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <h3 class="card-title">STEM Laboratories</h3>
-                        <p class="card-description">
-                            Advanced science and research labs equipped with cutting-edge technology for hands-on experimentation and discovery.
-                        </p>
-                        <a href="pages/School_laboratory.html" class="card-link">
-                            Explore Labs <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="card-number">01</div>
-                </div>
-                
-                <!-- Card 2: Modern Classrooms -->
-                <div class="image-card">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                        alt="Modern Classrooms" class="card-image">
-                    <div class="card-overlay">
-                        <div class="card-icon">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <h3 class="card-title">Modern Classrooms</h3>
-                        <p class="card-description">
-                            Interactive learning spaces designed for collaboration, creativity, and academic excellence through innovative teaching methods.
-                        </p>
-                        <a href="pages/classes.html" class="card-link">
-                            View Classrooms <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="card-number">02</div>
-                </div>
-                
-                <!-- Card 3: Innovation Hub -->
-                <div class="image-card">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                        alt="Innovation Hub" class="card-image">
-                    <div class="card-overlay">
-                        <div class="card-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h3 class="card-title">Innovation Hub</h3>
-                        <p class="card-description">
-                            Fab Lab and makerspace with 3D printers, laser cutters, and robotics equipment for turning ideas into reality.
-                        </p>
-                        <a href="pages/fablab.html" class="card-link">
-                            Visit Hub <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="card-number">03</div>
-                </div>
-                
-                <!-- Card 4: Digital Library -->
-                <div class="image-card">
-                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                        alt="Digital Library" class="card-image">
-                    <div class="card-overlay">
-                        <div class="card-icon">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <h3 class="card-title">Digital Library</h3>
-                        <p class="card-description">
-                            Vast collection of physical and digital resources with quiet study areas and collaborative workspaces.
-                        </p>
-                        <a href="pages/library.html" class="card-link">
-                            Explore Library <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="card-number">04</div>
-                </div>
-                
-                <!-- Card 5: Sports Complex -->
-                <div class="image-card">
-                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                        alt="Sports Complex" class="card-image">
-                    <div class="card-overlay">
-                        <div class="card-icon">
-                            <i class="fas fa-running"></i>
-                        </div>
-                        <h3 class="card-title">Sports Complex</h3>
-                        <p class="card-description">
-                            Indoor and outdoor sports facilities including gymnasium, swimming pool, tennis courts, and fitness center.
-                        </p>
-                        <a href="pages/playgrounds.html" class="card-link">
-                            View Facilities <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="card-number">05</div>
-                </div>
-                
-                <!-- Card 6: Student Life -->
-                <div class="image-card">
-                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                        alt="Student Life" class="card-image">
-                    <div class="card-overlay">
-                        <div class="card-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="card-title">Student Life</h3>
-                        <p class="card-description">
-                            Vibrant community with clubs, events, and residential facilities fostering holistic development and lifelong friendships.
-                        </p>
-                        <a href="pages/teamsandclubs.html" class="card-link">
-                            Discover More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="card-number">06</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <main>
         <section class="welcome">
             <div class="container">
@@ -2556,7 +2443,7 @@
                 
                 <div class="cards-container">
                     <div class="card fade-in">
-                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Academic Excellence" class="card-img">
+                        <img src="images/compition.jpg" alt="Academic Excellence" class="card-img">
                         <div class="card-content">
                             <h3>Competitions and Centers</h3>
                             <p>Our students participate in national and international competitions in STEM fields, supported by state-of-the-art learning centers that foster innovation and critical thinking.</p>
@@ -2565,7 +2452,7 @@
                     </div>
                     
                     <div class="card fade-in">
-                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Creative Arts" class="card-img">
+                        <img src="images/Scholar.jfif" alt="Creative Arts" class="card-img">
                         <div class="card-content">
                             <h3>Student Scholarships</h3>
                             <p>We offer merit-based scholarships and financial aid programs to support talented students, ensuring access to quality STEM education regardless of financial background.</p>
@@ -2574,7 +2461,7 @@
                     </div>
                     
                     <div class="card fade-in">
-                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Global Community" class="card-img">
+                        <img src="images/participation.webp" alt="Global Community" class="card-img">
                         <div class="card-content">
                             <h3>Community Participation</h3>
                             <p>Our students engage in community outreach programs, applying their STEM knowledge to solve real-world problems and make a positive impact in local communities.</p>
