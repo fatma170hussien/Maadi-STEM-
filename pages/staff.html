@@ -670,9 +670,44 @@
             background: linear-gradient(135deg, var(--pink), var(--pink-dark));
         }
 
-        /* Department badges - only shown when filtered */
-        .staff-department {
-            display: none;
+        /* View More Staff Button */
+        .view-more-container {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(10, 25, 47, 0.1);
+        }
+
+        .view-more-btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background-color: var(--pink);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .view-more-btn:hover {
+            background-color: var(--pink-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        .view-more-btn i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .view-more-btn:hover i {
+            transform: translateY(3px);
         }
 
         /* Staff counter */
@@ -683,6 +718,26 @@
             margin-top: 3rem;
             padding-top: 1rem;
             border-top: 1px solid rgba(10, 25, 47, 0.1);
+        }
+
+        /* Additional Staff Section */
+        .additional-staff-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--pink-light);
+        }
+
+        .additional-staff-section h2 {
+            font-size: 2rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .additional-staff-section h2 i {
+            color: var(--pink);
+            margin-right: 0.5rem;
         }
 
         /* Footer */
@@ -918,6 +973,10 @@
                 padding: 0.5rem 1.2rem;
                 font-size: 0.85rem;
             }
+            
+            .additional-staff-section h2 {
+                font-size: 1.7rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -964,6 +1023,15 @@
             
             .staff-placeholder {
                 font-size: 1.2rem;
+            }
+            
+            .additional-staff-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .view-more-btn {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -1151,8 +1219,24 @@
     <section class="staff-section">
         <div class="container">
             <div class="staff-grid" id="staffContainer">
-                <!-- Staff cards will be populated by JavaScript -->
+                <!-- Staff cards will be populated by JavaScript (First 42 only) -->
             </div>
+            
+            <!-- View More Button -->
+            <div class="view-more-container" id="viewMoreContainer">
+                <button class="view-more-btn" id="viewMoreBtn">
+                    View More Staff <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+            
+            <!-- Additional Staff Section (Hidden by default) -->
+            <div class="additional-staff-section" id="additionalStaffSection" style="display: none;">
+                <h2><i class="fas fa-user-plus"></i> Additional Staff Members</h2>
+                <div class="staff-grid" id="additionalStaffContainer">
+                    <!-- Additional staff cards will be populated by JavaScript -->
+                </div>
+            </div>
+            
             <div class="staff-count" id="staffCount"></div>
         </div>
     </section>
@@ -1200,70 +1284,77 @@
     </footer>
 
     <script>
-        // Complete Staff Data
-        const staffData = [
-            // Administration
+        // Complete Staff Data (all 47 staff members)
+        const allStaffData = [
+            // Administration (4)
             { id: 1, name: "Ms. Maisa Abdelqader Mahmoud", role: "School Director", department: "administration", image: "../images/staff/maisa_abdulkhader.jpg" },
             { id: 2, name: "Ms. Eman Hosni Murtada Zayan", role: "School Deputy", department: "administration", image: "../images/staff/iman-zayan.jpg" },
-            { id: 3, name: "Ms. Nazima Shafik Bayomi Shafey", role: "School Deputy", department: "administration", image: "../images/staff/iman-zayan.jpg" },
             { id: 4, name: "Ms. Mai Ibrahim Hassanein", role: "Senior Press & Media Specialist", department: "administration", image: "../images/staff/mai-hassanein.jpg" },
             { id: 5, name: "Mr. Bilal Abdel Salam Ghoneim", role: "Student Affairs Officer", department: "administration", image: "../images/staff/bilal-ghoneim.jpg" },
 
-            // Science Faculty
-            { id: 6, name: "Ms. Sahar Sayed Mohamed Sayed", role: "Biology Teacher", department: "science", image: "../images/staff/sahar-sayed.jpg" },
-            { id: 7, name: "Ms. Hadeel Salah Abdel Naeim Qassem", role: "Biology Teacher", department: "science", image: "../images/staff/hadeel-qassem.jpg" },
+            // Science Faculty (12)
+            { id: 7, name: "Ms. Hadeel Salah Abdel Naeim Qassem", role: "Biology Teacher", department: "science", image: "../images/staff/hadeel-qassem.jfif" },
             { id: 8, name: "Ms. Ganna Atef Ali Sayed", role: "Biology Teacher", department: "science", image: "../images/staff/ganna-sayed.jpg" },
             { id: 9, name: "Ms. Nagwa Karam Mohamed", role: "Biology Teacher", department: "science", image: "../images/staff/nagwa-mohamed.jpg" },
             { id: 10, name: "Mr. Mohamed Ahmed Mohamed Serhan", role: "Physics Teacher", department: "science", image: "../images/staff/mohamed-serhan.jpg" },
             { id: 11, name: "Mr. Ahmed Zakaria Gouda El Sayed", role: "Physics Teacher", department: "science", image: "../images/staff/ahmed-gouda.jpg" },
-            { id: 12, name: "Mr. Tarek Ibrahim Mahmoud Mohamed", role: "Physics Teacher", department: "science", image: "../images/staff/tarek-mohamed.jpg" },
             { id: 13, name: "Mr. Alaa El Din Ahmed Motamed Omran", role: "Chemistry Teacher", department: "science", image: "../images/staff/alaa-omran.jpg" },
-            { id: 14, name: "Mr. Ashraf Hamdan Ahmed Gad", role: "Chemistry Teacher", department: "science", image: "../images/staff/ashraf-gad.jpg" },
             { id: 15, name: "Mr. Zaki Habib Shenouda Fam", role: "Chemistry Teacher", department: "science", image: "../images/staff/zaki-fam.jpg" },
-            { id: 16, name: "Ms. Doaa Ahmed Abdel Azim Salem", role: "Geology Teacher", department: "science", image: "../images/staff/doaa-salem.jpg" },
+            { id: 16, name: "Ms. Doaa Ahmed Abdel Azim Salem", role: "Geology Teacher", department: "science", image: "../images/staff/doaa-salem.jfif" },
 
-            // Humanities
+            // Humanities (6)
             { id: 17, name: "Mr. Mohy El Din Abdo Mohamed Rabie", role: "History & Geography Teacher", department: "humanities", image: "../images/staff/mohy-rabie.jpg" },
             { id: 18, name: "Ms. Neama Nour Hanafy Metwally", role: "Citizenship Teacher", department: "humanities", image: "../images/staff/neama-metwally.jpg" },
-            { id: 19, name: "Ms. Nada Ahmed Shawky Ismail", role: "Home Economics Teacher", department: "humanities", image: "../images/staff/nada-ismail.jpg" },
-            { id: 20, name: "Ms. Mai Nabil Abdel Hamid Sabeih", role: "Art Education Teacher", department: "humanities", image: "../images/staff/mai-sabeih.jpg" },
+            { id: 19, name: "Ms. Nada Ahmed Shawky Ismail", role: "Home Economics Teacher", department: "humanities", image: "../images/staff/nada-ismail.jfif" },
+            { id: 20, name: "Ms. Mai Nabil Abdel Hamid Sabeih", role: "Art Education Teacher", department: "humanities", image: "../images/staff/mai-sabeih.jfif" },
             { id: 21, name: "Ms. Mariam George Halim Youssef", role: "Music Education Teacher", department: "humanities", image: "../images/staff/mariam-youssef.jpg" },
             { id: 22, name: "Ms. Noha Mostafa Abdel Razek Ali", role: "Physical Education Teacher", department: "humanities", image: "../images/staff/noha-ali.jpg" },
 
-            // Languages
-            { id: 23, name: "Ms. Adlia Farag Hussein Abdel Galil", role: "Arabic Language Teacher", department: "languages", image: "../images/staff/adlia-abdelgalil.jpg" },
+            // Languages (10)
+            { id: 23, name: "Ms. Adlia Farag Hussein Abdel Galil", role: "Arabic Language Teacher", department: "languages", image: "../images/staff/adlia-abdelgalil.jfif" },
             { id: 24, name: "Mr. Taha Ahmed Suleiman Hassan", role: "Arabic Language Teacher", department: "languages", image: "../images/staff/taha-hassan.jpg" },
-            { id: 25, name: "Ms. Sahar Abdullah Abdel Latif Omar", role: "Arabic Language Teacher", department: "languages", image: "../images/staff/sahar-omar.jpg" },
             { id: 26, name: "Mr. Ahmed Mostafa Aweys Mohamed", role: "Arabic Language Teacher", department: "languages", image: "../images/staff/ahmed-mohamed.jpg" },
             { id: 27, name: "Mr. Sameh Daniel Gabriel Beshay", role: "English Language Teacher", department: "languages", image: "../images/staff/sameh-beshay.jpg" },
             { id: 28, name: "Mr. Sameh Mohamed Reda Ahmed Ali Abou Bakr", role: "English Language Teacher", department: "languages", image: "../images/staff/sameh-aboubakr.jpg" },
-            { id: 29, name: "Mr. Hisham Sayed El Latif Ahmed", role: "English Language Teacher", department: "languages", image: "../images/staff/hisham-ahmed.jpg" },
+            { id: 29, name: "Mr. Hisham Sayed El Latif Ahmed", role: "English Language Teacher", department: "languages", image: "../images/staff/hisham-ahmed.jfif" },
             { id: 30, name: "Mr. Ali Mohamed Ali Afifi", role: "English Language Teacher", department: "languages", image: "../images/staff/ali-afifi.jpg" },
             { id: 31, name: "Ms. Amira Abdel Moneim Amin El Omari", role: "French Language Teacher", department: "languages", image: "../images/staff/amira-elomari.jpg" },
             { id: 32, name: "Mr. Mohamed Ali Khalaf Mohamed Amin Ali", role: "German Language Teacher", department: "languages", image: "../images/staff/mohamed-ali.jpg" },
 
-            // Mathematics
+            // Mathematics (4)
             { id: 33, name: "Mr. Botros Enaam Shehata Haneen", role: "Mathematics Teacher", department: "math", image: "../images/staff/botros-haneen.jpg" },
-            { id: 34, name: "Mr. Khaled El Hussein Hamed El Shafie", role: "Mathematics Teacher", department: "math", image: "../images/staff/khaled-elshafie.jpg" },
+            { id: 34, name: "Mr. Khaled El Hussein Hamed El Shafie", role: "Mathematics Teacher", department: "math", image: "../images/staff/khaled-elshafie.jfif" },
             { id: 35, name: "Mr. Osama Sabry Mohamed Abdel Aal", role: "Mathematics Teacher", department: "math", image: "../images/staff/osama-abdelal.jpg" },
-            { id: 36, name: "Mr. Victor Ageeb Sedeeq Youssef", role: "Mathematics Teacher", department: "math", image: "../images/staff/victor-youssef.jpg" },
             { id: 37, name: "Mr. Mahmoud Ali Mahmoud El Azab", role: "Mathematics Teacher", department: "math", image: "../images/staff/mahmoud-elazab.jpg" },
 
-            // Technology
-            { id: 38, name: "Ms. Hoda El Gharhy El Gharhy Hamza", role: "Computer Science Teacher", department: "technology", image: "../images/staff/hoda-hamza.jpg" },
-            { id: 39, name: "Ms. Maysa Hassan Abdel Nabi El Baqli Farghaly", role: "Computer Science Teacher", department: "technology", image: "../images/staff/maysa-farghaly.jpg" },
-            { id: 40, name: "Mr. Adel Salah Abdel Khaleq Mohamed", role: "Fab Lab Supervisor", department: "technology", image: "../images/staff/adel-mohamed.jpg" },
+            // Technology (3)
+            { id: 38, name: "Ms. Hoda El Gharhy El Gharhy Hamza", role: "Computer Science Teacher", department: "technology", image: "../images/staff/hoda-hamza.jfif" },
+            { id: 39, name: "Ms. Maysa Hassan Abdel Nabi El Baqli Farghaly", role: "Computer Science Teacher", department: "technology", image: "../images/staff/maysa-farghaly.jfif" },
+            { id: 40, name: "Mr. Adel Salah Abdel Khaleq Mohamed", role: "Fab Lab Supervisor", department: "technology", image: "../images/staff/adel-mohamed.jfif" },
 
-            // Support Staff
+            // Support Staff (8)
             { id: 41, name: "Mr. Taha Mohamed Sawi Shehat", role: "IT Specialist", department: "support", image: "../images/staff/taha-shehat.jpg" },
             { id: 42, name: "Ms. Sahar Mahmoud Abdel Hafez Fayad", role: "Librarian", department: "support", image: "../images/staff/sahar-fayad.jpg" },
             { id: 43, name: "Ms. Badour Abdel Qader Hassan El Kilany", role: "Social Specialist", department: "support", image: "../images/staff/badour-elkilany.jpg" },
-            { id: 44, name: "Ms. Amina Mowaad Abdullah Mohamed Mousa", role: "Social Specialist", department: "support", image: "../images/staff/amina-mousa.jpg" },
+            { id: 44, name: "Ms. Amina Mowaad Abdullah Mohamed Mousa", role: "Social Specialist", department: "support", image: "../images/staff/amina-mousa.jfif" },
             { id: 45, name: "Ms. Amira Ramadan Abdel Fattah Bakheet", role: "Psychological Specialist", department: "support", image: "../images/staff/amira-bakheet.jpg" },
-            { id: 46, name: "Mr. Hossam Sayed Abdel Aal", role: "Lab Supervisor", department: "support", image: "../images/staff/hossam-abdelal.jpg" },
+            { id: 46, name: "Mr. Hossam Sayed Abdel Aal", role: "Lab Supervisor", department: "support", image: "../images/staff/hossam-abdelal.jfif" },
             { id: 47, name: "Mr. David Elias Barsoum Shenouda", role: "Lab Supervisor", department: "support", image: "../images/staff/david-shenouda.jpg" },
-            { id: 48, name: "Ms. Elham Mahmoud Abdel Aziz Ismail", role: "Lab Supervisor", department: "support", image: "../images/staff/elham-ismail.jpg" }
+            { id: 48, name: "Ms. Elham Mahmoud Abdel Aziz Ismail", role: "Lab Supervisor", department: "support", image: "../images/staff/elham-ismail.jfif" }
         ];
+
+        // Additional Staff (5 new members without images)
+        const additionalStaffData = [
+            { id: 49, name: "Ms. Nazima Shafik Bayomi Shafey", role: "Support Staff", department: "support", image: "" },
+            { id: 50, name: "Ms. Sahar Abdullah Abdel Latif Omar", role: "Arabic Language Teacher", department: "languages", image: "" },
+            { id: 51, name: "Mr. Victor Ageeb Sedeeq Youssef", role: "Mechanics Teacher", department: "science", image: "" },
+            { id: 52, name: "Mr. Tarek Ibrahim Mahmoud Mohamed", role: "Physics Teacher", department: "science", image: "" },
+            { id: 53, name: "Mr. Ashraf Hamdan Ahmed Gad", role: "Chemistry Teacher", department: "science", image: "" }
+        ];
+
+        // Global variables
+        let currentFilter = 'all';
+        let isShowingAllStaff = false;
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
@@ -1311,9 +1402,13 @@
                 header.classList.add('scrolled');
             }
 
-            // Initialize staff cards
-            renderStaffCards(staffData);
-            updateStaffCount(staffData.length);
+            // Initialize staff cards (show first 42 only)
+            const first42Staff = allStaffData.slice(0, 42);
+            renderStaffCards(first42Staff);
+            updateStaffCount(first42Staff.length);
+            
+            // Initialize additional staff cards (hidden by default)
+            renderAdditionalStaffCards(additionalStaffData);
             
             // Set up filter buttons
             const filterButtons = document.querySelectorAll('.filter-btn');
@@ -1324,22 +1419,57 @@
                     this.classList.add('active');
                     
                     // Filter staff
-                    const filter = this.getAttribute('data-filter');
-                    let filteredStaff;
+                    currentFilter = this.getAttribute('data-filter');
                     
-                    if (filter === 'all') {
-                        filteredStaff = staffData;
+                    // Show appropriate staff based on filter
+                    if (isShowingAllStaff) {
+                        // Show all staff (including additional)
+                        const allStaff = [...allStaffData, ...additionalStaffData];
+                        let filteredStaff;
+                        
+                        if (currentFilter === 'all') {
+                            filteredStaff = allStaff;
+                        } else {
+                            filteredStaff = allStaff.filter(staff => staff.department === currentFilter);
+                        }
+                        
+                        renderStaffCards(filteredStaff);
+                        updateStaffCount(filteredStaff.length, currentFilter);
+                        
+                        // Hide additional section when filtering
+                        const additionalSection = document.getElementById('additionalStaffSection');
+                        additionalSection.style.display = 'none';
+                        document.getElementById('viewMoreContainer').style.display = 'none';
                     } else {
-                        filteredStaff = staffData.filter(staff => staff.department === filter);
+                        // Show only first 42
+                        const first42Staff = allStaffData.slice(0, 42);
+                        let filteredStaff;
+                        
+                        if (currentFilter === 'all') {
+                            filteredStaff = first42Staff;
+                        } else {
+                            filteredStaff = first42Staff.filter(staff => staff.department === currentFilter);
+                        }
+                        
+                        renderStaffCards(filteredStaff);
+                        updateStaffCount(filteredStaff.length, currentFilter);
+                        
+                        // Show view more button if not all staff are shown
+                        document.getElementById('viewMoreContainer').style.display = filteredStaff.length < 42 ? 'none' : 'block';
                     }
-                    
-                    renderStaffCards(filteredStaff);
-                    updateStaffCount(filteredStaff.length, filter);
                 });
             });
+            
+            // Set up view more button
+            const viewMoreBtn = document.getElementById('viewMoreBtn');
+            if (viewMoreBtn) {
+                viewMoreBtn.addEventListener('click', function() {
+                    showAllStaff();
+                });
+            }
         });
 
-        // Create staff card - MINIMAL VERSION
+        // Create staff card
         function createStaffCard(staff) {
             const card = document.createElement('div');
             card.className = 'staff-card';
@@ -1349,14 +1479,20 @@
             const nameParts = staff.name.split(' ');
             const initials = nameParts.map(part => part[0]).join('').slice(0, 2).toUpperCase();
             
+            // Check if image exists
+            const hasImage = staff.image && staff.image.trim() !== '';
+            
             card.innerHTML = `
                 <div class="staff-img-container">
-                    <img src="${staff.image}" 
-                         alt="${staff.name}" 
-                         class="staff-img"
-                         loading="lazy"
-                         onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="staff-placeholder" style="display: none;">
+                    ${hasImage ? 
+                        `<img src="${staff.image}" 
+                             alt="${staff.name}" 
+                             class="staff-img"
+                             loading="lazy"
+                             onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';">` 
+                        : ''
+                    }
+                    <div class="staff-placeholder" style="${hasImage ? 'display: none;' : 'display: flex;'}">
                         ${initials}
                     </div>
                 </div>
@@ -1382,6 +1518,19 @@
             });
         }
         
+        // Render additional staff cards
+        function renderAdditionalStaffCards(staffArray) {
+            const container = document.getElementById('additionalStaffContainer');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            staffArray.forEach(staff => {
+                const card = createStaffCard(staff);
+                container.appendChild(card);
+            });
+        }
+        
         // Update staff count display
         function updateStaffCount(count, filter = 'all') {
             const countElement = document.getElementById('staffCount');
@@ -1390,7 +1539,11 @@
             let text = '';
             
             if (filter === 'all') {
-                text = `Showing all ${count} staff members`;
+                if (isShowingAllStaff) {
+                    text = `Showing all ${count} staff members`;
+                } else {
+                    text = `Showing ${count} of ${allStaffData.length + additionalStaffData.length} staff members`;
+                }
             } else {
                 const departmentNames = {
                     "science": "Science Faculty",
@@ -1406,6 +1559,33 @@
             }
             
             countElement.textContent = text;
+        }
+        
+        // Show all staff (including additional)
+        function showAllStaff() {
+            isShowingAllStaff = true;
+            
+            // Get all staff
+            const allStaff = [...allStaffData, ...additionalStaffData];
+            let filteredStaff;
+            
+            if (currentFilter === 'all') {
+                filteredStaff = allStaff;
+            } else {
+                filteredStaff = allStaff.filter(staff => staff.department === currentFilter);
+            }
+            
+            // Show all staff in main container
+            renderStaffCards(filteredStaff);
+            
+            // Update count
+            updateStaffCount(filteredStaff.length, currentFilter);
+            
+            // Hide view more button
+            document.getElementById('viewMoreContainer').style.display = 'none';
+            
+            // Scroll to staff section
+            document.querySelector('.staff-section').scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
