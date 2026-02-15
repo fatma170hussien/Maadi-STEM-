@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assembly Hall | Maadi STEM School for Girls</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ========== identical base styles from classes page ========== */
+        :root {
+            --navy: #0a192f;
+            --navy-light: #1a2947;
+            --pink: #FF6B9D;
+            --pink-light: #ff9ec0;
+            --pink-dark: #e05583;
+            --peach: #f5b4b3;
+            --cream: #fef7fa;
+            --cream-dark: #f5eef2;
+            --white: #ffffff;
+            --gray: #7a7f8f;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 20px 40px rgba(255, 107, 157, 0.1);
+            --shadow-dark: 0 20px 40px rgba(10, 25, 47, 0.15);
+            --card-radius: 25px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+        h1, h2, h3, h4, h5, .logo-text, .section-title, .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        /* header exactly as classes */
+        header {
+            background-color: transparent;
+            padding: 2rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+        header.scrolled {
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+        .logo-container { display: flex; align-items: center; gap: 1.5rem; }
+        .logo-img {
+            width: 70px; height: 70px; border-radius: 50%; object-fit: cover;
+            border: 2px solid var(--pink); padding: 5px; background-color: var(--cream);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: var(--transition);
+        }
+        .logo-text h1 { font-size: 1.5rem; color: var(--white); letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); transition: var(--transition); }
+        .logo-text p {
+            font-size: 0.70rem; color: var(--pink-light); letter-spacing: 3px; text-transform: uppercase;
+            margin-top: 0.3rem; font-weight: 300; padding-bottom: 10px; text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        }
+        header.scrolled .logo-text h1 { text-shadow: none; }
+        nav ul { display: flex; list-style: none; align-items: center; height: 100%; }
+        nav ul li:first-child { margin-left: 3rem; }
+        nav ul li { display: flex; align-items: center; height: 100%; margin-right: 2.8rem; }
+        nav a {
+            color: var(--white); text-decoration: none; font-weight: 400; font-size: 1.05rem;
+            padding: 0.5rem 0; position: relative; transition: var(--transition); opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2); display: flex; align-items: center; height: 100%;
+        }
+        header.scrolled nav a { text-shadow: none; }
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            background: linear-gradient(to right, var(--pink), var(--peach)); bottom: 0; left: 0;
+            transition: width 0.4s ease;
+        }
+        nav a:hover, nav a.active { color: var(--pink); opacity: 1; }
+        nav a:hover::after, nav a.active::after { width: 100%; }
+        .header-actions { display: flex; gap: 1.5rem; align-items: center; }
+        .mobile-menu-btn {
+            display: none; background: none; border: none; font-size: 1.5rem; color: var(--white);
+            cursor: pointer; text-shadow: 0 1px 5px rgba(0,0,0,0.2); z-index: 1001;
+        }
+        header.scrolled .mobile-menu-btn { color: var(--pink); text-shadow: none; }
+
+        /* dropdown identical */
+        .dropdown { position: relative; display: flex; align-items: center; height: 100%; }
+        .dropdown > a { display: flex; align-items: center; height: 100%; padding: 0.5rem 0; gap: 0.5rem; }
+        .dropdown > a i { font-size: 0.8rem; transition: transform 0.3s ease; }
+        .dropdown:hover > a i { transform: rotate(180deg); }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 0; margin-top: 0.5rem;
+            background-color: rgba(10, 25, 47, 0.95); backdrop-filter: blur(10px); min-width: 220px;
+            border-radius: 10px; padding: 1rem 0; opacity: 0; visibility: hidden;
+            transform: translateY(10px); transition: var(--transition); box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,107,157,0.1); z-index: 1000;
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu a {
+            display: block; padding: 0.9rem 2rem; color: rgba(255,255,255,0.8); text-decoration: none;
+            font-size: 1rem; transition: var(--transition); border-left: 3px solid transparent;
+            text-shadow: none; white-space: nowrap;
+        }
+        .dropdown-menu a:hover {
+            color: var(--pink); background-color: rgba(255,107,157,0.1);
+            border-left: 3px solid var(--pink); padding-left: 2.3rem;
+        }
+        .campus-dropdown .dropdown-menu { min-width: 210px; padding: 0.8rem 0; }
+        .campus-main-item {
+            display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2rem;
+            color: rgba(255,255,255,0.8); text-decoration: none; font-size: 1rem; transition: var(--transition);
+            border-left: 3px solid transparent; position: relative;
+        }
+        .campus-main-item:hover {
+            color: var(--pink); background-color: rgba(255,107,157,0.1);
+            border-left: 3px solid var(--pink); padding-left: 2.3rem;
+        }
+        .campus-main-item i { font-size: 0.7rem; transition: transform 0.3s ease; }
+        .nested-dropdown { position: relative; }
+        .nested-dropdown-menu {
+            position: absolute; top: 0; left: 100%; background-color: rgba(10,25,47,0.98);
+            backdrop-filter: blur(10px); min-width: 220px; border-radius: 0 10px 10px 0; padding: 1rem 0;
+            opacity: 0; visibility: hidden; transform: translateX(-10px); transition: var(--transition);
+            box-shadow: 5px 5px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,107,157,0.1);
+            border-left: none; margin-left: 5px;
+        }
+        .nested-dropdown:hover .nested-dropdown-menu { opacity: 1; visibility: visible; transform: translateX(0); }
+        .nested-dropdown-menu a {
+            display: block; padding: 0.9rem 2rem; color: rgba(255,255,255,0.8); text-decoration: none;
+            font-size: 0.95rem; transition: var(--transition); border-left: 3px solid transparent;
+        }
+        .nested-dropdown-menu a:hover {
+            color: var(--pink); background-color: rgba(255,107,157,0.1); border-left: 3px solid var(--pink); padding-left: 2.3rem;
+        }
+
+        /* mobile menu identical */
+        .mobile-menu {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--navy), #0e1525); z-index: 2000;
+            display: flex; flex-direction: column; padding: 2rem;
+            transform: translateX(-100%); transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            overflow-y: auto;
+        }
+        .mobile-menu.active { transform: translateX(0); }
+        .mobile-menu-close {
+            position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none;
+            font-size: 1.8rem; color: var(--pink); cursor: pointer; z-index: 2001;
+        }
+        .mobile-nav { margin-top: 4rem; width: 100%; }
+        .mobile-nav ul { list-style: none; width: 100%; }
+        .mobile-nav ul li { margin-bottom: 1.5rem; width: 100%; }
+        .mobile-nav ul li a {
+            color: var(--white); text-decoration: none; font-size: 1.3rem; font-family: 'Playfair Display', serif;
+            transition: var(--transition); opacity: 0.8; display: block; padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-nav ul li a.active, .mobile-nav ul li a:hover { color: var(--pink); opacity: 1; }
+        .mobile-dropdown { margin-bottom: 1.5rem; }
+        .mobile-dropdown > a {
+            display: flex; justify-content: space-between; align-items: center; color: var(--white);
+            text-decoration: none; font-size: 1.3rem; font-family: 'Playfair Display', serif;
+            padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer;
+        }
+        .mobile-dropdown-content { padding-left: 1.5rem; margin-top: 0.5rem; display: none; }
+        .mobile-dropdown-content.active { display: block; }
+        .mobile-dropdown-content a {
+            display: block; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 1.1rem;
+            padding: 0.4rem 0; margin-bottom: 0.3rem; border-left: 2px solid transparent; padding-left: 1rem;
+        }
+        .mobile-dropdown-content a:hover { color: var(--pink); border-left-color: var(--pink); }
+        .mobile-campus-submenu { margin-bottom: 1rem; padding-left: 1rem; }
+        .mobile-campus-submenu h4 {
+            color: var(--pink-light); font-size: 1.1rem; margin-bottom: 0.5rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .mobile-campus-submenu ul { list-style: none; }
+        .mobile-campus-submenu ul li { margin-bottom: 0.5rem; }
+        .mobile-campus-submenu ul li a {
+            color: rgba(255,255,255,0.7); text-decoration: none; font-size: 1rem; padding-left: 1.5rem; display: block;
+        }
+
+        /* hero specific */
+        .hero {
+            height: 70vh; min-height: 600px; position: relative; display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.85), rgba(255, 107, 157, 0.4)),
+                        url('../images/assembly/assembly.jpg');
+            background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;
+        }
+        .hero-content { max-width: 1200px; padding: 0 3rem; text-align: center; position: relative; z-index: 1; margin-top: 80px; }
+        .hero-title {
+            font-size: 4.5rem; color: var(--white); margin-bottom: 1.5rem; font-weight: 600;
+            letter-spacing: -1px; text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .hero-title span { color: var(--pink); position: relative; display: inline-block; }
+        .hero-subtitle {
+            font-size: 1.3rem; color: rgba(255,255,255,0.9); max-width: 800px;
+            margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.6;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 3rem; position: relative; z-index: 1; }
+        section { padding: 6rem 0; }
+
+        .section-title { text-align: center; margin-bottom: 4rem; }
+        .section-title h2 {
+            font-size: 3.2rem; color: var(--navy); margin-bottom: 1rem; position: relative; display: inline-block;
+        }
+        .section-title h2::after {
+            content: ''; position: absolute; width: 100px; height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach)); bottom: -15px; left: 50%; transform: translateX(-50%);
+        }
+        .section-title p { color: var(--gray); font-size: 1.2rem; max-width: 700px; margin: 2rem auto 0; font-weight: 300; }
+
+        /* assembly specific */
+        .role-badge {
+            display: inline-block; background: var(--pink); color: white; padding: 0.3rem 1rem;
+            border-radius: 30px; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 1rem;
+        }
+        .grid-2 {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        }
+
+        /* large capacity highlight (no detailed numbers) */
+        .capacity-highlight {
+            background: var(--navy);
+            border-radius: 30px;
+            padding: 4rem;
+            color: white;
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .capacity-highlight::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -20%;
+            width: 70%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,107,157,0.2) 0%, transparent 70%);
+        }
+        .capacity-highlight h3 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .capacity-highlight p {
+            font-size: 1.3rem;
+            color: var(--pink-light);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .seating-symbol {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem 2rem;
+            margin: 2rem 0;
+        }
+        .seat-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--pink-light);
+        }
+        .seat-icon i {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* gallery minimal (2 images) */
+        .gallery-mini {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .gallery-item {
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(255,107,157,0.15); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        /* event cards (2 cards) */
+        .activities-compact {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .activity-card {
+            background: var(--white); border-radius: var(--card-radius); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition);
+        }
+        .activity-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(255,107,157,0.15); }
+        .activity-image { height: 220px; overflow: hidden; }
+        .activity-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .activity-card:hover .activity-image img { transform: scale(1.05); }
+        .activity-content { padding: 2rem; }
+
+        /* footer identical */
+        footer { background: linear-gradient(135deg, var(--navy), #0e1525); color: var(--white); padding: 6rem 0 3rem; position: relative; overflow: hidden; }
+        .footer-container {
+            max-width: 1400px; margin: 0 auto; padding: 0 3rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 4rem; margin-bottom: 4rem; position: relative; z-index: 1;
+        }
+        .footer-column h3 { font-size: 1.5rem; margin-bottom: 2rem; color: var(--white); position: relative; padding-bottom: 1rem; }
+        .footer-column h3::after {
+            content: ''; position: absolute; width: 50px; height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach)); bottom: 0; left: 0;
+        }
+        .footer-column p { color: rgba(255,255,255,0.7); margin-bottom: 2rem; line-height: 1.7; font-weight: 300; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 1.2rem; }
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.7); text-decoration: none; transition: var(--transition);
+            display: flex; align-items: center; gap: 1rem; font-weight: 300;
+        }
+        .footer-column ul li a:hover { color: var(--pink); transform: translateX(5px); }
+        .social-icons { display: flex; gap: 1.2rem; margin-top: 2rem; }
+        .social-icons a {
+            display: flex; align-items: center; justify-content: center; width: 45px; height: 45px;
+            background-color: rgba(255,255,255,0.05); border-radius: 12px; color: var(--white);
+            text-decoration: none; transition: var(--transition); font-size: 1.1rem; border: 2px solid rgba(255,255,255,0.1);
+        }
+        .social-icons a:hover { background-color: var(--pink); color: var(--white); transform: translateY(-5px); border-color: var(--pink); }
+        .copyright { text-align: center; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: rgba(255,255,255,0.5); }
+
+        @media (max-width:992px){
+            .hero-title{font-size:2.8rem;}
+            .grid-2{grid-template-columns:1fr;}
+            .gallery-mini{grid-template-columns:1fr;}
+            nav{display:none;}
+            .mobile-menu-btn{display:block;}
+        }
+        @media (max-width:768px){
+            .hero-title{font-size:2.2rem;}
+            .section-title h2{font-size:2rem;}
+            .capacity-highlight h3{font-size:2.2rem;}
+            .activities-compact{grid-template-columns:1fr;}
+        }
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Maadi STEM School</h1>
+                    <p>Center of Egyptian innovation leaders</p>
+                </div>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="overview.html">Who we are</a>
+                            <a href="mission-vision.html">Mission & Vision</a>
+                            <a href="staff.html">Staff</a>
+                            <a href="student-criteria.html">Student Criteria</a>
+                        </div>
+                    </li>
+                    <li class="dropdown campus-dropdown">
+                        <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item"><span><i class="fas fa-school"></i> School</span><i class="fas fa-chevron-right"></i></a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="School_laboratory.html">Laboratory</a>
+                                    <a href="classes.html">Classes</a>
+                                    <a href="fablab.html">Fab Lab</a>
+                                    <a href="library.html">Library</a>
+                                    <a href="assembly.html" class="active">Assembly</a>
+                                    <a href="playgrounds.html">Playgrounds</a>
+                                </div>
+                            </div>
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item"><span><i class="fas fa-bed"></i> Dorms</span><i class="fas fa-chevron-right"></i></a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="studying-hall.html">Studying Hall</a>
+                                    <a href="restaurant.html">Restaurant</a>
+                                </div>
+                            </div>
+                            <div class="events-history-menu">
+                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li class="dropdown">
+                        <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="compititions.html">Competitions</a>
+                            <a href="programs.html">Programs</a>
+                            <a href="teamsandclubs.html">Teams & Clubs</a>
+                        </div>
+                    </li>
+                    <li><a href="alumni.html">Alumni</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></button>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li class="dropdown"><a href="#" class="mobile-dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <a href="overview.html">Who we are</a>
+                    <a href="mission-vision.html">Mission & Vision</a>
+                    <a href="staff.html">Staff</a>
+                    <a href="student-criteria.html">Student Criteria</a>
+                </div>
+            </li>
+            <li class="dropdown"><a href="#" class="mobile-dropdown-toggle">Campus <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <div class="mobile-campus-section"><h4 class="mobile-campus-title"><i class="fas fa-school"></i> School</h4>
+                        <div class="mobile-campus-links">
+                            <a href="School_laboratory.html">Laboratory</a>
+                            <a href="classes.html">Classes</a>
+                            <a href="fablab.html">Fab Lab</a>
+                            <a href="library.html">Library</a>
+                            <a href="assembly.html" class="active">Assembly</a>
+                            <a href="playgrounds.html">Playgrounds</a>
+                        </div>
+                    </div>
+                    <div class="mobile-campus-section"><h4 class="mobile-campus-title"><i class="fas fa-bed"></i> Dorms</h4>
+                        <div class="mobile-campus-links">
+                            <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                            <a href="studying-hall.html">Studying Hall</a>
+                            <a href="restaurant.html">Restaurant</a>
+                        </div>
+                    </div>
+                    <div class="mobile-campus-section"><h4 class="mobile-campus-title"><i class="fas fa-calendar-alt"></i> Events</h4>
+                        <div class="mobile-campus-links"><a href="events.html">All Events</a></div>
+                    </div>
+                    <div class="mobile-campus-section"><h4 class="mobile-campus-title"><i class="fas fa-history"></i> History</h4>
+                        <div class="mobile-campus-links"><a href="history.html">School History</a></div>
+                    </div>
+                </div>
+            </li>
+            <li><a href="academics.html">Academics</a></li>
+            <li class="dropdown"><a href="#" class="mobile-dropdown-toggle">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <a href="compititions.html">Competitions</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="teamsandclubs.html">Teams & Clubs</a>
+                </div>
+            </li>
+            <li><a href="alumni.html">Alumni</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Assembly <span>Hall</span></h1>
+            <p class="hero-subtitle">Where the whole school gathers – celebrations, performances, and shared moments</p>
+        </div>
+    </section>
+
+    <!-- intro text + one image -->
+    <section style="padding: 5rem 0;">
+        <div class="container">
+            <div class="grid-2">
+                <div>
+                    <span class="role-badge">HEART OF THE SCHOOL</span>
+                    <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">A Stage for Every Voice</h2>
+                    <p style="color: var(--gray); margin-bottom: 1.5rem;">The assembly hall is our central gathering space, designed for school-wide events, award ceremonies, theatrical performances, and weekly assemblies. With tiered seating and professional acoustics, every student feels part of the moment.</p>
+                    <ul style="list-style:none; margin-top: 2rem;">
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-check" style="color: var(--pink); margin-right: 1rem;"></i> <strong>Very large capacity</strong> – seats over 70 (students + staff)</li>
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-check" style="color: var(--pink); margin-right: 1rem;"></i> State‑of‑the‑art sound & lighting</li>
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-check" style="color: var(--pink); margin-right: 1rem;"></i> Wide stage for performances</li>
+                        <li style="margin-bottom: 1rem;"><i class="fas fa-check" style="color: var(--pink); margin-right: 1rem;"></i> Fully air‑conditioned and accessible</li>
+                    </ul>
+                </div>
+                <div style="border-radius: var(--card-radius); overflow: hidden; box-shadow: var(--shadow); height: 380px;">
+                    <img src="../images/assembly/assembly1.jpg" alt="Assembly Hall stage" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='https://via.placeholder.com/800x600/0a192f/FF6B9D?text=Assembly+Stage'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPACITY HIGHLIGHT – only "over 70 seats" (no detailed numbers) -->
+    <section class="capacity-highlight">
+        <div class="container" style="position:relative; z-index:5;">
+            <h3>Spacious & Inclusive</h3>
+            <p>Our hall comfortably accommodates <strong>more than 70 people</strong> – students, teachers, and guests. Designed for excellent sightlines and easy movement.</p>
+            <div class="seating-symbol">
+                <div class="seat-icon"><i class="fas fa-chair"></i> <span>Comfortable seating</span></div>
+                <div class="seat-icon"><i class="fas fa-wheelchair"></i> <span>Accessible aisles</span></div>
+                <div class="seat-icon"><i class="fas fa-users"></i> <span>Tiered rows</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTS / ACTIVITIES (two cards only) -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Hall <span>Events</span></h2>
+                <p>Memorable moments that bring our community together</p>
+            </div>
+            <div class="activities-compact">
+                <div class="activity-card">
+                    <div class="activity-image"><img src="../images/assembly/assembly2.jpg" alt="Graduation ceremony" onerror="this.src='https://via.placeholder.com/800x600/0a192f/FF6B9D?text=Graduation'"></div>
+                    <div class="activity-content"><h3>Graduation & Prize Day</h3><p>Annual ceremony celebrating achievements with proud families.</p></div>
+                </div>
+                <div class="activity-card">
+                    <div class="activity-image"><img src="../images/assembly/assemblt3.jpg" alt="Drama performance" onerror="this.src='https://via.placeholder.com/800x600/0a192f/FF6B9D?text=Drama+Club'"></div>
+                    <div class="activity-content"><h3>Drama & Music Shows</h3><p>Students showcase their talents in fully staged productions.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY (two images only) -->
+    <section style="background: var(--cream);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hall <span>Gallery</span></h2>
+                <p>A glimpse of our assembly space</p>
+            </div>
+            <div class="gallery-mini">
+                <div class="gallery-item"><img src="../images/assembly/assembly4.jpg" alt="Hall wide view" onerror="this.src='https://via.placeholder.com/600x400/0a192f/FF6B9D?text=Hall+view'"></div>
+                <div class="gallery-item"><img src="../images/assembly/assembly5.jpg" alt="Stage close up" onerror="this.src='https://via.placeholder.com/600x400/0a192f/FF6B9D?text=Stage'"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Maadi STEM School for Girls</h3>
+                <p>A purpose-built campus where every space – including our assembly hall – inspires connection and excellence.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Assembly uses</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Weekly assembly</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Performances</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Guest speakers</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Award ceremonies</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Zahraa Al Maadi, Cairo</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> assembly@stemmaadi.edu.eg</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +20 2 1234 5680</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright"><p>&copy; 2025 Maadi STEM School for Girls. All Rights Reserved. | Where we gather, we grow.</p></div>
+    </footer>
+
+    <script>
+        // header scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
+        if (window.scrollY > 50) header.classList.add('scrolled');
+
+        // mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', ()=>{ mobileMenu.classList.add('active'); document.body.style.overflow='hidden'; });
+        mobileMenuClose.addEventListener('click', ()=>{ mobileMenu.classList.remove('active'); document.body.style.overflow='auto'; });
+
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function(e){
+                e.preventDefault();
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                content.classList.toggle('active');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+
+        // image fallback
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function(){
+                this.src = 'https://via.placeholder.com/800x600/0a192f/FF6B9D?text=Assembly+preview';
+            }
+        });
+    </script>
+</body>
+</html>
