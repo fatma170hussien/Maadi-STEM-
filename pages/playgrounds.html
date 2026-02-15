@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports & Playgrounds | Maadi STEM School for Girls</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== ROOT VARIABLES (same theme) ===== */
+        :root {
+            --navy: #0a192f;
+            --navy-light: #1a2947;
+            --pink: #FF6B9D;
+            --pink-light: #ff9ec0;
+            --pink-dark: #e05583;
+            --peach: #f5b4b3;
+            --cream: #fef7fa;
+            --cream-dark: #f5eef2;
+            --white: #ffffff;
+            --gray: #7a7f8f;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 20px 40px rgba(255, 107, 157, 0.1);
+            --shadow-dark: 0 20px 40px rgba(10, 25, 47, 0.15);
+            --card-radius: 25px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+
+        h1, h2, h3, h4, h5, .logo-text, .section-title, .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
+
+        /* ===== HEADER (identical) ===== */
+        header {
+            background-color: transparent;
+            padding: 2rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 107, 157, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--pink);
+            padding: 5px;
+            background-color: var(--cream);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo-text h1 {
+            text-shadow: none;
+        }
+
+        .logo-text p {
+            font-size: 0.70rem;
+            color: var(--pink-light);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 0.3rem;
+            font-weight: 300;
+            padding-bottom: 10px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            height: 100%;
+        }
+
+        nav ul li:first-child {
+            margin-left: 3rem;
+        }
+
+        nav ul li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-right: 2.8rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.05rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+            opacity: 0.9;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        header.scrolled nav a {
+            text-shadow: none;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .btn-pink {
+            padding: 0.8rem 2.2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
+        }
+
+        header.scrolled .btn-pink {
+            background-color: transparent;
+            border: 1px solid var(--pink);
+            color: var(--pink);
+        }
+
+        .btn-pink::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .btn-pink:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.3);
+            border-color: var(--pink);
+        }
+
+        .btn-pink:hover::before {
+            left: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+        }
+
+        header.scrolled .mobile-menu-btn {
+            color: var(--pink);
+            text-shadow: none;
+        }
+
+        /* ===== DROPDOWN MENUS (identical) ===== */
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown > a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0.5rem 0;
+            gap: 0.5rem;
+        }
+
+        .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover > a i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            background-color: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 10px;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            text-shadow: none;
+            white-space: nowrap;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-dropdown .dropdown-menu {
+            min-width: 210px;
+            padding: 0.8rem 0;
+        }
+
+        .campus-main-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+
+        .campus-main-item:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        .campus-main-item i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nested-dropdown {
+            position: relative;
+        }
+
+        .nested-dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: rgba(10, 25, 47, 0.98);
+            backdrop-filter: blur(10px);
+            min-width: 220px;
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: var(--transition);
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 107, 157, 0.1);
+            border-left: none;
+            margin-left: 5px;
+        }
+
+        .nested-dropdown:hover .nested-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .nested-dropdown-menu a {
+            display: block;
+            padding: 0.9rem 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .nested-dropdown-menu a:hover {
+            color: var(--pink);
+            background-color: rgba(255, 107, 157, 0.1);
+            border-left: 3px solid var(--pink);
+            padding-left: 2.3rem;
+        }
+
+        /* ===== MOBILE MENU (identical) ===== */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--pink);
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .mobile-nav {
+            margin-top: 4rem;
+            width: 100%;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            width: 100%;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .mobile-nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            transition: var(--transition);
+            opacity: 0.8;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav ul li a.active {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        .mobile-nav ul li a:hover {
+            color: var(--pink);
+            opacity: 1;
+        }
+
+        .mobile-dropdown {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-dropdown > a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-family: 'Playfair Display', serif;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-content {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .mobile-dropdown-content.active {
+            display: block;
+        }
+
+        .mobile-dropdown-content a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.4rem 0;
+            margin-bottom: 0.3rem;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+        }
+
+        .mobile-dropdown-content a:hover {
+            color: var(--pink);
+            border-left-color: var(--pink);
+        }
+
+        .mobile-campus-submenu {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .mobile-campus-submenu h4 {
+            color: var(--pink-light);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .mobile-campus-submenu ul {
+            list-style: none;
+        }
+
+        .mobile-campus-submenu ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-campus-submenu ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 1rem;
+            padding-left: 1.5rem;
+            display: block;
+        }
+
+        /* ===== NEW SPORTS PAGE STYLES (different & creative) ===== */
+        .hero-sports {
+            height: 80vh;
+            min-height: 650px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(105deg, var(--navy) 0%, var(--navy-light) 40%, var(--pink-dark) 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .hero-sports::before {
+            content: "⚽ 🏀 🏐 🤾 🏋️";
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 8rem;
+            opacity: 0.1;
+            color: var(--white);
+            white-space: nowrap;
+            font-weight: 900;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1300px;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 2;
+            margin-top: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero-title {
+            font-size: 5.5rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            text-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+        }
+
+        .hero-title span {
+            color: var(--pink);
+            display: inline-block;
+            transform: rotate(-2deg);
+            background: rgba(255,255,255,0.1);
+            padding: 0 1rem;
+            border-radius: 30px 10px 30px 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .hero-tag {
+            background: var(--pink);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+            border: 2px solid white;
+        }
+
+        .hero-tag:nth-child(2) { background: #06d6a0; }
+        .hero-tag:nth-child(3) { background: #0a1022; color: var(--navy); }
+        .hero-tag:nth-child(4) { background: #050214; }
+        .hero-tag:nth-child(5) { background: #031217; }
+
+        .hero-sub {
+            font-size: 1.8rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 700px;
+            border-left: 8px solid var(--pink);
+            padding-left: 2rem;
+        }
+
+        /* sports strip */
+        .sports-strip {
+            background: var(--white);
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            box-shadow: 0 -20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 5;
+            border-bottom: 4px solid var(--pink);
+        }
+
+        .sport-pill {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        .sport-pill i {
+            font-size: 3rem;
+            color: var(--pink);
+            background: var(--cream);
+            padding: 1rem;
+            border-radius: 30% 70% 30% 70%;
+            box-shadow: 0 10px 20px rgba(255,107,157,0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .sport-pill span {
+            color: var(--navy);
+            font-size: 1.2rem;
+        }
+
+        /* zone styling */
+        .zone {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title-sports {
+            font-size: 3.5rem;
+            color: var(--navy);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title-sports::after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--pink), var(--peach));
+            bottom: -15px;
+            left: 0;
+            border-radius: 5px;
+        }
+
+        .grid-sports {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .sports-card {
+            background: var(--white);
+            border-radius: 30px 10px 30px 10px;
+            padding: 2.5rem 1.5rem;
+            box-shadow: 15px 15px 0 var(--navy-light);
+            transition: 0.3s ease;
+            border: 3px solid var(--navy);
+            text-align: center;
+        }
+
+        .sports-card:hover {
+            transform: translate(-10px, -10px);
+            box-shadow: 20px 20px 0 var(--pink);
+        }
+
+        .sports-card i {
+            font-size: 4rem;
+            color: var(--pink);
+            background: var(--cream);
+            padding: 1rem;
+            border-radius: 20px 40px 20px 40px;
+            margin-bottom: 1.5rem;
+        }
+
+        .sports-card h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+
+        .sports-card p {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .capacity-badge {
+            background: var(--navy);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 100px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 3rem 0;
+            border: 6px solid var(--black);
+            box-shadow: 10px 10px 0 #0a113a;
+        }
+
+        .gallery-sports {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-sports-item {
+            height: 280px;
+            border-radius: 40px 10px 40px 10px;
+            overflow: hidden;
+            border: 6px solid var(--navy);
+            box-shadow: 15px 15px 0 var(--pink);
+        }
+
+        .gallery-sports-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ===== FOOTER (identical) ===== */
+        footer {
+            background: linear-gradient(135deg, var(--navy), #0e1525);
+            color: var(--white);
+            padding: 6rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+            margin-top: 4rem;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.08) 0%, transparent 70%);
+            top: -150px;
+            right: -150px;
+            opacity: 0.5;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--peach));
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 300;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--pink);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icons a:hover {
+            background-color: var(--pink);
+            color: var(--white);
+            transform: translateY(-5px);
+            border-color: var(--pink);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 992px) {
+            nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero-title { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- header (same) -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../images/logo.png" alt="Maadi STEM School for Girls Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Maadi STEM School</h1>
+                    <p>Center of Egyptian innovation leaders</p>
+                </div>
+            </div>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">About <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="overview.html">Who we are</a>
+                            <a href="mission-vision.html">Mission & Vision</a>
+                            <a href="staff.html">Staff</a>
+                            <a href="student-criteria.html">Student Criteria</a>
+                        </div>
+                    </li>
+                    
+                    <li class="dropdown campus-dropdown">
+                        <a href="#">Campus <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-school"></i> School</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="School_laboratory.html">Laboratory</a>
+                                    <a href="classes.html">Classes</a>
+                                    <a href="fablab.html">Fab Lab</a>
+                                    <a href="library.html">Library</a>
+                                    <a href="assembly.html">Assembly</a>
+                                    <a href="playgrounds.html" class="active">Playgrounds</a>
+                                </div>
+                            </div>
+                            
+                            <div class="nested-dropdown">
+                                <a href="#" class="campus-main-item">
+                                    <span><i class="fas fa-bed"></i> Dorms</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <div class="nested-dropdown-menu">
+                                    <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                                    <a href="studying-hall.html">Studying Hall</a>
+                                    <a href="restaurant.html">Restaurant</a>
+                                </div>
+                            </div>
+                            
+                            <div class="events-history-menu">
+                                <a href="events.html"><i class="fas fa-calendar-alt"></i> Events</a>
+                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li><a href="academics.html">Academics</a></li>
+                    
+                    <li class="dropdown">
+                        <a href="#">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="compititions.html">Competitions</a>
+                            <a href="programs.html">Programs</a>
+                            <a href="teamsandclubs.html">Teams & Clubs</a>
+                        </div>
+                    </li>
+                    
+                    <li><a href="alumni.html">Alumni</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- mobile menu (same) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">About <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <a href="overview.html">Who we are</a>
+                    <a href="mission-vision.html">Mission & Vision</a>
+                    <a href="staff.html">Staff</a>
+                    <a href="student-criteria.html">Student Criteria</a>
+                </div>
+            </li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Campus <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-school"></i> School</h4>
+                        <div class="mobile-campus-links">
+                            <a href="School_laboratory.html">Laboratory</a>
+                            <a href="classes.html">Classes</a>
+                            <a href="fablab.html">Fab Lab</a>
+                            <a href="library.html">Library</a>
+                            <a href="assembly.html">Assembly</a>
+                            <a href="playgrounds.html" class="active">Playgrounds</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-bed"></i> Dorms</h4>
+                        <div class="mobile-campus-links">
+                            <a href="rooms-bathrooms.html">Dorm Rooms</a>
+                            <a href="studying-hall.html">Studying Hall</a>
+                            <a href="restaurant.html">Restaurant</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-calendar-alt"></i> Events</h4>
+                        <div class="mobile-campus-links">
+                            <a href="events.html">All Events</a>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-campus-section">
+                        <h4 class="mobile-campus-title"><i class="fas fa-history"></i> History</h4>
+                        <div class="mobile-campus-links">
+                            <a href="history.html">School History</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li><a href="academics.html">Academics</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Extracurriculars <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu mobile-dropdown-content">
+                    <a href="compititions.html">Competitions</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="teamsandclubs.html">Teams & Clubs</a>
+                </div>
+            </li>
+            
+            <li><a href="alumni.html">Alumni</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- NEW SPORTS HERO (different) -->
+    <section class="hero-sports">
+        <div class="hero-content">
+            <h1 class="hero-title">PLAY <span>GROUND</span><br>ENERGY ZONE</h1>
+            <div class="hero-tags">
+            </div>
+            <p class="hero-sub">massive courts · fitness lab · over 70 athletes at once</p>
+        </div>
+    </section>
+
+    <!-- floating sports strip -->
+    <div class="sports-strip">
+        <div class="sport-pill"><i class="fas fa-futbol"></i><span>FOOTBALL</span></div>
+        <div class="sport-pill"><i class="fas fa-basketball-ball"></i><span>BASKETBALL</span></div>
+        <div class="sport-pill"><i class="fas fa-volleyball-ball"></i><span>VOLLEYBALL</span></div>
+        <div class="sport-pill"><i class="fas fa-hand-paper"></i><span>HANDBALL</span></div>
+        <div class="sport-pill"><i class="fas fa-dumbbell"></i><span>GYM</span></div>
+    </div>
+
+    <!-- main content zone -->
+    <section class="zone">
+        <h2 class="section-title-sports">FIVE <span style="color:var(--pink)">★</span> ARENAS</h2>
+        <div class="grid-sports">
+            <div class="sports-card"><i class="fas fa-futbol"></i><h3>FOOTBALL</h3><p>Full-size grass pitch, floodlit, goals & team benches</p></div>
+            <div class="sports-card"><i class="fas fa-basketball-ball"></i><h3>BASKETBALL</h3><p>Indoor wood court + outdoor half-courts, adjustable hoops</p></div>
+            <div class="sports-card"><i class="fas fa-volleyball-ball"></i><h3>VOLLEYBALL</h3><p>Beach sand area & professional indoor net court</p></div>
+            <div class="sports-card"><i class="fas fa-hand-paper"></i><h3>HANDBALL</h3><p>40x20m court, professional goals, 7-a-side</p></div>
+            <div class="sports-card"><i class="fas fa-dumbbell"></i><h3>FITNESS GYM</h3><p>200m², cardio, free weights, strength machines</p></div>
+        </div>
+
+        <!-- capacity badge (general, no exact numbers) -->
+        <div class="capacity-badge">
+            <i class="fas fa-users" style="margin-right:1rem;"></i> HUGE CAPACITY — 70+ STUDENTS PER SESSION
+        </div>
+
+        <!-- mini gallery (2 images) -->
+        <div class="gallery-sports">
+            <div class="gallery-sports-item"><img src="../images/playgrounds/sports1.jpg" alt="action" onerror="this.src='https://via.placeholder.com/800x600/0a192f/FF6B9D?text=PLAYGROUND'"></div>
+            <div class="gallery-sports-item"><img src="../images/playgrounds/sports2.jpg" alt="gym" onerror="this.src='https://via.placeholder.com/800x600/1a2947/ff9ec0?text=GYM'"></div>
+        </div>
+    </section>
+
+    <!-- footer (same) -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Maadi STEM School for Girls</h3>
+                <p>Where traditional learning meets modern technology. Our playgrounds are designed to foster teamwork, resilience, and passion.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Sports facilities</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Football pitch</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Basketball courts</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Volleyball (sand & indoor)</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Handball court</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Gym & fitness</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Zahraa Al Maadi, Cairo, Egypt</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> sports@stemmaadi.edu.eg</a></li>
+                    <li><a href="#"><i class="fas fa-phone"></i> +20 2 1234 5690</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Maadi STEM School for Girls. All Rights Reserved. | Play hard, dream big.</p>
+        </div>
+    </footer>
+
+    <script>
+        // header scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+        if (window.scrollY > 50) header.classList.add('scrolled');
+
+        // mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // mobile dropdown
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                content.classList.toggle('active');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+
+        // img fallback
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                this.src = 'https://via.placeholder.com/800x600/0a192f/FF6B9D?text=Sports+preview';
+            }
+        });
+    </script>
+</body>
+</html>
